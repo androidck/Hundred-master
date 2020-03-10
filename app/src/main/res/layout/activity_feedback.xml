@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/view_title"/>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <com.hjq.widget.view.ClearEditText
+            android:id="@+id/ed_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_300"
+            android:layout_marginTop="@dimen/space_60"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginRight="@dimen/space_24"
+            android:hint="意见反馈"
+            android:padding="@dimen/space_24"
+            android:gravity="top"
+            android:background="@drawable/shape_feedback_bg"
+            />
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/space_60"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/shape_setup_button"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/space_34" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

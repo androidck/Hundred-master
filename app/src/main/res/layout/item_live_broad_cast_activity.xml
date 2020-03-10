@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="@dimen/space_336"
+        android:layout_height="@dimen/space_336"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/space_10"
+        >
+        <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/item_live"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_50"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:background="#99000000"
+            android:text="美女"
+            android:gravity="center"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

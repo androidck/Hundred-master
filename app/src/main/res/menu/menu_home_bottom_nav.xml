@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_selector_selectable_home"
+        android:title="@string/menu_home"/>
+
+    <item
+        android:id="@+id/menu_forum"
+        android:icon="@drawable/ic_selector_selectable_forum"
+        android:title="@string/menu_forum"/>
+
+    <item
+        android:id="@+id/menu_special"
+        android:icon="@drawable/ic_selector_selectable_special"
+        android:title="@string/menu_special"/>
+
+    <item
+        android:id="@+id/menu_live_broadcast"
+        android:icon="@drawable/ic_selector_selectable_live"
+        android:title="@string/menu_live_broadcast"/>
+
+    <item
+        android:id="@+id/menu_mine"
+        android:icon="@drawable/ic_selector_selectable_mine"
+        android:title="@string/menu_mine"/>
+</menu>

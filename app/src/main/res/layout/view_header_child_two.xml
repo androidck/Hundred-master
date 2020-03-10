@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_300"
+        app:image_scale_type="fit_xy"
+        app:indicator_drawable_selected="@drawable/dot_shape_selected"
+        app:indicator_drawable_unselected="@drawable/dot_shape_unselected"
+        app:indicator_height="6dp"
+        app:indicator_width="6dp" />
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/space_30"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginRight="@dimen/space_24"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_90"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginRight="@dimen/space_24"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="最新视频"
+            android:drawableLeft="@mipmap/icon_small_logo"
+            android:drawablePadding="@dimen/space_16"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColor"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="全部视频"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/colorDeep"
+            android:drawableRight="@mipmap/icon_more"
+            android:drawablePadding="@dimen/space_16"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <include layout="@layout/division_line"/>
+
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        >
+      <TextView
+          android:id="@+id/tv_photo"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/space_100"
+          android:text="拍照"
+          android:textColor="@color/textColor"
+          android:gravity="center"
+          android:background="@android:color/white"
+          />
+        <include layout="@layout/division_line"/>
+        <TextView
+            android:id="@+id/tv_album"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_100"
+            android:text="相册选择"
+            android:textColor="@color/textColor"
+            android:gravity="center"
+            android:background="@android:color/white"
+            />
+        <TextView
+            android:id="@+id/tv_esc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_100"
+            android:text="取消"
+            android:textColor="@color/textColor"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_20"
+            android:background="@android:color/white"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

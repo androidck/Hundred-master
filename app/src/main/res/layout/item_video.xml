@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_400"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/ly_details"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_head"
+                android:layout_width="@dimen/space_150"
+                android:layout_height="@dimen/space_150"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/space_24"
+                android:src="@mipmap/item_live"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="@dimen/space_4" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginRight="@dimen/space_24"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_nick_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:gravity="center_vertical"
+                        android:text="周星驰"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textSize="@dimen/font_size_30px" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableRight="@mipmap/icon_more"
+                        android:gravity="center_vertical|right"
+                        android:drawablePadding="@dimen/space_16"
+                        android:text="全部视频"
+                        android:textSize="@dimen/font_size_30px" />
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <TextView
+                    android:id="@+id/user_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="身高174CM\t\t体重70KG\t\t罩杯B杯"
+                    android:textColor="@color/colorDeep"
+                    android:textSize="@dimen/font_size_28px" />
+
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="1980年成为丽的电视台特约演员，从而进入演艺圈"
+                    android:textColor="@color/colorDeep"
+                    android:textSize="@dimen/font_size_28px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <com.yanzhenjie.recyclerview.SwipeRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_4"
+        android:layout_marginTop="@dimen/space_10"
+        android:background="@color/colorAccent" />
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/view_title"/>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/space_250"
+            android:layout_height="@dimen/space_276"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/space_70"
+            android:src="@mipmap/icon_activation" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <com.hjq.widget.view.ClearEditText
+                android:id="@+id/ed_phone"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/space_16"
+                android:drawableLeft="@mipmap/icon_login_account"
+                android:hint="输入账号或手机号"
+                android:inputType="number"
+                android:maxLength="13"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/tv_get_code"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginRight="40dp"
+                android:text="获取验证码"
+                android:paddingLeft="@dimen/space_12"
+                android:paddingRight="@dimen/space_12"
+                android:textColor="@color/colorAccent" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorLines"
+            android:orientation="vertical" />
+
+        <com.hjq.widget.view.ClearEditText
+            android:id="@+id/et_code"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:hint="输入手机验证码"
+            android:drawablePadding="@dimen/space_16"
+            android:drawableLeft="@mipmap/icon_login_phone"
+            android:inputType="number"
+            android:maxLength="6"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorLines"
+            android:orientation="vertical" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.hjq.widget.view.ClearEditText
+                android:id="@+id/ed_pwd"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_weight="1"
+                android:hint="输入密码"
+                android:drawablePadding="@dimen/space_16"
+                android:drawableLeft="@mipmap/icon_login_pwd"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+            <ImageView
+                android:id="@+id/is_show_pwd"
+                android:layout_width="@dimen/space_72"
+                android:layout_height="@dimen/space_72"
+                android:layout_gravity="center"
+                android:layout_marginRight="40dp"
+                android:src="@mipmap/icon_hide_pwd" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorLines"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/space_60"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/shape_setup_button"
+            android:gravity="center"
+            android:text="确认修改"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/space_34" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

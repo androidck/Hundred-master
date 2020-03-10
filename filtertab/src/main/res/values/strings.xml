@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">filtertab</string>
+
+    <string name="area">区域</string>
+    <string name="wan">万</string>
+    <string name="confirm">确定</string>
+</resources>

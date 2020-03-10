@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:layout_marginBottom="@dimen/space_20"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_history"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_90"
+        android:layout_marginLeft="@dimen/space_24"
+        android:gravity="center_vertical"
+        android:text="历史搜索"
+        android:textSize="@dimen/font_size_30px" />
+
+    <com.community.hundred.common.flowlayout.TagFlowLayout
+        android:id="@+id/fy_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:horizontalSpace="10dp"
+        app:isShowAddViewAnimation="true"
+        app:verticalSpace="10dp" />
+
+    <TextView
+        android:id="@+id/tv_hot"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_90"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_20"
+        android:gravity="center_vertical"
+        android:text="热门搜索"
+        android:textSize="@dimen/font_size_30px" />
+    <com.community.hundred.common.flowlayout.TagFlowLayout
+        android:id="@+id/fy_hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:horizontalSpace="10dp"
+        app:isShowAddViewAnimation="true"
+        app:verticalSpace="10dp" />
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/space_200"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_24"
+        android:layout_marginRight="@dimen/space_24"
+        android:background="@drawable/shape_system_bg"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:padding="@dimen/space_24"
+            android:textColor="@color/colorDeep"
+            android:textSize="@dimen/font_size_30px"
+            android:text="创业公司从0到100，不同阶段有着不同的管理方式。"
+            />
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="2019-11-27 09:23"
+            android:textColor="@color/colorDeep"
+            android:gravity="center_vertical|right"
+            android:layout_marginRight="@dimen/space_24"
+            android:textSize="@dimen/font_size_26px"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_1"
+        android:background="@color/colorLines"
+        android:layout_marginTop="@dimen/space_24"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

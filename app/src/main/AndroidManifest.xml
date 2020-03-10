@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.community.hundred">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- 通过GPS得到精确位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 通过网络得到粗略位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 访问网络. 某些位置信息需要从网络服务器获取 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 访问WiFi状态. 需要WiFi信息用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 修改WiFi状态. 发起WiFi扫描, 需要WiFi信息用于网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 访问网络状态, 检测网络的可用性. 需要网络运营商相关信息用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 访问网络的变化, 需要某些信息用于网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 访问手机当前状态, 需要某些信息用于网络定位 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- 蓝牙分享所需的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:name=".common.base.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="design_width"
+            android:value="720"></meta-data>
+        <meta-data
+            android:name="design_height"
+            android:value="1280"></meta-data>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="83390a8c4df82fc03fdf26d01a43bee9"></meta-data>
+
+        <service android:name="com.amap.api.location.APSService"></service>
+
+        <activity android:name=".modules.ui.startup.StartUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 文件上传处理 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.community.hundred.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".modules.ui.main.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/main_title"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".common.web.BrowserActivity"
+            android:label="@string/browser_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.AboutUsActivity"
+            android:label="@string/about_us_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.SetupActivity"
+            android:label="@string/setup_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.SecurityCodeSetupActivity"
+            android:label="@string/security_code_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.ActivationCodeActivity"
+            android:label="@string/activation_code_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.post.SendPostActivity"
+            android:label="@string/send_post_title"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".modules.ui.user.ModifyUserDataActivity"
+            android:label="@string/modify_user_data"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.livebroadcast.MessageActivity"
+            android:label="@string/message_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.livebroadcast.SearchActivity"
+            android:label="@string/message_title"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".modules.ui.post.PeoplePostDetailsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.user.LoginActivity"
+            android:label="@string/login_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.user.RegisterActivity"
+            android:label="@string/register_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.user.ForgetPwdActivity"
+            android:label="@string/for_get_pwd_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.livebroadcast.LiveBroadCastActivity"
+            android:label="@string/menu_live_broadcast"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.user.FollowActivity"
+            android:label="@string/follow_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.user.FansActivity"
+            android:label="@string/fans_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.post.PostDetailsActivity"
+            android:label="@string/post_details_title"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".modules.ui.pay.WithdrawActivity"
+            android:label="@string/withdraw_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.user.ReceivedGiftActivity"
+            android:label="@string/received_gift_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.secondlevel.SecondLevelActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".modules.ui.classify.ClassifyActivity"
+            android:label="@string/classify_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.pay.RechargeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            />
+
+        <activity
+            android:name=".modules.ui.video.VideoDetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".modules.ui.femalestar.FemaleStarActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.livebroadcast.LiveBroadCastDetailsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.FeedBackCommentActivity"
+            android:label="@string/feedback_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.HistoryLookActivity"
+            android:label="@string/history_look_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.MyCollectActivity"
+            android:label="@string/my_collect_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.setup.UpdatePasswordActivity"
+            android:label="@string/update_pwd_title"
+            android:screenOrientation="portrait" />
+
+        <!-- 查看大图 -->
+        <activity
+            android:name=".common.browseimg.JBrowseImgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTransTheme" />
+
+        <activity
+            android:name=".modules.ui.system.SystemNotifyActivity"
+            android:label="@string/system_notify_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.post.MySendPostActivity"
+            android:label="@string/my_send_post_title"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".modules.ui.extension.ExtensionActivity"
+            android:label="@string/extension_title"
+            android:screenOrientation="portrait" />
+        <activity android:name=".modules.ui.TestActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            />
+
+    </application>
+
+</manifest>

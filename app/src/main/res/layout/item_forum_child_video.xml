@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/space_24"
+    android:paddingRight="@dimen/space_24"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/space_220"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/space_20"
+        android:orientation="vertical">
+
+        <com.community.hundred.common.view.RoundAngleImageView
+            android:id="@+id/img_video"
+            android:layout_width="@dimen/space_290"
+            android:layout_height="@dimen/space_170"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/item_live" />
+
+        <TextView
+            android:id="@+id/tv_video_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="我的第0个视频"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/colorDeep"
+            android:textSize="@dimen/font_size_28px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

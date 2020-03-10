@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/abl_test_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:elevation="0px">
+
+                <com.community.hundred.common.widget.XCollapsingToolbarLayout
+                    android:id="@+id/ctl_test_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:contentScrim="@color/white"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:scrimVisibleHeightTrigger="100dp">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_collapseMode="parallax">
+                        <com.zhy.autolayout.AutoRelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="4">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/personal_bg" />
+                            <com.zhy.autolayout.AutoLinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="?android:attr/actionBarSize"
+                                android:orientation="horizontal">
+                                <com.zhy.autolayout.AutoRelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        android:id="@+id/user_head"
+                                        android:layout_width="@dimen/space_200"
+                                        android:layout_height="@dimen/space_200"
+                                        android:layout_centerInParent="true"
+                                        android:src="@mipmap/item_live"
+                                        app:civ_border_color="@color/colorAccent"
+                                        app:civ_border_width="@dimen/space_6" />
+                                    <TextView
+                                        android:id="@+id/tv_count"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/user_head"
+                                        android:layout_centerHorizontal="true"
+                                        android:background="@drawable/shape_security_code_button"
+                                        android:paddingLeft="@dimen/space_30"
+                                        android:paddingRight="@dimen/space_30"
+                                        android:text="45部影片"
+                                        android:textSize="@dimen/font_size_26px" />
+
+                                </com.zhy.autolayout.AutoRelativeLayout>
+
+                                <com.zhy.autolayout.AutoLinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2.2"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_nick_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:gravity="bottom"
+                                        android:text="博大厦大沙发"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="@dimen/font_size_36px" />
+
+                                    <TextView
+                                        android:id="@+id/tv_user_data"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:textColor="@color/colorDeep" />
+                                </com.zhy.autolayout.AutoLinearLayout>
+                            </com.zhy.autolayout.AutoLinearLayout>
+                        </com.zhy.autolayout.AutoRelativeLayout>
+
+                        <com.zhy.autolayout.AutoLinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/space_90"
+                                android:layout_marginLeft="@dimen/space_24"
+                                android:layout_marginRight="@dimen/space_24"
+                                android:drawableRight="@mipmap/icon_user_data"
+                                android:drawablePadding="@dimen/space_16"
+                                android:gravity="center_vertical"
+                                android:text="明星简介"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/font_size_30px" />
+
+                            <include layout="@layout/division_line" />
+
+                            <TextView
+                                android:id="@+id/tv_desc"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/space_24"
+                                android:layout_marginRight="@dimen/space_24"
+                                android:ellipsize="end"
+                                android:maxLines="5"
+                                android:textColor="@color/colorDeep"
+                                android:textSize="@dimen/font_size_30px" />
+                        </com.zhy.autolayout.AutoLinearLayout>
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/t_test_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="?android:attr/actionBarSize"
+                        app:layout_collapseMode="pin" />
+
+                    <com.hjq.bar.TitleBar
+                        android:layout_width="match_parent"
+                        android:layout_height="?android:attr/actionBarSize"
+                        app:barStyle="transparent"
+                        app:layout_collapseMode="pin"
+                        app:leftIcon="@mipmap/bar_icon_back_white"
+                        app:rightColor="@android:color/white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                        </LinearLayout>
+
+                    </com.hjq.bar.TitleBar>
+
+                </com.community.hundred.common.widget.XCollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_100"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/space_24"
+                    android:paddingRight="@dimen/space_24">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableRight="@mipmap/icon_video"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center_vertical"
+                            android:text="相关影片"
+                            android:textSize="@dimen/font_size_30px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/group"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/btn_one"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/space_16"
+                                android:layout_marginRight="@dimen/space_16"
+                                android:layout_weight="1"
+                                android:background="@drawable/radio"
+                                android:button="@null"
+                                android:checked="true"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/space_8"
+                                android:paddingBottom="@dimen/space_8"
+                                android:text="最新更新"
+                                android:textSize="@dimen/font_size_24px" />
+
+                            <RadioButton
+                                android:id="@+id/btn_two"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/space_16"
+                                android:layout_marginRight="@dimen/space_16"
+                                android:layout_weight="1"
+                                android:background="@drawable/radio"
+                                android:button="@null"
+                                android:gravity="center"
+                                android:paddingTop="@dimen/space_8"
+                                android:paddingBottom="@dimen/space_8"
+                                android:text="最多播放"
+                                android:textSize="@dimen/font_size_26px" />
+                        </RadioGroup>
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <include layout="@layout/division_line" />
+
+                <com.yanzhenjie.recyclerview.SwipeRecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/space_20"
+                    android:paddingLeft="@dimen/space_24"
+                    android:paddingRight="@dimen/space_24" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</com.zhy.autolayout.AutoLinearLayout>

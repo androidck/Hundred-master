@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hjq.bar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:backButton="false"
+        app:lineColor="@android:color/white"
+        app:rightIcon="@mipmap/icon_setup"
+        app:title="我的" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+            <!-- 登录后 -->
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/ly_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginRight="@dimen/space_24"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/user_head"
+                        android:layout_width="@dimen/space_120"
+                        android:layout_height="@dimen/space_120"
+                        android:src="@mipmap/ic_launcher"
+                        app:civ_border_color="@color/colorAccent"
+                        app:civ_border_width="@dimen/space_4" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_24"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_nick_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:drawableRight="@mipmap/icon_user_vip"
+                        android:drawablePadding="@dimen/space_20"
+                        android:text="追剧小岁"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_32px" />
+
+                    <TextView
+                        android:id="@+id/tv_sex_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="女 20岁"
+                        android:textColor="@color/colorDeep"
+                        android:textSize="@dimen/font_size_24px" />
+
+                    <TextView
+                        android:id="@+id/tv_sign"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="个性签名：沉默不是代表的错"
+                        android:textColor="@color/colorDeep"
+                        android:textSize="@dimen/font_size_24px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5">
+
+                    <ImageView
+                        android:layout_width="@dimen/space_42"
+                        android:layout_height="@dimen/space_36"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/icon_user_more" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/ly_not_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginRight="@dimen/space_24"
+                android:orientation="horizontal">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/space_120"
+                        android:layout_height="@dimen/space_120"
+                        android:src="@mipmap/icon_not_login"
+                        app:civ_border_color="@color/colorAccent"
+                        app:civ_border_width="@dimen/space_4" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_24"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="@dimen/space_4"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/space_20"
+                        android:gravity="bottom"
+                        android:text="游客模式"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_32px" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/space_4"
+                        android:layout_weight="1"
+                        android:gravity="top"
+                        android:text="登录后解锁更多特权"
+                        android:textColor="@color/colorDeep"
+                        android:textSize="@dimen/font_size_24px" />
+
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:id="@+id/tv_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/space_10"
+                        android:background="@drawable/shape_not_login_bg"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/space_40"
+                        android:paddingTop="@dimen/space_12"
+                        android:paddingRight="@dimen/space_40"
+                        android:paddingBottom="@dimen/space_12"
+                        android:text="立即登录"
+                        android:textColor="@android:color/white" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <!-- 关注相关 -->
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_30"
+                android:layout_marginRight="@dimen/space_24"
+                android:orientation="horizontal">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/ly_follow"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_follow_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="0"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_36px" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="关注"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_26px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/ly_my_fans"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_fans_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="0"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_36px" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="粉丝"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_26px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/ly_send_count"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_send_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="0"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_36px" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="发布"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_26px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <!-- 理财-->
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_30"
+                android:layout_marginRight="@dimen/space_24"
+                android:orientation="horizontal">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/ly_my_wallet"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/space_6"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_money_bg"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="我的钱包"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_30px" />
+
+                    <TextView
+                        android:id="@+id/tv_my_wallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/icon_money"
+                        android:drawablePadding="@dimen/space_16"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="0.00"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_30px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/ly_withdraw_count"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_6"
+                    android:layout_marginRight="@dimen/space_6"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_withdraw_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="累计提现"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_30px" />
+
+                    <TextView
+                        android:id="@+id/tv_withdraw_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/icon_withday"
+                        android:drawablePadding="@dimen/space_16"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="0.00"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_30px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/ly_extension"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_6"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_extension_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="累计推广"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_30px" />
+
+                    <TextView
+                        android:id="@+id/tv_extension"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/icon_people"
+                        android:drawablePadding="@dimen/space_16"
+                        android:gravity="center"
+                        android:padding="@dimen/space_10"
+                        android:text="0"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/font_size_30px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_30"
+                android:layout_marginRight="@dimen/space_24"
+                android:orientation="horizontal">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_extension_bg"
+                    android:orientation="vertical">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/space_20"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_conduct"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_nation"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="全民理财"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+
+                        <TextView
+                            android:id="@+id/tv_pay"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_pig"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="钱包充值"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+
+                        <TextView
+                            android:id="@+id/tv_open_member"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_zuan"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="开通会员"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+
+                        <TextView
+                            android:id="@+id/tv_withdraw"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_my_money"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="提现"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/space_20"
+                        android:layout_marginBottom="@dimen/space_20"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_amusement"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_star"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="在线娱乐"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+
+                        <TextView
+                            android:id="@+id/tv_activation_code"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_code"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="激活码"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+
+                        <TextView
+                            android:id="@+id/tv_exchange_group"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_group"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="交流群"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+
+                        <TextView
+                            android:id="@+id/tv_share_vip"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/icon_gifts"
+                            android:drawablePadding="@dimen/space_16"
+                            android:gravity="center"
+                            android:text="分享的VIP"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_26px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/item_gift"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftColor="#525252"
+                app:bar_leftIcon="@mipmap/item_gift"
+                app:bar_leftSize="@dimen/font_size_30px"
+                app:bar_leftText="收到礼物"
+                app:bar_rightIcon="@mipmap/icon_right" />
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/item_look"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftColor="#525252"
+                app:bar_leftIcon="@mipmap/item_time"
+                app:bar_leftSize="@dimen/font_size_30px"
+                app:bar_leftText="历史观看"
+                app:bar_rightIcon="@mipmap/icon_right" />
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/item_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftColor="#525252"
+                app:bar_leftIcon="@mipmap/item_star"
+                app:bar_leftSize="@dimen/font_size_30px"
+                app:bar_leftText="我的收藏"
+                app:bar_rightIcon="@mipmap/icon_right" />
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/tv_local_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftColor="#525252"
+                app:bar_leftIcon="@mipmap/item_down"
+                app:bar_leftSize="@dimen/font_size_30px"
+                android:visibility="gone"
+                app:bar_leftText="本地视频"
+                app:bar_rightIcon="@mipmap/icon_right" />
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/tv_opinion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftColor="#525252"
+                app:bar_leftIcon="@mipmap/item_kf"
+                app:bar_leftSize="@dimen/font_size_30px"
+                app:bar_leftText="意见反馈"
+                app:bar_rightIcon="@mipmap/icon_right" />
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/item_about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftColor="#525252"
+                app:bar_leftIcon="@mipmap/item_phone"
+                app:bar_leftSize="@dimen/font_size_30px"
+                app:bar_leftText="关于我们"
+                app:bar_rightIcon="@mipmap/icon_right" />
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/item_cooperation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftColor="#525252"
+                app:bar_leftIcon="@mipmap/item_cooperate"
+                app:bar_leftSize="@dimen/font_size_30px"
+                app:bar_leftText="合作联系"
+                app:bar_rightIcon="@mipmap/icon_right" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_80"
+            android:background="@color/item_color"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/space_42"
+            android:paddingRight="@dimen/space_42"
+            android:text="基础设置"
+            android:textColor="@color/title_hint_color"
+            android:textSize="@dimen/font_size_30px" />
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/item_user_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/icon_right"
+            app:bar_leftText="个 人 资 料" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_80"
+            android:background="@color/item_color"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/space_42"
+            android:paddingRight="@dimen/space_42"
+            android:text="安全设置"
+            android:textColor="@color/title_hint_color"
+            android:textSize="@dimen/font_size_30px" />
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/item_security_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/icon_right"
+            app:bar_leftText="安 全 码 设 置" />
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/item_pwd_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/icon_right"
+            app:bar_leftText="密 码 修 改" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_80"
+            android:background="@color/item_color"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/space_42"
+            android:paddingRight="@dimen/space_42"
+            android:text="其它设置"
+            android:textColor="@color/title_hint_color"
+            android:textSize="@dimen/font_size_30px" />
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/item_clear_catch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_leftText="清 除 缓 存" />
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/item_version_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_leftText="版 本 号" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_login_out"
+                android:layout_width="@dimen/space_400"
+                android:layout_height="@dimen/space_90"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/space_120"
+                android:background="@drawable/shape_setup_button"
+                android:text="切换账号"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_30px"
+                android:textStyle="bold" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/space_20"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_80"
+                    android:text="官网地址：https://18b.tv"
+                    android:textColor="@color/colorDeep"
+                    android:gravity="center"
+                    />
+                <include layout="@layout/division_line"/>
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_80"
+                    android:text="联系邮箱：service@nnfe.com"
+                    android:textColor="@color/colorDeep"
+                    android:gravity="center"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

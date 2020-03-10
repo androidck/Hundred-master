@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.hjq.bar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+        <!-- 理财-->
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_30"
+            android:layout_marginRight="@dimen/space_24"
+            android:orientation="horizontal">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/space_6"
+                android:layout_weight="1"
+                android:background="@drawable/shape_money_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/space_10"
+                    android:text="我的钱包"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/font_size_30px" />
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/icon_money"
+                    android:drawablePadding="@dimen/space_16"
+                    android:gravity="center"
+                    android:padding="@dimen/space_10"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/font_size_30px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/space_6"
+                android:layout_marginRight="@dimen/space_6"
+                android:layout_weight="1"
+                android:background="@drawable/shape_withdraw_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/space_10"
+                    android:text="累计提现"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/font_size_30px" />
+
+                <TextView
+                    android:id="@+id/tv_zong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/icon_withday"
+                    android:drawablePadding="@dimen/space_16"
+                    android:gravity="center"
+                    android:padding="@dimen/space_10"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/font_size_30px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/space_6"
+                android:layout_weight="1"
+                android:background="@drawable/shape_extension_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/space_10"
+                    android:text="当前可提"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/font_size_30px" />
+
+                <TextView
+                    android:id="@+id/tv_ktx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/icon_people"
+                    android:drawablePadding="@dimen/space_16"
+                    android:gravity="center"
+                    android:padding="@dimen/space_10"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/font_size_30px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_60"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_40"
+            android:textColor="@color/colorDeep"
+            android:text="提现说明：最低提现额度为100.00元" />
+        <com.hjq.widget.view.ClearEditText
+            android:id="@+id/et_name"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/space_60"
+            android:layout_marginRight="40dp"
+            android:hint="输入收款姓名"
+            android:inputType="text"
+            android:singleLine="true" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorLines"
+            android:orientation="vertical" />
+        <com.hjq.widget.view.ClearEditText
+            android:id="@+id/ed_alipay_account"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/space_20"
+            android:layout_marginRight="40dp"
+            android:hint="输入收款人支付宝账号"
+            android:inputType="textVisiblePassword"
+            android:singleLine="true" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorLines"
+            android:orientation="vertical" />
+
+        <com.hjq.widget.view.ClearEditText
+            android:id="@+id/ed_withdraw_money"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/space_20"
+            android:layout_marginRight="40dp"
+            android:hint="输入提现金额"
+            android:inputType="number"
+            android:singleLine="true" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorLines"
+            android:orientation="vertical" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.hjq.widget.view.ClearEditText
+                android:id="@+id/ed_pwd"
+                style="@style/EditTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_weight="1"
+                android:hint="输入安全码"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+            <ImageView
+                android:id="@+id/is_show_pwd"
+                android:layout_width="@dimen/space_72"
+                android:layout_height="@dimen/space_72"
+                android:layout_gravity="center"
+                android:layout_marginRight="40dp"
+                android:src="@mipmap/icon_hide_pwd" />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/colorLines"
+            android:orientation="vertical" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_70"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_40"
+            android:textColor="@color/colorDeep"
+            android:layout_marginLeft="@dimen/space_80"
+            android:layout_marginRight="@dimen/space_80"
+            android:textSize="@dimen/font_size_28px"
+            android:background="@drawable/shape_withdraw_tip"
+            android:text="请务必认真填写收款信息，负责无法到账！" />
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/space_60"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/shape_withdraw_button"
+            android:gravity="center"
+            android:text="提现"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/space_34" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

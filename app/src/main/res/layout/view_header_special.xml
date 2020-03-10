@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_300"
+        app:image_scale_type="fit_xy"
+        app:indicator_drawable_selected="@drawable/dot_shape_selected"
+        app:indicator_drawable_unselected="@drawable/dot_shape_unselected"
+        app:indicator_height="6dp"
+        app:indicator_width="6dp" />
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_120"
+        android:drawableLeft="@mipmap/icon_platform"
+        android:background="@android:color/white"
+        android:paddingLeft="@dimen/space_24"
+        android:paddingRight="@dimen/space_24"
+        android:textColor="@color/textColor"
+        android:drawablePadding="@dimen/space_16"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/font_size_34px"
+        android:text="直播平台" />
+</com.zhy.autolayout.AutoLinearLayout>

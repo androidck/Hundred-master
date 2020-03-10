@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/colorAccent"/>
+    <corners android:radius="@dimen/space_60"/>
+
+    <gradient
+        android:startColor="#F8956A"
+        android:endColor="#E97B53"
+        android:angle="45"
+        />
+    <!-- 开是 #F8956A -->
+
+    <!-- 结束 ##E97B53 -->
+</shape>

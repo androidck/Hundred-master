@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_30"
+            android:background="#f0f0f0" />
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/update_user_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/ico_go_black"
+            app:bar_leftText="修改头像">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_head"
+                android:layout_width="@dimen/space_80"
+                android:layout_height="@dimen/space_80"
+                android:layout_gravity="center_vertical|right"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginRight="@dimen/space_80"
+                />
+        </com.hjq.widget.layout.SettingBar>
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/update_nick_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/ico_go_black"
+            app:bar_leftText="昵称"/>
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/update_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/ico_go_black"
+            app:bar_leftText="性别"/>
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/update_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/ico_go_black"
+            app:bar_leftText="年龄"/>
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/update_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/ico_go_black"
+            app:bar_leftText="个性签名"/>
+
+        <com.hjq.widget.layout.SettingBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_leftText="相册"/>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

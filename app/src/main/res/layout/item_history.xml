@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_80_yellow"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_180"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginRight="@dimen/space_24"
+        android:orientation="horizontal">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.community.hundred.common.view.RoundAngleImageView
+                android:id="@+id/item_img"
+                android:layout_width="@dimen/space_300"
+                android:layout_height="@dimen/space_180"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/space_20"
+                android:scaleType="fitXY" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_weight="1.5"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/font_size_30px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_20"
+        android:background="@color/colorAccent"
+        android:orientation="vertical"/>
+</com.zhy.autolayout.AutoLinearLayout>

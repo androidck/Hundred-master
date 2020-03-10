@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_nov_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_80"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginRight="@dimen/space_24"
+        android:gravity="center_vertical"
+        android:text="剑王朝"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/font_size_30px" />
+
+    <include layout="@layout/division_line" />
+</com.zhy.autolayout.AutoLinearLayout>

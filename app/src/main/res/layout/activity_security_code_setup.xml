@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/view_title"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_80_yellow"
+        android:orientation="vertical">
+
+        <com.jyn.vcview.VerificationCodeView
+            android:id="@+id/ed_security_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_120"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:vcv_et_bg="@drawable/shape_code_bg"
+            app:vcv_et_inputType="number"
+            app:vcv_et_number="6"
+            app:vcv_et_text_color="@android:color/black"
+            app:vcv_et_text_size="@dimen/font_size_20px" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:text="（请 输 入 6 位 数 密 码）"
+            android:textColor="@color/tipColor"
+            android:textSize="@dimen/font_size_30px"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/btn_login_out"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/space_120"
+            android:background="@drawable/shape_security_code_button"
+            android:text="确 认"
+            android:layout_marginLeft="@dimen/space_30"
+            android:layout_marginRight="@dimen/space_30"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_30px"
+            android:textStyle="bold" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>
