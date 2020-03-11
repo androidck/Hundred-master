@@ -15,10 +15,19 @@ import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.helper.CacheDataManager;
 import com.community.hundred.modules.dialog.GiftDialog;
+import com.community.hundred.modules.dialog.UpdateDialog;
 import com.community.hundred.modules.dialog.entry.GiftEntry;
+import com.community.hundred.modules.eventbus.UpdateWrap;
 import com.community.hundred.modules.manager.LoginUtils;
+import com.community.hundred.modules.ui.setup.entry.UpdateEntry;
+import com.community.hundred.modules.ui.setup.presenter.SetupPresenter;
+import com.community.hundred.modules.ui.setup.presenter.view.ISetupView;
 import com.hjq.bar.TitleBar;
 import com.hjq.widget.layout.SettingBar;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +38,7 @@ import butterknife.OnClick;
 
 // 设置
 @Route(path = ActivityConstant.SETUP)
-public class SetupActivity extends MyActivity {
+public class SetupActivity extends MyActivity<ISetupView, SetupPresenter> {
 
     @BindView(R.id.item_user_data)
     SettingBar itemUserData;
@@ -48,9 +57,11 @@ public class SetupActivity extends MyActivity {
     @BindView(R.id.tv_email)
     TextView tvEmail;
 
+    private boolean isForceUpdate;
+
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected SetupPresenter createPresenter() {
+        return new SetupPresenter(this);
     }
 
     @Override
@@ -67,6 +78,8 @@ public class SetupActivity extends MyActivity {
         } else {
             btnLoginOut.setVisibility(View.GONE);
         }
+
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -81,7 +94,7 @@ public class SetupActivity extends MyActivity {
         return !super.statusBarDarkFont();
     }
 
-    @OnClick({R.id.item_user_data, R.id.item_security_code, R.id.item_pwd_update, R.id.item_clear_catch, R.id.item_version_code, R.id.btn_login_out})
+    @OnClick({R.id.item_user_data, R.id.item_security_code, R.id.item_pwd_update, R.id.item_clear_catch, R.id.item_version_code, R.id.btn_login_out, R.id.item_check_update})
     public void onViewClicked(View view) {
         if (isFastClick()) {
             return;
@@ -120,8 +133,40 @@ public class SetupActivity extends MyActivity {
             case R.id.btn_login_out:
                 loginOut();
                 break;
+            case R.id.item_check_update:
+                // 检查更新
+                mPresenter.checkUpdate();
+                break;
+
+
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUpdateWrap(UpdateWrap updateWrap) {
+        UpdateEntry entry = updateWrap.entry;
+        if (entry.getSta() == 1) {
+            isForceUpdate = true;
+        } else {
+            isForceUpdate = false;
+        }
+        new UpdateDialog.Builder(this)
+                // 版本名
+                .setVersionName(entry.getBanbenhao())
+                // 是否强制更新
+                .setForceUpdate(isForceUpdate)
+                // 更新日志
+                .setUpdateLog(entry.getShuoming())
+                // 下载 url
+                .setDownloadUrl(entry.getApk())
+                .show();
+    }
 
+    /*  */
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().isRegistered(null);
+    }
 }

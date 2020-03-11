@@ -55,17 +55,30 @@
                     android:layout_weight="3"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_nick_name"
-                        android:layout_width="wrap_content"
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:drawableRight="@mipmap/icon_user_vip"
-                        android:drawablePadding="@dimen/space_20"
-                        android:text="追剧小岁"
-                        android:textColor="@color/textColor"
-                        android:textSize="@dimen/font_size_32px" />
-
+                        android:layout_weight="1.5"
+                        >
+                        <TextView
+                            android:id="@+id/tv_nick_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableRight="@mipmap/icon_girl"
+                            android:drawablePadding="@dimen/space_20"
+                            android:text="追剧小岁"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/font_size_32px" />
+                        <ImageView
+                            android:id="@+id/img_is_vip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/icon_user_vip"
+                            android:layout_marginLeft="@dimen/space_20"
+                            />
+                    </com.zhy.autolayout.AutoLinearLayout>
                     <TextView
                         android:id="@+id/tv_sex_age"
                         android:layout_width="match_parent"

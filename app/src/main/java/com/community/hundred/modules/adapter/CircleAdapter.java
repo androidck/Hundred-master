@@ -96,6 +96,18 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
             drawableLeft.setBounds(0, 0, drawableLeft.getMinimumWidth(), drawableLeft.getMinimumHeight());
             holder.tv_support.setCompoundDrawables(drawableLeft, null, null, null);
         }
+
+        if ("1".equals(entry.getIsvip())) {
+            holder.tv_is_vip.setVisibility(View.VISIBLE);
+        } else {
+            holder.tv_is_vip.setVisibility(View.GONE);
+        }
+
+        if ("1".equals(entry.getSex())) {
+            holder.tv_nick_name.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_boy), null);
+        }else {
+            holder.tv_nick_name.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
+        }
         // 头像
         Glide.with(mContext)
                 .load(entry.getImage())
@@ -143,6 +155,12 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
         });
 
 
+    }
+
+    public Drawable setDrawable(int desId) {
+        Drawable drawable = mContext.getDrawable(desId);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        return drawable;
     }
 
     @Override

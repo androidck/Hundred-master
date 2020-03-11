@@ -54,16 +54,6 @@ public class MainActivity extends MyActivity<IMainView, MainPresenter> implement
         bvHomeNavigation.setOnNavigationItemSelectedListener(this);
         KeyboardWatcher.with(this)
                 .setListener(this);
-      /*  new UpdateDialog.Builder(this)
-                // 版本名
-                .setVersionName("2.0")
-                // 是否强制更新
-                .setForceUpdate(false)
-                // 更新日志
-                .setUpdateLog("修复Bug\n优化用户体验")
-                // 下载 url
-                .setDownloadUrl("https://raw.githubusercontent.com/getActivity/AndroidProject/master/AndroidProject.apk")
-                .show();*/
     }
 
     @Override

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="@dimen/space_600"
+        android:layout_width="@dimen/space_500"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         >
@@ -14,7 +14,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/upload_bg"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space_320"
+            android:layout_height="@dimen/space_280"
             android:src="@mipmap/upload_bg"
             android:scaleType="fitXY"
             />

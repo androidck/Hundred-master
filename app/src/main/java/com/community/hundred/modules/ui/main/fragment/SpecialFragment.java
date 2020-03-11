@@ -11,13 +11,10 @@ import com.community.hundred.common.adapter.MyViewPageAdapter;
 import com.community.hundred.common.base.BasePresenter;
 import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
-import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.view.GiftItemView;
 import com.community.hundred.modules.eventbus.SendGiftWrap;
 import com.community.hundred.modules.manager.LoginUtils;
-import com.community.hundred.modules.ui.main.fragment.specialchild.CircleChildFragment;
 import com.community.hundred.modules.ui.main.fragment.specialchild.CircleNewChildFragment;
-import com.community.hundred.modules.ui.main.fragment.specialchild.SpecialChildFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import org.greenrobot.eventbus.EventBus;

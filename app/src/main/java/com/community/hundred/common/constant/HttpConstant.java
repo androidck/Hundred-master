@@ -181,4 +181,8 @@ public class HttpConstant {
     // 视频踩
     public static final String addStepURL = KIP + "Video.addStep";
 
+    /***************************************** 版本更新 ************************************************/
+    // 更新
+    public static final String checkUpdateURL = BASE_URL + "lj/genxin";
+
 }

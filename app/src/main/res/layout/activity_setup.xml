@@ -28,8 +28,8 @@
             android:id="@+id/item_user_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:bar_rightIcon="@mipmap/icon_right"
-            app:bar_leftText="个 人 资 料" />
+            app:bar_leftText="个 人 资 料"
+            app:bar_rightIcon="@mipmap/icon_right" />
 
         <TextView
             android:layout_width="match_parent"
@@ -46,15 +46,15 @@
             android:id="@+id/item_security_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:bar_rightIcon="@mipmap/icon_right"
-            app:bar_leftText="安 全 码 设 置" />
+            app:bar_leftText="安 全 码 设 置"
+            app:bar_rightIcon="@mipmap/icon_right" />
 
         <com.hjq.widget.layout.SettingBar
             android:id="@+id/item_pwd_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:bar_rightIcon="@mipmap/icon_right"
-            app:bar_leftText="密 码 修 改" />
+            app:bar_leftText="密 码 修 改"
+            app:bar_rightIcon="@mipmap/icon_right" />
 
         <TextView
             android:layout_width="match_parent"
@@ -66,6 +66,13 @@
             android:text="其它设置"
             android:textColor="@color/title_hint_color"
             android:textSize="@dimen/font_size_30px" />
+
+        <com.hjq.widget.layout.SettingBar
+            android:id="@+id/item_check_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_rightIcon="@mipmap/icon_right"
+            app:bar_leftText="检 查 更 新" />
 
         <com.hjq.widget.layout.SettingBar
             android:id="@+id/item_clear_catch"
@@ -88,7 +95,7 @@
                 android:layout_width="@dimen/space_400"
                 android:layout_height="@dimen/space_90"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/space_120"
+                android:layout_marginTop="@dimen/space_70"
                 android:background="@drawable/shape_setup_button"
                 android:text="切换账号"
                 android:textColor="@android:color/white"
@@ -101,23 +108,24 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="@dimen/space_20"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tv_url"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space_80"
-                    android:text="官网地址：https://18b.tv"
-                    android:textColor="@color/colorDeep"
                     android:gravity="center"
-                    />
-                <include layout="@layout/division_line"/>
+                    android:text="官网地址：https://18b.tv"
+                    android:textColor="@color/colorDeep" />
+
+                <include layout="@layout/division_line" />
+
                 <TextView
                     android:id="@+id/tv_email"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space_80"
-                    android:text="联系邮箱：service@nnfe.com"
-                    android:textColor="@color/colorDeep"
                     android:gravity="center"
-                    />
+                    android:text="联系邮箱：service@nnfe.com"
+                    android:textColor="@color/colorDeep" />
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoLinearLayout>

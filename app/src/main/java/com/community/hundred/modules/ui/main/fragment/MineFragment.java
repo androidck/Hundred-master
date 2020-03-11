@@ -1,7 +1,8 @@
 package com.community.hundred.modules.ui.main.fragment;
 
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -15,7 +16,6 @@ import com.community.hundred.modules.ui.main.MainActivity;
 import com.community.hundred.modules.ui.main.presenter.MinePresenter;
 import com.community.hundred.modules.ui.main.presenter.view.IMineView;
 import com.hjq.widget.layout.SettingBar;
-import com.orhanobut.hawk.Hawk;
 import com.zhy.autolayout.AutoLinearLayout;
 
 import butterknife.BindView;
@@ -87,6 +87,14 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
     AutoLinearLayout lyNotLogin;
     @BindView(R.id.user_head)
     CircleImageView userHead;
+    @BindView(R.id.img_is_vip)
+    ImageView imgIsVip;
+    @BindView(R.id.ly_my_wallet)
+    AutoLinearLayout lyMyWallet;
+    @BindView(R.id.ly_withdraw_count)
+    AutoLinearLayout lyWithdrawCount;
+    @BindView(R.id.ly_extension)
+    AutoLinearLayout lyExtension;
 
     @Override
     protected MinePresenter createPresenter() {
@@ -250,12 +258,19 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                     .load(HttpConstant.BASE_HOST + entry.getImage())
                     .placeholder(R.mipmap.icon_not_login)
                     .into(userHead);
+            if ("1".equals(entry.getVip())) {
+                imgIsVip.setVisibility(View.VISIBLE);
+            } else {
+                imgIsVip.setVisibility(View.GONE);
+            }
             // 性别 年龄
             String sex;
             if ("1".equals(entry.getSex())) {
                 sex = "男";
+                tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_boy), null);
             } else {
                 sex = "女";
+                tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
             }
             tvSexAge.setText(sex + "\t" + entry.getAge() + "岁");
             // 个性签名
@@ -293,5 +308,11 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
             lyNotLogin.setVisibility(View.VISIBLE);
             lyLogin.setVisibility(View.GONE);
         }
+    }
+
+    public Drawable setDrawable(int desId) {
+        Drawable drawable = mActivity.getDrawable(desId);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        return drawable;
     }
 }

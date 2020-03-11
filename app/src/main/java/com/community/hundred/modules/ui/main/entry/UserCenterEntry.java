@@ -58,6 +58,15 @@ public class UserCenterEntry {
     private String mygz;
     private String tznum;
     private String tixian;
+    private String vip;
+
+    public String getVip() {
+        return vip;
+    }
+
+    public void setVip(String vip) {
+        this.vip = vip;
+    }
 
     public String getId() {
         return id;
