@@ -94,7 +94,7 @@ public class SendPostActivity extends MyActivity<ISendPostView, SendPostPresente
     private TextView tv_location;
     private GridImageAdapter mAdapter;
 
-    private int maxSelectNum = 9;
+    private int maxSelectNum = 6;
 
     private int language = -1;
     private boolean isUpward;
@@ -348,7 +348,7 @@ public class SendPostActivity extends MyActivity<ISendPostView, SendPostPresente
                                     mAdapter.notifyDataSetChanged();
                                 }
                                 gallery = PictureMimeType.ofImage();
-                                maxNum = 9;
+                                maxNum =maxSelectNum;
                                 multiple = PictureConfig.MULTIPLE;
                                 photoIsVideo(gallery, maxNum, multiple);
                             } else if (string.equals("视频")) {
@@ -390,7 +390,7 @@ public class SendPostActivity extends MyActivity<ISendPostView, SendPostPresente
                 .imageSpanCount(4)// 每行显示个数
                 .isReturnEmpty(false)// 未选择数据时点击按钮是否可以返回
                 .setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)// 设置相册Activity方向，不设置默认使用系统
-                .isOriginalImageControl(true)// 是否显示原图控制按钮，如果设置为true则用户可以自由选择是否使用原图，压缩、裁剪功能将会失效
+                .isOriginalImageControl(false)// 是否显示原图控制按钮，如果设置为true则用户可以自由选择是否使用原图，压缩、裁剪功能将会失效
                 .selectionMode(multiple)// 多选 or 单选
                 .isSingleDirectReturn(true)// 单选模式下是否直接返回，PictureConfig.SINGLE模式下有效
                 .previewImage(true)// 是否可预览图片
@@ -468,6 +468,7 @@ public class SendPostActivity extends MyActivity<ISendPostView, SendPostPresente
 
     // 图片上传
     public void imgUpload(File files) {
+        showLoading();
         RetrofitClient.getInstance().upLoadFile(UploadFileApi.UPLOAD_FILE_URL, "", files,
                 new FileUploadObserver<ResponseBody>() {
                     @Override

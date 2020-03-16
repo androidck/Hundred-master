@@ -2,6 +2,7 @@ package com.community.hundred.modules.adapter;
 
 import android.content.Context;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,13 +58,13 @@ public class HomeChildVideoAdapter extends BaseRecyclerViewAdapter<HomeChildVide
 
     class ViewHolder extends BaseRecyclerViewAdapter.ViewHolder {
 
-        RoundAngleImageView img_video;
+        ImageView img_video;
         TextView tv_video_title;
 
         public ViewHolder(ViewGroup parent, int layoutId) {
             super(parent, layoutId);
-            img_video = (RoundAngleImageView) findViewById(R.id.img_video);
-            tv_video_title = (TextView) findViewById(R.id.tv_video_title);
+            img_video = (ImageView) findViewById(R.id.img_cover);
+            tv_video_title = (TextView) findViewById(R.id.video_title);
         }
     }
 

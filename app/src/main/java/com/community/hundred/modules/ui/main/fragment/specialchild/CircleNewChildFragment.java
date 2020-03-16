@@ -117,6 +117,8 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
                         case 0:
                             if (LoginUtils.getInstance().isLogin()) {
                                 getFollow();
+                            }else {
+                                showEmpty();
                             }
                             break;
                         case 1:
@@ -140,6 +142,8 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
                         case 0:
                             if (LoginUtils.getInstance().isLogin()) {
                                 getFollow();
+                            }else {
+                                showEmpty();
                             }
                             break;
                         case 1:
@@ -252,6 +256,8 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
             case 0:
                 if (LoginUtils.getInstance().isLogin()) {
                     getFollow();
+                }else {
+                    showEmpty();
                 }
                 break;
             case 1:

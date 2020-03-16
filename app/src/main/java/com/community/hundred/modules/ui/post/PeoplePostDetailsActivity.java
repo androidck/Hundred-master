@@ -1,6 +1,7 @@
 package com.community.hundred.modules.ui.post;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
@@ -96,6 +97,8 @@ public class PeoplePostDetailsActivity extends MyActivity<IPeoplePostDetailsView
         tabLayout.setupWithViewPager(viewPager);
     }
 
+
+
     @Override
     public boolean statusBarDarkFont() {
         return !super.statusBarDarkFont();
@@ -116,7 +119,18 @@ public class PeoplePostDetailsActivity extends MyActivity<IPeoplePostDetailsView
             } else {
                 tvSign.setText(entry.getQianming());
             }
+            if ("1".equals(entry.getSex())) {
+                tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_boy), null);
+            } else {
+                tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
+            }
         });
+    }
+
+    public Drawable setDrawable(int desId) {
+        Drawable drawable = getDrawable(desId);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        return drawable;
     }
 
     @Override

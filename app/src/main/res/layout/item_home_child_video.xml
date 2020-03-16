@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:paddingLeft="@dimen/space_24"
-    android:paddingRight="@dimen/space_24"
     android:orientation="vertical">
 
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/space_250"
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/space_350"
+        android:layout_height="@dimen/space_260"
         android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/space_20"
-        android:orientation="vertical">
+        android:layout_margin="@dimen/space_12">
 
-        <com.community.hundred.common.view.RoundAngleImageView
-            android:id="@+id/img_video"
-            android:layout_width="@dimen/space_310"
-            android:layout_height="@dimen/space_190"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/item_live" />
-
-        <TextView
-            android:id="@+id/tv_video_title"
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="我的第0个视频"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textColor="@color/colorDeep"
-            android:textSize="@dimen/font_size_28px" />
-    </com.zhy.autolayout.AutoLinearLayout>
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.8">
+                <ImageView
+                    android:id="@+id/img_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/item_live" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/video_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/space_20"
+                    android:layout_marginRight="@dimen/space_20"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="这里是影片名称"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/font_size_28px" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </androidx.cardview.widget.CardView>
 </com.zhy.autolayout.AutoRelativeLayout>

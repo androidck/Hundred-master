@@ -73,6 +73,7 @@ public class LiveBroadCastActivity extends MyActivity {
     @Override
     protected void initView() {
         setTitle(title);
+        setWhiteLeftButtonIcon(getTitleBar());
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(manager);
         headView = getLayoutInflater().inflate(R.layout.view_header_live_activity, recyclerView, false);

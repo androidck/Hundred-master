@@ -72,10 +72,10 @@ public class SendPostPresenter extends BasePresenter<ISendPostView> {
             public void requestSuccess(String result) throws Exception {
                 prContext.showComplete();
                 Log.d("sendQzResult", result);
-                // {"code":200,"msg":"发布成功"}
                 BaseResponse response = new Gson().fromJson(result, BaseResponse.class);
                 toast(response.getMsg());
-                EventBus.getDefault().post(SpecialWrap.getInstance(EventBusConstant.SEND_POST_CIRCLE));
+                EventBus.getDefault().post(SpecialWrap.getInstance(EventBusConstant.FOLLOW_REFRESH));
+                prContext.finish();
             }
 
             @Override

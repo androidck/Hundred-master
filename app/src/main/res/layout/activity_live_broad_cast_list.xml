@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        app:backButton="false"
         app:titleColor="@android:color/white"
         />
     <com.yanzhenjie.recyclerview.SwipeRecyclerView

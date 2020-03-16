@@ -140,7 +140,9 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ly_login: // 登录后操作
-                ARouter.getInstance().build(ActivityConstant.MODIFY_USER_DATA).navigation();
+                ARouter.getInstance().build(ActivityConstant.PEOPLE_DETAILS)
+                        .withString("uid", LoginUtils.getInstance().getUid())
+                        .navigation();
                 break;
             case R.id.tv_login:// 登录
                 ARouter.getInstance().build(ActivityConstant.LOGIN).navigation();

@@ -1,5 +1,6 @@
 package com.community.hundred.modules.ui.main.fragment;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.view.GiftItemView;
 import com.community.hundred.modules.eventbus.SendGiftWrap;
 import com.community.hundred.modules.manager.LoginUtils;
+import com.community.hundred.modules.ui.main.fragment.ranking.RankingFragment;
 import com.community.hundred.modules.ui.main.fragment.specialchild.CircleNewChildFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -38,6 +40,8 @@ public class SpecialFragment extends MyLazyFragment {
     GiftItemView giftItemFirst;
     @BindView(R.id.img_send_post)
     ImageView imgSendPost;
+    @BindView(R.id.img_message)
+    ImageView imgMessage;
 
 
     private List<String> title;
@@ -64,20 +68,39 @@ public class SpecialFragment extends MyLazyFragment {
         title.add("圈子");
         title.add("最新");
         title.add("推荐");
-        //  title.add("排行");
+        title.add("排行");
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-/*        fragmentList.add(SpecialChildFragment.getInstance(HttpConstant.guanzhulistURL));
-        fragmentList.add(CircleChildFragment.getInstance());
-        fragmentList.add(SpecialChildFragment.getInstance(HttpConstant.zxqzURL));
-        fragmentList.add(SpecialChildFragment.getInstance(HttpConstant.tjtzURL));*/
         for (int i = 0; i < title.size(); i++) {
+            if (i == 4) {
+                fragmentList.add(RankingFragment.getInstance());
+            }
             fragmentList.add(CircleNewChildFragment.getInstance(i));
         }
         adapter = new MyViewPageAdapter(getChildFragmentManager(), getContext(), fragmentList, title);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position==4){
+                    imgSendPost.setVisibility(View.GONE);
+                }else {
+                    imgSendPost.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -109,20 +132,31 @@ public class SpecialFragment extends MyLazyFragment {
     }
 
 
-    @OnClick(R.id.img_send_post)
-    public void onViewClicked() {
-        if (LoginUtils.getInstance().isLogin()) {
-            ARouter.getInstance().build(ActivityConstant.SEND_POST).navigation();
-        } else {
-            notLogin();
-        }
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
+        }
+    }
+
+    @OnClick({R.id.img_message, R.id.img_send_post})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.img_message:
+                if (LoginUtils.getInstance().isLogin()) {
+
+                } else {
+                    notLogin();
+                }
+                break;
+            case R.id.img_send_post:
+                if (LoginUtils.getInstance().isLogin()) {
+                    ARouter.getInstance().build(ActivityConstant.SEND_POST).navigation();
+                } else {
+                    notLogin();
+                }
+                break;
         }
     }
 }
