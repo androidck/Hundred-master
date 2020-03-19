@@ -112,6 +112,7 @@
                         android:gravity="center"
                         android:paddingTop="@dimen/space_6"
                         android:paddingBottom="@dimen/space_6"
+                        android:drawableLeft="@mipmap/icon_add_follow"
                         android:text="关注"
                         android:textColor="@android:color/white" />
                 </com.zhy.autolayout.AutoRelativeLayout>
@@ -131,6 +132,8 @@
                         android:paddingLeft="@dimen/space_20"
                         android:paddingRight="@dimen/space_20"
                         android:paddingTop="@dimen/space_6"
+                        android:drawablePadding="@dimen/space_10"
+                        android:drawableLeft="@mipmap/icon_report"
                         android:paddingBottom="@dimen/space_6"
                         android:text="举报"
                         android:textColor="@android:color/white" />
@@ -284,7 +287,7 @@
 
         <include layout="@layout/divisions_line" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/space_80"
             android:textSize="@dimen/font_size_30px"
             android:textColor="@color/textColor"
@@ -292,6 +295,8 @@
             android:text="最新评论"
             android:layout_marginLeft="@dimen/space_24"
             android:layout_marginRight="@dimen/space_24"
+            android:drawableRight="@mipmap/icon_notepads"
+            android:drawablePadding="@dimen/space_16"
             />
         <include layout="@layout/divisions_line" />
     </com.zhy.autolayout.AutoLinearLayout>

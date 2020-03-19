@@ -194,13 +194,13 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 ARouter.getInstance().build(ActivityConstant.WITHDRAW).navigation();
                 break;
             case R.id.tv_amusement:// 在线娱乐
-                expectTip();
+                mPresenter.getOnlinePlay();
                 break;
             case R.id.tv_activation_code:
                 ARouter.getInstance().build(ActivityConstant.ACTIVATION_CODE).navigation();
                 break;
             case R.id.tv_exchange_group:// 交流群
-                expectTip();
+                mPresenter.getJiaoLiuQun();
                 break;
             case R.id.tv_share_vip:// 分享得vip
                 if (LoginUtils.getInstance().isLogin()) {

@@ -43,8 +43,6 @@ import butterknife.BindView;
 
 public class BrowserActivity extends MyActivity {
 
-    @BindView(R.id.view_title)
-    TitleBar tbLoginTitle;
     @BindView(R.id.webView)
     WebView webView;
 
@@ -67,7 +65,7 @@ public class BrowserActivity extends MyActivity {
 
     @Override
     protected void initView() {
-        tbLoginTitle.setLeftIcon(R.mipmap.bar_icon_back_black);
+        setWhiteLeftButtonIcon(getTitleBar());
         WebSettings webSettings = webView.getSettings();
 
         webSettings.setJavaScriptEnabled(true);
@@ -135,7 +133,7 @@ public class BrowserActivity extends MyActivity {
                 super.onPageFinished(view, url);
                 String title = view.getTitle();
                 if (!TextUtils.isEmpty(title)) {
-                    tbLoginTitle.setTitle(title);
+                    getTitleBar().setTitle(title);
                 }
 
                 if (sonicSession != null) {

@@ -89,9 +89,9 @@ public class SpecialFragment extends MyLazyFragment {
 
             @Override
             public void onPageSelected(int position) {
-                if (position==4){
+                if (position == 4) {
                     imgSendPost.setVisibility(View.GONE);
-                }else {
+                } else {
                     imgSendPost.setVisibility(View.VISIBLE);
                 }
             }
@@ -145,7 +145,7 @@ public class SpecialFragment extends MyLazyFragment {
         switch (view.getId()) {
             case R.id.img_message:
                 if (LoginUtils.getInstance().isLogin()) {
-
+                    ARouter.getInstance().build(ActivityConstant.MESSAGE).navigation();
                 } else {
                     notLogin();
                 }

@@ -2,6 +2,7 @@ package com.community.hundred.modules.ui.livebroadcast;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -139,7 +140,8 @@ public class SearchActivity extends MyActivity<ISearchView, SearchPresenter> {
                     getZhuanLan(edSearchCount.getText().toString().trim());
                 }
                 lySearchTip.setVisibility(View.VISIBLE);
-                tvTip.setText("搜索："+edSearchCount.getText().toString().trim());
+                String str = "<font>搜索\t“</font><font color='#FE581E'>" + edSearchCount.getText().toString().trim() + "</font><font>”</font>";
+                tvTip.setText(Html.fromHtml(str));
                 return true;
             }
             return false;

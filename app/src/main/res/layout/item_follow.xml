@@ -113,6 +113,7 @@
                         android:gravity="center"
                         android:paddingTop="@dimen/space_6"
                         android:paddingBottom="@dimen/space_6"
+                        android:drawableLeft="@mipmap/icon_add_follow"
                         android:text="关注"
                         android:textColor="@android:color/white" />
                 </com.zhy.autolayout.AutoRelativeLayout>
@@ -132,6 +133,8 @@
                         android:paddingLeft="@dimen/space_20"
                         android:paddingRight="@dimen/space_20"
                         android:paddingTop="@dimen/space_6"
+                        android:drawablePadding="@dimen/space_10"
+                        android:drawableLeft="@mipmap/icon_report"
                         android:paddingBottom="@dimen/space_6"
                         android:text="举报"
                         android:textColor="@android:color/white" />

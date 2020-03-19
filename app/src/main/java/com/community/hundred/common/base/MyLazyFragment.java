@@ -1,5 +1,7 @@
 package com.community.hundred.common.base;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,8 @@ import com.community.hundred.R;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.dialog.MessageDialog;
 import com.community.hundred.common.other.StatusManager;
+import com.community.hundred.common.web.BrowserActivity;
+import com.community.hundred.common.web.SonicJavaScriptInterface;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
@@ -368,4 +372,7 @@ public abstract class MyLazyFragment<A extends MyActivity, V, T extends BasePres
     public void expectTip(){
         toast(R.string.expect_title);
     }
+
+
+
 }

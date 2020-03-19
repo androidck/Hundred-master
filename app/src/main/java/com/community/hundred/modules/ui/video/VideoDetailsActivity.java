@@ -13,22 +13,21 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.community.hundred.R;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
-import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.ext.OnPageScrollListener;
 import com.community.hundred.common.ext.ViewPagerUtil;
 import com.community.hundred.common.util.BannerImageLoader;
-import com.community.hundred.common.util.DrawableUtils;
 import com.community.hundred.common.util.TimeUtils;
 import com.community.hundred.modules.adapter.FemaleStarVideoAdapter;
 import com.community.hundred.modules.entry.ColorInfo;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.femalestar.entry.FemaleInfoEntry;
-import com.community.hundred.modules.ui.video.entry.VideoDetailsEntry;
 import com.community.hundred.modules.ui.video.presenter.VideoDetailsPresenter;
 import com.community.hundred.modules.ui.video.presenter.view.IVideoDetailsView;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.view.BannerViewPager;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import org.salient.artplayer.MediaPlayerManager;
 import org.salient.artplayer.VideoView;
@@ -69,6 +68,10 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
     TextView tvHuan;
     @BindView(R.id.recyclerView)
     SwipeRecyclerView recyclerView;
+    @BindView(R.id.ly_jieben)
+    AutoLinearLayout lyJieben;
+    @BindView(R.id.ly_collection)
+    AutoRelativeLayout lyCollection;
 
     private int p = 1;
 
@@ -215,7 +218,7 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
     }
 
 
-    @OnClick({R.id.tv_not_like_count, R.id.tv_like_count, R.id.tv_huan})
+    @OnClick({R.id.tv_not_like_count, R.id.tv_like_count, R.id.tv_huan, R.id.ly_collection})
     public void onViewClicked(View view) {
         if (isFastClick()) {
             return;
@@ -237,6 +240,8 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
                 break;
             case R.id.tv_huan:
                 break;
+            case R.id.ly_collection: // 收藏
+                break;
         }
     }
 
@@ -251,4 +256,10 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

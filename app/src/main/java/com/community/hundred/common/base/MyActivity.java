@@ -1,6 +1,7 @@
 package com.community.hundred.common.base;
 
 import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.dialog.MessageDialog;
 import com.community.hundred.common.helper.ActivityStackManager;
 import com.community.hundred.common.other.StatusManager;
+import com.community.hundred.common.web.BrowserActivity;
+import com.community.hundred.common.web.SonicJavaScriptInterface;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
@@ -498,4 +501,7 @@ public abstract class MyActivity<V, T extends BasePresenter<V>> extends BaseActi
                 })
                 .show();
     }
+
+
+
 }

@@ -218,13 +218,18 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
                 tv_support.setCompoundDrawables(drawableLeft, null, null, null);
             }
 
+
             // 是否关注
             if ("1".equals(entry.getIsgz())) {
                 tv_attention.setBackgroundResource(R.drawable.shape_setup_attent_button);
                 tv_attention.setText("已关注");
+                tv_attention.setCompoundDrawables(null, null, null, null);
+               tv_attention.setPadding(0,6,0,6);
             } else {
                 tv_attention.setBackgroundResource(R.drawable.shape_setup_button);
                 tv_attention.setText("关注");
+                tv_attention.setCompoundDrawables(setDrawable(R.mipmap.icon_add_follow), null, null, null);
+                tv_attention.setPadding(20,6,0,6);
             }
 
             tv_label.setText(entry.getFlname());
@@ -315,6 +320,12 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
                 }
             });
         });
+    }
+
+    public Drawable setDrawable(int desId) {
+        Drawable drawable = getDrawable(desId);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        return drawable;
     }
 
     @OnClick({R.id.img_emoji, R.id.btn_send})

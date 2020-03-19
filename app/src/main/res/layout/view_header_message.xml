@@ -2,112 +2,53 @@
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <com.zhy.autolayout.AutoLinearLayout
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    >
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@android:color/white"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginRight="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_20"
+        android:layout_marginBottom="@dimen/space_20"
         >
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:id="@+id/ly_message"
+        <RadioButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            >
-            <ImageView
-                android:id="@+id/item_icon_one"
-                android:layout_width="@dimen/space_150"
-                android:layout_height="@dimen/space_150"
-                android:src="@mipmap/icon_chat"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/space_10"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="我的回复"
-                android:textSize="@dimen/font_size_34px"
-                android:layout_below="@id/item_icon_one"
-                android:layout_marginTop="@dimen/space_20"
-                android:layout_marginBottom="@dimen/space_10"
-                android:gravity="center"
-                />
-        </com.zhy.autolayout.AutoRelativeLayout>
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:id="@+id/ly_reply"
+            android:drawableTop="@mipmap/icon_my_message"
+            android:button="@null"
+            android:text="我的消息"
+            android:gravity="center"
+            />
+        <RadioButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            >
-            <ImageView
-                android:id="@+id/item_icon_two"
-                android:layout_width="@dimen/space_150"
-                android:layout_height="@dimen/space_150"
-                android:src="@mipmap/icon_message"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/space_10"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="我的消息"
-                android:textSize="@dimen/font_size_34px"
-                android:layout_below="@id/item_icon_two"
-                android:layout_marginTop="@dimen/space_20"
-                android:layout_marginBottom="@dimen/space_10"
-                android:gravity="center"
-                />
-        </com.zhy.autolayout.AutoRelativeLayout>
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:id="@+id/ly_gift"
+            android:drawableTop="@mipmap/icon_my_reply"
+            android:button="@null"
+            android:text="我的回复"
+            android:gravity="center"
+            />
+        <RadioButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            >
-            <ImageView
-                android:id="@+id/item_icon_tree"
-                android:layout_width="@dimen/space_150"
-                android:layout_height="@dimen/space_150"
-                android:src="@mipmap/icon_gift"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/space_10"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="收到礼物"
-                android:textSize="@dimen/font_size_34px"
-                android:layout_below="@id/item_icon_tree"
-                android:layout_marginTop="@dimen/space_20"
-                android:layout_marginBottom="@dimen/space_10"
-                android:gravity="center"
-                />
-        </com.zhy.autolayout.AutoRelativeLayout>
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:id="@+id/ly_system_message"
+            android:drawableTop="@mipmap/icon_my_gift"
+            android:button="@null"
+            android:text="我的礼物"
+            android:gravity="center"
+            />
+        <RadioButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            >
-            <ImageView
-                android:id="@+id/item_icon_four"
-                android:layout_width="@dimen/space_150"
-                android:layout_height="@dimen/space_150"
-                android:src="@mipmap/icon_tone"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="@dimen/space_10"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="我的消息"
-                android:textSize="@dimen/font_size_34px"
-                android:layout_below="@id/item_icon_four"
-                android:layout_marginTop="@dimen/space_20"
-                android:layout_marginBottom="@dimen/space_10"
-                android:gravity="center"
-                />
-        </com.zhy.autolayout.AutoRelativeLayout>
-    </com.zhy.autolayout.AutoLinearLayout>
+            android:drawableTop="@mipmap/icon_system_message"
+            android:button="@null"
+            android:text="系统消息"
+            android:gravity="center"
+            />
+    </RadioGroup>
 </com.zhy.autolayout.AutoLinearLayout>

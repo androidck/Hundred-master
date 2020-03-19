@@ -174,6 +174,11 @@ public class HttpConstant {
     public static final String mySendPostURL = BASE_URL + "lj/userteizilists";
     // 获取用户资料
     public static final String getUserDataURL = BASE_URL + "lj/xianhqing";
+    // 在线娱乐URl
+    public static final String zxylURL = BASE_URL + "gj/zxyl";
+    // 交流群
+    public static final String jlqlURL = BASE_URL + "gj/hbjlq";
+
 
     /*****************************************视频详情************************************************/
     // 视频点赞

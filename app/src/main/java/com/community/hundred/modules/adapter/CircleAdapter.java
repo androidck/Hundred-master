@@ -105,9 +105,24 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
 
         if ("1".equals(entry.getSex())) {
             holder.tv_nick_name.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_boy), null);
-        }else {
+        } else {
             holder.tv_nick_name.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
         }
+
+        // 是否关注
+        if ("1".equals(entry.getIsgz())) {
+            holder.tv_attention.setBackgroundResource(R.drawable.shape_setup_attent_button);
+            holder.tv_attention.setText("已关注");
+            holder.tv_attention.setCompoundDrawables(null, null, null, null);
+            holder.tv_attention.setPadding(0,6,0,6);
+        } else {
+            holder.tv_attention.setBackgroundResource(R.drawable.shape_setup_button);
+            holder.tv_attention.setText("关注");
+            holder.tv_attention.setCompoundDrawables(setDrawable(R.mipmap.icon_add_follow), null, null, null);
+            holder.tv_attention.setPadding(20,6,0,6);
+        }
+
+
         // 头像
         Glide.with(mContext)
                 .load(entry.getImage())
@@ -228,14 +243,7 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
             // 时间
             tv_time.setText(RelativeDateFormatUtils.format(new Date(Long.parseLong(entry.getRecord_time()) * 1000)));
 
-            // 是否关注
-            if ("1".equals(entry.getIsgz())) {
-                tv_attention.setBackgroundResource(R.drawable.shape_setup_attent_button);
-                tv_attention.setText("已关注");
-            } else {
-                tv_attention.setBackgroundResource(R.drawable.shape_setup_button);
-                tv_attention.setText("关注");
-            }
+
         }
     }
 
