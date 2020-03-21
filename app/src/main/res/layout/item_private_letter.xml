@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_24"
+        android:layout_marginRight="@dimen/space_24"
+        android:layout_marginTop="@dimen/space_24"
+        android:orientation="horizontal">
+        <!-- 收到的消息 -->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/ly_received_msg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_weight="1">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_received_user_head"
+                android:layout_width="@dimen/space_100"
+                android:layout_height="@dimen/space_100"
+                android:src="@mipmap/icon_live" />
+            <TextView
+                android:id="@+id/tv_received_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_24"
+                android:layout_marginTop="@dimen/space_30"
+                android:layout_toRightOf="@id/img_received_user_head"
+                android:background="@drawable/shape_received_msg_bg"
+                android:padding="@dimen/space_12"
+                android:textColor="#323232"
+                android:text="我收到了你的消息我收到了你我收到了你的消息我收到了你我收到了你的消息我收到了你我收到了你的消息我收到了你我收到了你的消息我收到了你我收到了你的消息我收到了你"
+                android:layout_marginRight="@dimen/space_200"
+                android:textSize="@dimen/font_size_28px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <!-- 发送的消息 -->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/ly_send_msg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/tv_send_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/img_send_user_head"
+                android:layout_marginRight="@dimen/space_24"
+                android:layout_marginLeft="@dimen/space_200"
+                android:layout_marginTop="@dimen/space_30"
+                android:text="我收到了你的消息我收到了你的消息我收到了你的消息我收到了你的消息"
+                android:textSize="@dimen/font_size_28px"
+                android:padding="@dimen/space_12"
+                android:background="@drawable/shape_send_msg_bg"
+                android:textColor="@android:color/white"
+                />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_send_user_head"
+                android:layout_width="@dimen/space_100"
+                android:layout_height="@dimen/space_100"
+                android:src="@mipmap/icon_live"
+                android:layout_alignParentRight="true"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

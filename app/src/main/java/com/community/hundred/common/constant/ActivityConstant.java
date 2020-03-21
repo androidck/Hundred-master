@@ -171,7 +171,17 @@ public class ActivityConstant {
     /**
      * 分享得VIP
      */
-    public static final String EXTENSION="/extension/ExtensionActivity";
+    public static final String EXTENSION = "/extension/ExtensionActivity";
+
+    /**
+     * 私信界面
+     */
+    public static final String PRIVATE_LETTER = "/chat/PrivateLetterActivity";
+
+    /**
+     * 加载长图
+     */
+    public static final String AGENT = "/setup/AgentActivity";
 }
 
 

@@ -241,6 +241,7 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
             case R.id.tv_huan:
                 break;
             case R.id.ly_collection: // 收藏
+                mPresenter.addCollect(videoId);
                 break;
         }
     }

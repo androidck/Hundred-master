@@ -213,6 +213,28 @@ public class VideoDetailsPresenter extends BasePresenter<IVideoDetailsView> {
         });
     }
 
+    // 添加收藏
+    public void addCollect(String videoId) {
+        prContext.showLoading();
+        Map<String, String> map = new HashMap<>();
+        map.put("uid", LoginUtils.getInstance().getUid());
+        map.put("shipingid", videoId);
+        OkHttp.postAsync(HttpConstant.addsclURL, map, new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                prContext.showComplete();
+                Log.d("addCollect", result);
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                prContext.showComplete();
+                e.printStackTrace();
+                netWorkError();
+            }
+        });
+    }
+
     public interface OnFemaleStarDetailsListener {
         void onFemaleStar(FemaleStarEntry entrys, List<FemaleInfoEntry> list);
     }

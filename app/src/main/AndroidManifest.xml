@@ -39,7 +39,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".common.base.MyApplication"
@@ -95,6 +95,12 @@
             android:name=".common.web.BrowserActivity"
             android:label="@string/browser_title"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".common.web.ShareBrowserActivity"
+            android:label="@string/browser_title"
+            android:screenOrientation="portrait" />
+
 
         <activity
             android:name=".modules.ui.setup.AboutUsActivity"
@@ -201,8 +207,7 @@
         <activity
             android:name=".modules.ui.pay.RechargeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
         <activity
             android:name=".modules.ui.video.VideoDetailsActivity"
@@ -258,9 +263,22 @@
             android:name=".modules.ui.extension.ExtensionActivity"
             android:label="@string/extension_title"
             android:screenOrientation="portrait" />
-        <activity android:name=".modules.ui.TestActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            />
+
+        <activity
+            android:name=".modules.ui.TestActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <!-- 私信 -->
+
+        <activity
+            android:name=".modules.ui.chat.PrivateLetterActivity"
+            android:label="@string/private_letter_title"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".modules.ui.setup.AgentActivity"
+            android:label="@string/cooperate_title"
+            android:screenOrientation="portrait" />
 
     </application>
 

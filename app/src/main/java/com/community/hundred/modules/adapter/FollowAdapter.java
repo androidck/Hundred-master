@@ -1,6 +1,7 @@
 package com.community.hundred.modules.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ public class FollowAdapter extends BaseRecyclerViewAdapter<FollowAdapter.ViewHol
     private List<FollowEntry> list;
     private Context mContext;
 
+    private OnItemClickListener onItemClickListener;
+
     public FollowAdapter(Context context, List<FollowEntry> list) {
         super(context);
         this.mContext = context;
@@ -44,6 +47,9 @@ public class FollowAdapter extends BaseRecyclerViewAdapter<FollowAdapter.ViewHol
         Glide.with(mContext).load(entry.getImage()).into(holder.user_head);
         holder.tv_nick_name.setText(entry.getName());
         holder.tv_desc.setText(entry.getQianming());
+        holder.btn_follow.setOnClickListener(v -> {
+            onItemClickListener.onClick(position);
+        });
     }
 
     @Override
@@ -54,14 +60,22 @@ public class FollowAdapter extends BaseRecyclerViewAdapter<FollowAdapter.ViewHol
     class ViewHolder extends BaseRecyclerViewAdapter.ViewHolder {
         CircleImageView user_head;
         TextView tv_nick_name, tv_desc;
-        Button btn_follow;
+        TextView btn_follow;
 
         public ViewHolder(ViewGroup parent, int layoutId) {
             super(parent, layoutId);
             user_head = (CircleImageView) findViewById(R.id.user_head);
             tv_nick_name = (TextView) findViewById(R.id.tv_nick_name);
             tv_desc = (TextView) findViewById(R.id.tv_desc);
-            btn_follow = (Button) findViewById(R.id.btn_follow);
+            btn_follow = (TextView) findViewById(R.id.btn_follow);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

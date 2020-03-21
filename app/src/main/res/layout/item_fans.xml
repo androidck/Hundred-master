@@ -58,15 +58,18 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 >
-                <Button
+                <TextView
                     android:id="@+id/btn_follow"
-                    android:layout_width="@dimen/space_150"
-                    android:layout_height="@dimen/space_60"
-                    android:text="已关注"
+                    android:layout_width="@dimen/space_130"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/space_6"
+                    android:paddingBottom="@dimen/space_6"
+                    android:drawableLeft="@mipmap/icon_add_follow"
+                    android:text="已关注"
                     android:background="@drawable/shape_setup_attent_button"
-                    />
+                    android:textColor="@android:color/white" />
             </com.zhy.autolayout.AutoRelativeLayout>
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoLinearLayout>

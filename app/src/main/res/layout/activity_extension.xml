@@ -15,7 +15,8 @@
             android:src="@mipmap/invitation_bg"
             android:scaleType="fitXY"
             />
-        <com.community.hundred.common.view.RoundAngleImageView
+        <ImageView
+            android:id="@+id/tv_qr_code"
             android:layout_width="@dimen/space_200"
             android:layout_height="@dimen/space_200"
             android:src="@mipmap/ic_launcher"

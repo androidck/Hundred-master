@@ -1,5 +1,6 @@
 package com.community.hundred.modules.ui.main.fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,9 @@ import com.community.hundred.R;
 import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.HttpConstant;
+import com.community.hundred.common.web.BrowserActivity;
+import com.community.hundred.common.web.ShareBrowserActivity;
+import com.community.hundred.common.web.SonicJavaScriptInterface;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.main.MainActivity;
 import com.community.hundred.modules.ui.main.presenter.MinePresenter;
@@ -204,7 +208,12 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 break;
             case R.id.tv_share_vip:// 分享得vip
                 if (LoginUtils.getInstance().isLogin()) {
-                    ARouter.getInstance().build(ActivityConstant.EXTENSION).navigation();
+                    Intent intent = new Intent(getContext(), ShareBrowserActivity.class);
+                    intent.putExtra(ShareBrowserActivity.PARAM_URL, HttpConstant.SHARE_URL + LoginUtils.getInstance().getUid());
+                    intent.putExtra(ShareBrowserActivity.PARAM_TITLE, "分享得VIP");
+                    intent.putExtra(ShareBrowserActivity.PARAM_MODE, 1);
+                    intent.putExtra(SonicJavaScriptInterface.PARAM_CLICK_TIME, System.currentTimeMillis());
+                    startActivity(intent);
                 } else {
                     notLogin();
                 }
@@ -244,7 +253,7 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 ARouter.getInstance().build(ActivityConstant.ABOUT_US).navigation();
                 break;
             case R.id.item_cooperation:// 合作联系
-                expectTip();
+                ARouter.getInstance().build(ActivityConstant.AGENT).navigation();
                 break;
         }
     }

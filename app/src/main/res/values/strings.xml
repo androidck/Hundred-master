@@ -205,6 +205,8 @@
     <string name="system_notify_title">系统通知</string>
     <string name="my_send_post_title">我的发布</string>
     <string name="extension_title">分享得VIP</string>
+    <string name="private_letter_title">私信</string>
+    <string name="cooperate_title">合作联系</string>
 
     <!-- 提示 -->
     <string name="phone_hint">请输入正确的手机号</string>

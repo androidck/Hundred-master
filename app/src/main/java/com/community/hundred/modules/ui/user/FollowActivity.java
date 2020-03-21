@@ -1,5 +1,6 @@
 package com.community.hundred.modules.ui.user;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -11,6 +12,8 @@ import com.community.hundred.modules.ui.user.entry.FollowEntry;
 import com.community.hundred.modules.ui.user.presenter.FollowPresenter;
 import com.community.hundred.modules.ui.user.presenter.view.IFollowView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 import java.util.ArrayList;
@@ -45,6 +48,23 @@ public class FollowActivity extends MyActivity<IFollowView, FollowPresenter> {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FollowAdapter(this, list);
         recyclerView.setAdapter(adapter);
+        refresh.setEnableLoadMore(false);
+        refresh.setOnRefreshListener(refreshLayout -> {
+            refreshLayout.getLayout().postDelayed(() -> {
+                list.clear();
+                initData();
+                refreshLayout.finishRefresh();
+            }, 200);
+        });
+        adapter.setOnItemClickListener(position -> {
+            FollowEntry entry = list.get(position);
+            mPresenter.setEscAttention(entry.getGid());
+            mPresenter.setOnSuccessListener(state -> {
+                if (state == 2) {
+                    refresh.autoRefresh();
+                }
+            });
+        });
     }
 
 

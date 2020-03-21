@@ -5,7 +5,7 @@ package com.community.hundred.common.constant;
  */
 public class HttpConstant {
 
-    public static String BASE_HOST = "http://yinshi.papang.top/";
+    public static String BASE_HOST = "http://bainiao.pinrui666.top/";
 
     public static String PROJECT = "index/";
 
@@ -13,11 +13,14 @@ public class HttpConstant {
     public static String BASE_URL = BASE_HOST + PROJECT;
 
     // 第二个网络地址
-    public static String KIP = "http://yinshi.papang.top/api/public/?service=";
+    public static String KIP = BASE_HOST + "api/public/?service=";
 
     public static String H5IP = "http://test.liclanch.com/wap";
 
-    public static String VIDEO_URL = "http://yinshi.papang.top";
+    public static String VIDEO_URL = "http://bainiao.pinrui666.top";
+
+    // 分享url
+    public static final String SHARE_URL = BASE_URL + "register/share?uid=";
 
     // 直播地址
     public static String LIVE_BROAD_CAST_URL = "http://api.k6z49.cn/mf/";
@@ -68,7 +71,7 @@ public class HttpConstant {
 
     /********************************************直播相关***************************************/
     //获取直播链接
-    public static final String liveURL = "http://yinshi.papang.top/index/Live/getLive";
+    public static final String liveURL = BASE_HOST + "index/Live/getLive";
 
     /*****************************************专栏************************************************/
     //圈子发布
@@ -148,6 +151,8 @@ public class HttpConstant {
     public static final String qingkongURL = BASE_URL + "lj/qingkong";
     //删除观看记录
     public static final String delgkjlURL = BASE_URL + "lj/delgkjl";
+    //添加手长
+    public static final String addsclURL = BASE_URL + "lj/addmysc";
     //查询收藏
     public static final String myscjlURL = BASE_URL + "lj/myscjl";
     //取消收藏

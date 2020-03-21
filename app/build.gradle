@@ -215,4 +215,7 @@ dependencies {
 
     implementation 'org.aspectj:aspectjrt:1.9.5'
 
+    // 二维码控件
+    implementation 'com.google.zxing:core:3.3.0'
+
 }

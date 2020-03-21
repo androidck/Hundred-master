@@ -117,7 +117,7 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
                         case 0:
                             if (LoginUtils.getInstance().isLogin()) {
                                 getFollow();
-                            }else {
+                            } else {
                                 showEmpty();
                             }
                             break;
@@ -142,7 +142,7 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
                         case 0:
                             if (LoginUtils.getInstance().isLogin()) {
                                 getFollow();
-                            }else {
+                            } else {
                                 showEmpty();
                             }
                             break;
@@ -236,15 +236,31 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
         });
         // 举报
         adapter.setOnReportClickListener(position -> {
-            CircleChildEntry entry = list.get(position);
-            if (LoginUtils.getInstance().getUid().equals(entry.getUser_id())) {
-                toast("不能举报自己");
+            if (LoginUtils.getInstance().isLogin()) {
+                CircleChildEntry entry = list.get(position);
+                if (LoginUtils.getInstance().getUid().equals(entry.getUser_id())) {
+                    toast("不能举报自己");
+                } else {
+                    new ReportDialog(mActivity, content -> {
+                        mPresenter.setReport(list.get(position).getId(), content);
+                    }).show();
+                }
             } else {
-                new ReportDialog(mActivity, content -> {
-                    mPresenter.setReport(list.get(position).getId(), content);
-                }).show();
+                notLogin();
             }
         });
+
+        // 评论
+        adapter.setOnCommentClickListener(position -> {
+            if (LoginUtils.getInstance().isLogin()) {
+                ARouter.getInstance().build(ActivityConstant.PRIVATE_LETTER)
+                        .withString("nickName", list.get(position).getNickname())
+                        .navigation();
+            } else {
+                notLogin();
+            }
+        });
+
     }
 
     @Override
@@ -256,7 +272,7 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
             case 0:
                 if (LoginUtils.getInstance().isLogin()) {
                     getFollow();
-                }else {
+                } else {
                     showEmpty();
                 }
                 break;

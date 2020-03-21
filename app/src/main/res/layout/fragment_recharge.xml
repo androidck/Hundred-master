@@ -12,13 +12,12 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/tv_recharge"
-            >
+            android:layout_above="@id/tv_recharge">
+
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="match_parent"
@@ -123,34 +122,79 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/space_40"
                         android:layout_marginLeft="@dimen/space_24"
+                        android:layout_marginTop="@dimen/space_40"
                         android:layout_marginRight="@dimen/space_24"
-                        android:layout_marginBottom="@dimen/space_20"
-                        >
-                    <com.zhy.autolayout.AutoLinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        >
-                        <TextView
+                        android:layout_marginBottom="@dimen/space_20">
+
+                        <com.zhy.autolayout.AutoLinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/space_80"
-                            android:text="请选择充值金额"
-                            android:textColor="#909090"
-                            android:gravity="center"
-                            android:background="@drawable/shape_title_select_bg"
-                            />
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerView_one"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/space_20"
-                            />
-                    </com.zhy.autolayout.AutoLinearLayout>
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/space_80"
+                                android:background="@drawable/shape_title_select_bg"
+                                android:gravity="center"
+                                android:text="请选择充值金额"
+                                android:textColor="#909090" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView_one"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_20" />
+
+                            <com.zhy.autolayout.AutoLinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_20"
+                                android:layout_marginBottom="@dimen/space_20"
+                                android:background="@drawable/shape_explain"
+                                android:layout_marginLeft="@dimen/space_20"
+                                android:layout_marginRight="@dimen/space_20"
+
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/space_24"
+                                    android:layout_marginTop="@dimen/space_20"
+                                    android:gravity="center_vertical"
+                                    android:text="充值说明"
+                                    android:textColor="#323232" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/space_30"
+                                    android:layout_marginTop="@dimen/space_20"
+                                    android:layout_marginRight="@dimen/space_30"
+                                    android:gravity="center_vertical"
+                                    android:text="①\t每个充值额度的库存有限，如遇到充值失败请选择其它充值额度。"
+                                    android:textColor="@color/colorDeep"
+                                    android:textSize="@dimen/space_26" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/space_30"
+                                    android:layout_marginTop="@dimen/space_10"
+                                    android:layout_marginRight="@dimen/space_30"
+                                    android:layout_marginBottom="@dimen/space_20"
+                                    android:text="②\t使用代理充值的用户如遇到充值问题请及时联系在线客服为您处理"
+                                    android:textColor="@color/colorDeep"
+                                    android:textSize="@dimen/space_26" />
+
+                                />
+                            </com.zhy.autolayout.AutoLinearLayout>
+                        </com.zhy.autolayout.AutoLinearLayout>
                     </androidx.cardview.widget.CardView>
                 </com.zhy.autolayout.AutoLinearLayout>
             </com.zhy.autolayout.AutoLinearLayout>
@@ -160,11 +204,11 @@
             android:id="@+id/tv_recharge"
             android:layout_width="match_parent"
             android:layout_height="@dimen/space_90"
+            android:layout_alignParentBottom="true"
             android:background="@color/colorAccent"
+            android:gravity="center"
             android:text="立即充值"
             android:textColor="@android:color/white"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
             android:textSize="@dimen/font_size_30px" />
     </com.zhy.autolayout.AutoRelativeLayout>
 

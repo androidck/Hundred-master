@@ -2,6 +2,7 @@ package com.community.hundred.modules.ui.main.fragment.ranking;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RadioGroup;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -29,6 +30,8 @@ public class RankingFragment extends MyLazyFragment {
 
     private RankingAdapter adapter;
 
+    private RadioGroup radioGroup;
+
     @Override
     protected BasePresenter createPresenter() {
         return null;
@@ -46,6 +49,8 @@ public class RankingFragment extends MyLazyFragment {
         recyclerView.addHeaderView(headView);
         adapter = new RankingAdapter(mActivity, getData());
         recyclerView.setAdapter(adapter);
+
+        radioGroup = headView.findViewById(R.id.ra_group);
     }
 
     @Override

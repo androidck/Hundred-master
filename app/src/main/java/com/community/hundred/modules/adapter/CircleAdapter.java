@@ -57,6 +57,8 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
 
     private OnReportClickListener onReportClickListener;
 
+    private OnCommentClickListener onCommentClickListener;
+
 
     public CircleAdapter(Context context, List<CircleChildEntry> list) {
         super(context);
@@ -114,12 +116,12 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
             holder.tv_attention.setBackgroundResource(R.drawable.shape_setup_attent_button);
             holder.tv_attention.setText("已关注");
             holder.tv_attention.setCompoundDrawables(null, null, null, null);
-            holder.tv_attention.setPadding(0,6,0,6);
+            holder.tv_attention.setPadding(0, 6, 0, 6);
         } else {
             holder.tv_attention.setBackgroundResource(R.drawable.shape_setup_button);
             holder.tv_attention.setText("关注");
             holder.tv_attention.setCompoundDrawables(setDrawable(R.mipmap.icon_add_follow), null, null, null);
-            holder.tv_attention.setPadding(20,6,0,6);
+            holder.tv_attention.setPadding(20, 6, 0, 6);
         }
 
 
@@ -167,6 +169,11 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
         holder.ly_video.setOnClickListener(v -> {
             ARouter.getInstance().build(ActivityConstant.LIVE_BROAD_CAST_DETAILS)
                     .withString("videoUrl", HttpConstant.VIDEO_URL + list.get(position).getVideo()).navigation();
+        });
+
+        // 评论
+        holder.img_comment.setOnClickListener(v -> {
+            onCommentClickListener.onComment(position);
         });
 
 
@@ -287,5 +294,13 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleAdapter.ViewHol
 
     public void setOnReportClickListener(OnReportClickListener onReportClickListener) {
         this.onReportClickListener = onReportClickListener;
+    }
+
+    public interface OnCommentClickListener {
+        void onComment(int position);
+    }
+
+    public void setOnCommentClickListener(OnCommentClickListener onCommentClickListener) {
+        this.onCommentClickListener = onCommentClickListener;
     }
 }
