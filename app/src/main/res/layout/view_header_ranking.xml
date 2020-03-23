@@ -7,22 +7,61 @@
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="440dp"
         android:background="@mipmap/rank_bg"
         android:orientation="vertical">
+        <!-- 土豪榜 打赏榜 -->
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/ly_switch"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_80"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginRight="@dimen/space_24"
+            android:background="@drawable/shape_switch_bg"
+            android:layout_marginTop="@dimen/space_20"
 
+            >
+            <TextView
+                android:id="@+id/tv_charm"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="魅力榜"
+
+                android:textSize="@dimen/font_size_30px"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/shape_select_title_bg"
+                android:layout_margin="@dimen/space_8"
+                />
+            <TextView
+                android:id="@+id/tv_tycoon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="土豪榜"
+                android:textColor="#b9b9b9"
+                android:textSize="@dimen/font_size_30px"
+                android:gravity="center"
+                android:background="@drawable/shape_unselect_title_bg"
+                android:layout_margin="@dimen/space_8"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
         <!-- 日榜 分类 -->
         <RadioGroup
             android:id="@+id/ra_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_below="@id/ly_switch"
             android:layout_marginLeft="@dimen/space_24"
             android:layout_marginRight="@dimen/space_24"
-            android:layout_marginTop="@dimen/space_40"
+            android:layout_marginTop="@dimen/space_30"
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/rd_day"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -38,6 +77,7 @@
                 android:text="@string/ra_day" />
 
             <RadioButton
+                android:id="@+id/rd_week"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -52,6 +92,7 @@
                 android:text="@string/ra_week" />
 
             <RadioButton
+                android:id="@+id/rd_month"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -66,6 +107,7 @@
                 android:text="@string/ra_month" />
 
             <RadioButton
+                android:id="@+id/rd_all"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -85,7 +127,7 @@
             android:layout_below="@id/ra_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_20"
+
             android:orientation="horizontal"
             android:layout_marginLeft="@dimen/space_40"
             android:layout_marginRight="@dimen/space_40"

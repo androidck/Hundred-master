@@ -119,7 +119,15 @@ public class HttpConstant {
     // 评论点赞
     public static final String commentLoveURL = BASE_URL + "Gj/loveComment";
     // 删除评论
-    public static final String commentDel = BASE_URL + "/Gj/scpl";
+    public static final String commentDel = BASE_URL + "Gj/scpl";
+    // 打赏总榜
+    public static final String dsZongBangURL = BASE_URL + "lj/zhongbang";
+    // 打赏月榜
+    public static final String dsYueBangURL = BASE_URL + "lj/benyue";
+    // 打赏周榜
+    public static final String dsZhouBangURL = BASE_URL + "lj/benzhou";
+    // 打赏日榜
+    public static final String dsRiBangURL = BASE_URL + "lj/benri";
 
 
     /*****************************************个人中心************************************************/

@@ -66,7 +66,6 @@
                     android:gravity="center"
                     android:paddingTop="@dimen/space_6"
                     android:paddingBottom="@dimen/space_6"
-                    android:drawableLeft="@mipmap/icon_add_follow"
                     android:text="已关注"
                     android:background="@drawable/shape_setup_attent_button"
                     android:textColor="@android:color/white" />

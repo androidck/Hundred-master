@@ -13,6 +13,7 @@ import com.community.hundred.modules.dialog.entry.GiftEntry;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.main.fragment.entry.CircleChildEntry;
 import com.community.hundred.modules.ui.main.fragment.entry.CircleChildHeaderEntry;
+import com.community.hundred.modules.ui.main.fragment.entry.RankingEntry;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.ISpecialChildView;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -41,6 +42,8 @@ public class SpecialChildPresenter extends BasePresenter<ISpecialChildView> {
     private OnClassifyListener onClassifyListener;
 
     private OnCircleChildListener onCircleChildListener;
+
+    private OnRankingListener onRankingListener;
 
     public SpecialChildPresenter(MyActivity context) {
         super(context);
@@ -278,6 +281,31 @@ public class SpecialChildPresenter extends BasePresenter<ISpecialChildView> {
         });
     }
 
+    // 获取打赏榜
+    public void getReward(String url) {
+        prContext.showLoading();
+        Map<String, String> map = new HashMap<>();
+        map.put("uid", LoginUtils.getInstance().getUid());
+        OkHttp.postAsync(url, map, new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                prContext.showComplete();
+                JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+                JsonArray jsonArray = jsonObject.getAsJsonArray("data");
+                List<RankingEntry> list = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<RankingEntry>>() {
+                }.getType());
+                onRankingListener.OnRanking(list);
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                prContext.showComplete();
+                e.printStackTrace();
+                netWorkError();
+            }
+        });
+    }
+
 
     public interface OnSpecialChildListener {
         void onSpecial(List<CircleChildEntry> list);
@@ -313,5 +341,13 @@ public class SpecialChildPresenter extends BasePresenter<ISpecialChildView> {
 
     public void setOnCircleChildListener(OnCircleChildListener onCircleChildListener) {
         this.onCircleChildListener = onCircleChildListener;
+    }
+
+    public interface OnRankingListener {
+        void OnRanking(List<RankingEntry> list);
+    }
+
+    public void setOnRankingListener(OnRankingListener onRankingListener) {
+        this.onRankingListener = onRankingListener;
     }
 }
