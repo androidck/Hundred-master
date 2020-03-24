@@ -128,6 +128,14 @@ public class HttpConstant {
     public static final String dsZhouBangURL = BASE_URL + "lj/benzhou";
     // 打赏日榜
     public static final String dsRiBangURL = BASE_URL + "lj/benri";
+    // 魅力榜
+    public static final String mlBangURL = BASE_URL + "Gj/mldsph";
+    // 我的消息
+    public static final String wdxxURL = BASE_URL + "Gj/wdxx";
+    // 我的回复
+    public static final String wdhfURL = BASE_URL + "Gj/wdhf";
+    // 系统消息
+    public static final String xtxxURL = BASE_URL + "Gj/xtxx";
 
 
     /*****************************************个人中心************************************************/

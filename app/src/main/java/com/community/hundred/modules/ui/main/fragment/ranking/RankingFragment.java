@@ -106,6 +106,9 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
             tv_tycoon.setTextColor(Color.parseColor("#b9b9b9"));
             rd_day.setChecked(true);
             charmAndTycoon = 0;
+            adapter.setType(charmAndTycoon);
+            list.clear();
+            getCharm(1);
         });
 
         // 土豪榜
@@ -125,7 +128,9 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
             switch (checkedId) {
                 case R.id.rd_day:
                     if (charmAndTycoon == 0) {
-
+                        adapter.setType(charmAndTycoon);
+                        list.clear();
+                        getCharm(1);
                     } else {
                         adapter.setType(charmAndTycoon);
                         list.clear();
@@ -134,7 +139,9 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
                     break;
                 case R.id.rd_week:
                     if (charmAndTycoon == 0) {
-
+                        adapter.setType(charmAndTycoon);
+                        list.clear();
+                        getCharm(2);
                     } else {
                         adapter.setType(charmAndTycoon);
                         list.clear();
@@ -143,7 +150,9 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
                     break;
                 case R.id.rd_month:
                     if (charmAndTycoon == 0) {
-
+                        adapter.setType(charmAndTycoon);
+                        list.clear();
+                        getCharm(3);
                     } else {
                         adapter.setType(charmAndTycoon);
                         list.clear();
@@ -152,7 +161,9 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
                     break;
                 case R.id.rd_all:
                     if (charmAndTycoon == 0) {
-
+                        adapter.setType(charmAndTycoon);
+                        list.clear();
+                        getCharm(4);
                     } else {
                         adapter.setType(charmAndTycoon);
                         list.clear();
@@ -197,9 +208,9 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
 
     @Override
     protected void initData() {
-        if (charmAndTycoon == 1) {
+        if (charmAndTycoon == 0) {
             list.clear();
-            getReward(HttpConstant.dsRiBangURL);
+            getCharm(1);
         }
     }
 
@@ -211,17 +222,40 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
             }
             adapter.notifyDataSetChanged();
             // 第一名
-            tv_first_nickname.setText(list.get(0).getName());
-            tv_first_money.setText("打赏" + list.get(0).getZonjine() + "元");
-            Glide.with(mActivity).load(list.get(0).getImage()).placeholder(R.mipmap.ic_launcher).into(img_first_user_head);
+            tv_first_nickname.setText(list1.get(0).getName());
+            tv_first_money.setText("打赏" + list1.get(0).getZonjine() + "元");
+            Glide.with(mActivity).load(list1.get(0).getImage()).placeholder(R.mipmap.ic_launcher).into(img_first_user_head);
             // 第二名
-            tv_second_nickname.setText(list.get(1).getName());
-            tv_second_money.setText("打赏" + list.get(1).getZonjine() + "元");
-            Glide.with(mActivity).load(list.get(1).getImage()).placeholder(R.mipmap.ic_launcher).into(img_second_user_head);
+            tv_second_nickname.setText(list1.get(1).getName());
+            tv_second_money.setText("打赏" + list1.get(1).getZonjine() + "元");
+            Glide.with(mActivity).load(list1.get(1).getImage()).placeholder(R.mipmap.ic_launcher).into(img_second_user_head);
             // 第三名
-            tv_third_nickname.setText(list.get(2).getName());
-            tv_third_money.setText("打赏" + list.get(2).getZonjine() + "元");
-            Glide.with(mActivity).load(list.get(2).getImage()).placeholder(R.mipmap.ic_launcher).into(img_third_user_head);
+            tv_third_nickname.setText(list1.get(2).getName());
+            tv_third_money.setText("打赏" + list1.get(2).getZonjine() + "元");
+            Glide.with(mActivity).load(list1.get(2).getImage()).placeholder(R.mipmap.ic_launcher).into(img_third_user_head);
+
+        });
+    }
+
+    public void getCharm(int type) {
+        mPresenter.getCharm(type);
+        mPresenter.setOnRankingListener(list1 -> {
+            for (int i = 3; i < list1.size(); i++) {
+                list.add(list1.get(i));
+            }
+            adapter.notifyDataSetChanged();
+            // 第一名
+            tv_first_nickname.setText(list1.get(0).getName());
+            tv_first_money.setText("收到" + list1.get(0).getZonjine() + "元");
+            Glide.with(mActivity).load(list1.get(0).getImage()).placeholder(R.mipmap.ic_launcher).into(img_first_user_head);
+            // 第二名
+            tv_second_nickname.setText(list1.get(1).getName());
+            tv_second_money.setText("收到" + list1.get(1).getZonjine() + "元");
+            Glide.with(mActivity).load(list1.get(1).getImage()).placeholder(R.mipmap.ic_launcher).into(img_second_user_head);
+            // 第三名
+            tv_third_nickname.setText(list1.get(2).getName());
+            tv_third_money.setText("收到" + list1.get(2).getZonjine() + "元");
+            Glide.with(mActivity).load(list1.get(2).getImage()).placeholder(R.mipmap.ic_launcher).into(img_third_user_head);
 
         });
     }

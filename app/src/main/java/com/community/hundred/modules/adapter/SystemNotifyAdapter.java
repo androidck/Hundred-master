@@ -8,11 +8,26 @@ import androidx.annotation.NonNull;
 
 import com.community.hundred.R;
 import com.community.hundred.common.base.BaseRecyclerViewAdapter;
+import com.community.hundred.common.util.TimeUtils;
+import com.community.hundred.modules.ui.livebroadcast.entry.SystemEntry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // 系统通知适配器
 public class SystemNotifyAdapter extends BaseRecyclerViewAdapter<SystemNotifyAdapter.ViewHolder> {
-    public SystemNotifyAdapter(Context context) {
+
+    private List<SystemEntry> list;
+    private Context mContext;
+
+    public SystemNotifyAdapter(Context context, List<SystemEntry> list) {
         super(context);
+        this.mContext = context;
+        this.list = list;
+        if (this.list == null) {
+            this.list = new ArrayList<>();
+        }
+
     }
 
     @NonNull
@@ -23,12 +38,14 @@ public class SystemNotifyAdapter extends BaseRecyclerViewAdapter<SystemNotifyAda
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        SystemEntry entry = list.get(position);
+        holder.tvContent.setText(entry.getDescription());
+        holder.tvTime.setText(TimeUtils.timestampToStr(Long.valueOf(entry.getAdd_time())));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list == null ? 0 : list.size();
     }
 
     class ViewHolder extends BaseRecyclerViewAdapter.ViewHolder {
@@ -37,7 +54,7 @@ public class SystemNotifyAdapter extends BaseRecyclerViewAdapter<SystemNotifyAda
         public ViewHolder(ViewGroup parent, int layoutId) {
             super(parent, layoutId);
             tvContent = (TextView) findViewById(R.id.tv_content);
-            tvContent = (TextView) findViewById(R.id.tv_time);
+            tvTime = (TextView) findViewById(R.id.tv_time);
         }
     }
 }

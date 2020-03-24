@@ -58,6 +58,9 @@ public class RankingAdapter extends BaseRecyclerViewAdapter<RankingAdapter.ViewH
         if (type == 1) {
             String str = "<font>打赏价值</font><font color='#FE581E'>" + entry.getZonjine() + "</font><font>元的礼物</font>";
             holder.tv_desc.setText(Html.fromHtml(str));
+        }else {
+            String str = "<font>收到价值</font><font color='#FE581E'>" + entry.getZonjine() + "</font><font>元的礼物</font>";
+            holder.tv_desc.setText(Html.fromHtml(str));
         }
 
         // 是否关注

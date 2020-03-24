@@ -306,6 +306,54 @@ public class SpecialChildPresenter extends BasePresenter<ISpecialChildView> {
         });
     }
 
+    // 获取魅力榜
+    public void getCharm(int type) {
+        prContext.showLoading();
+        Map<String, String> map = new HashMap<>();
+        map.put("uid", LoginUtils.getInstance().getUid());
+        OkHttp.postAsync(HttpConstant.mlBangURL, map, new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+                JsonObject data = jsonObject.getAsJsonObject("data");
+                JsonArray benri = data.getAsJsonArray("benri");
+                JsonArray benzhou = data.getAsJsonArray("benzhou");
+                JsonArray benyue = data.getAsJsonArray("benyue");
+                JsonArray zongbang = data.getAsJsonArray("zongbang");
+                List<RankingEntry> list = null;
+                switch (type) {
+                    case 1:
+                        list = new Gson().fromJson(benri.toString(), new TypeToken<List<RankingEntry>>() {
+                        }.getType());
+                        break;
+                    case 2:
+                        list = new Gson().fromJson(benzhou.toString(), new TypeToken<List<RankingEntry>>() {
+                        }.getType());
+                        break;
+                    case 3:
+                        list = new Gson().fromJson(benyue.toString(), new TypeToken<List<RankingEntry>>() {
+                        }.getType());
+                        break;
+                    case 4:
+                        list = new Gson().fromJson(zongbang.toString(), new TypeToken<List<RankingEntry>>() {
+                        }.getType());
+                        break;
+                }
+                onRankingListener.OnRanking(list);
+                prContext.showComplete();
+
+
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                e.printStackTrace();
+                netWorkError();
+                prContext.showComplete();
+            }
+        });
+    }
+
 
     public interface OnSpecialChildListener {
         void onSpecial(List<CircleChildEntry> list);

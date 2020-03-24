@@ -6,6 +6,7 @@
     android:background="@android:color/white"
     >
     <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -15,6 +16,7 @@
         android:layout_marginBottom="@dimen/space_20"
         >
         <RadioButton
+            android:id="@+id/tv_my_xx"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -24,6 +26,7 @@
             android:gravity="center"
             />
         <RadioButton
+            android:id="@+id/tv_my_hf"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -33,6 +36,7 @@
             android:gravity="center"
             />
         <RadioButton
+            android:id="@+id/tv_my_lw"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -42,6 +46,7 @@
             android:gravity="center"
             />
         <RadioButton
+            android:id="@+id/tv_my_xt"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

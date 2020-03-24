@@ -1,23 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include layout="@layout/view_title"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title" />
+
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@android:color/white"
-        >
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_20"
+            android:layout_marginRight="@dimen/space_24"
+            android:layout_marginBottom="@dimen/space_20"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/tv_my_xx"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@mipmap/icon_my_message"
+                android:gravity="center"
+                android:text="我的消息" />
+
+            <RadioButton
+                android:id="@+id/tv_my_hf"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@mipmap/icon_my_reply"
+                android:gravity="center"
+                android:text="我的回复" />
+
+            <RadioButton
+                android:id="@+id/tv_my_lw"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@mipmap/icon_my_gift"
+                android:gravity="center"
+                android:text="我的礼物" />
+
+            <RadioButton
+                android:id="@+id/tv_my_xt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@mipmap/icon_system_message"
+                android:gravity="center"
+                android:text="系统消息" />
+        </RadioGroup>
+
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.yanzhenjie.recyclerview.SwipeRecyclerView
-                android:id="@+id/recyclerView"
+
+            <com.hjq.widget.layout.HintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+                <com.yanzhenjie.recyclerview.SwipeRecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.hjq.widget.layout.HintLayout>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>
