@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.community.hundred.R;
 import com.community.hundred.common.base.BaseRecyclerViewAdapter;
+import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.chat.entry.MsgEntry;
 import com.zhy.autolayout.AutoRelativeLayout;
 
@@ -42,20 +43,18 @@ public class PrivateLetterAdapter extends BaseRecyclerViewAdapter<PrivateLetterA
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MsgEntry msgEntry = list.get(position);
-        if (msgEntry.getType() == MsgEntry.TYPE_RECEIVED) {// 收到消息布局
-            holder.ly_received_msg.setVisibility(View.VISIBLE);
-            holder.ly_send_msg.setVisibility(View.GONE);
-            holder.tv_received_msg.setText(msgEntry.getContent());
-            Glide.with(mContext).load(msgEntry.getUserHead()).placeholder(R.mipmap.item_live).into(holder.img_received_user_head);
-        } else if (msgEntry.getType() == MsgEntry.TYPE_SEND) {// 发送消息布局
+        if (msgEntry.getUid().equals(LoginUtils.getInstance().getUid())) {// 收到消息布局
             holder.ly_received_msg.setVisibility(View.GONE);
             holder.ly_send_msg.setVisibility(View.VISIBLE);
             holder.tv_send_msg.setText(msgEntry.getContent());
-            Glide.with(mContext).load(msgEntry.getUserHead()).into(holder.img_received_user_head);
-            Glide.with(mContext).load(msgEntry.getUserHead()).placeholder(R.mipmap.icon_live).into(holder.img_received_user_head);
+            Glide.with(mContext).load(msgEntry.getImage()).placeholder(R.mipmap.icon_live).into(holder.img_send_user_head);
+        } else {// 发送消息布局
+            holder.ly_received_msg.setVisibility(View.VISIBLE);
+            holder.ly_send_msg.setVisibility(View.GONE);
+            holder.tv_received_msg.setText(msgEntry.getContent());
+            Glide.with(mContext).load(msgEntry.getImage()).placeholder(R.mipmap.item_live).into(holder.img_received_user_head);
         }
     }
-
 
 
     @Override

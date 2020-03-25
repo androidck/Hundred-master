@@ -6,11 +6,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
 import com.community.hundred.R;
 import com.community.hundred.common.base.BaseRecyclerViewAdapter;
+import com.community.hundred.common.util.RelativeDateFormatUtils;
 import com.community.hundred.modules.ui.livebroadcast.entry.MyMessageEntry;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -39,6 +42,11 @@ public class MessageAdapter extends BaseRecyclerViewAdapter<MessageAdapter.ViewH
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MyMessageEntry entry = list.get(position);
+        holder.tv_nick_name.setText(entry.getNickname());
+        Glide.with(mContext).load(entry.getImage()).placeholder(R.mipmap.ic_launcher).into(holder.user_head);
+        // 时间
+        holder.tv_time.setText(RelativeDateFormatUtils.format(new Date(Long.parseLong(entry.getCreatetime()) * 1000)));
+        holder.tv_message.setText(entry.getContent());
 
     }
 

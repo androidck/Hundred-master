@@ -280,6 +280,11 @@
             android:label="@string/cooperate_title"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".modules.ui.novel.NovelClassActivity"
+            android:label="@string/nov_class_title"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

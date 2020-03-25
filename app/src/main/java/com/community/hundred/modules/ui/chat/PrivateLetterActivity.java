@@ -15,7 +15,10 @@ import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.util.StatusBarUtil;
 import com.community.hundred.modules.adapter.PrivateLetterAdapter;
+import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.chat.entry.MsgEntry;
+import com.community.hundred.modules.ui.chat.presenter.PrivateLetterPresenter;
+import com.community.hundred.modules.ui.chat.presenter.view.IPrivateLetterView;
 import com.hjq.widget.view.ClearEditText;
 import com.zhy.autolayout.AutoLinearLayout;
 
@@ -27,7 +30,7 @@ import butterknife.OnClick;
 
 // 私信界面
 @Route(path = ActivityConstant.PRIVATE_LETTER)
-public class PrivateLetterActivity extends MyActivity {
+public class PrivateLetterActivity extends MyActivity<IPrivateLetterView, PrivateLetterPresenter> {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.ed_content)
@@ -40,12 +43,17 @@ public class PrivateLetterActivity extends MyActivity {
     @Autowired
     String nickName;
 
+    @Autowired
+    String bid;
+
+    private int p = 1;
+
     private List<MsgEntry> list = new ArrayList<>();
     private PrivateLetterAdapter adapter;
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected PrivateLetterPresenter createPresenter() {
+        return new PrivateLetterPresenter(this);
     }
 
     @Override
@@ -74,31 +82,22 @@ public class PrivateLetterActivity extends MyActivity {
         setTitle(nickName);
         setWhiteLeftButtonIcon(getTitleBar());
         LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setStackFromEnd(true);
         recyclerView.setLayoutManager(manager);
-        list.addAll(getData());
         adapter = new PrivateLetterAdapter(this, list);
         recyclerView.setAdapter(adapter);
+
+
     }
 
     @Override
     protected void initData() {
-        adapter.notifyItemInserted(getData().size() - 1);
-        //定位将显示的数据定位到最后一行，保证可以看到最后一条消息
-        recyclerView.scrollToPosition(getData().size() - 1);
+        mPresenter.getChatDetails(bid, p);
+        mPresenter.setOnDataListener(list1 -> {
+            list.addAll(list1);
+            adapter.notifyDataSetChanged();
+        });
     }
 
-
-    public List<MsgEntry> getData() {
-        List<MsgEntry> list = new ArrayList<>();
-        list.add(new MsgEntry("Hello", "", 1));
-        list.add(new MsgEntry("Hi!", "", 1));
-        list.add(new MsgEntry("what's your name?", "", 0));
-        list.add(new MsgEntry("can you speck chinese?", "", 0));
-        list.add(new MsgEntry("是的，我会", "", 1));
-        list.add(new MsgEntry("好的，我们用中文交流吧", "", 0));
-        return list;
-    }
 
     @OnClick(R.id.btn_send)
     public void onViewClicked() {
@@ -110,11 +109,15 @@ public class PrivateLetterActivity extends MyActivity {
         if (TextUtils.isEmpty(content)) {
             toast("请输入发送的内容");
         } else {
-            MsgEntry entry = new MsgEntry(content, "", 1);
-            list.add(entry);
-            adapter.notifyItemInserted(list.size() - 1);//这两个我还不知道是啥- -,有大神可以评论一下
+            mPresenter.sendMgs(content, bid);
+            MsgEntry msgEntry = new MsgEntry();
+            msgEntry.setContent(content);
+            msgEntry.setUid(LoginUtils.getInstance().getUid());
+            list.add(msgEntry);
+            adapter.notifyItemInserted(list.size() - 1);
             recyclerView.scrollToPosition(list.size() - 1);
-            edContent.setText("");//清空文本
+            edContent.setText("");
+
         }
     }
 }

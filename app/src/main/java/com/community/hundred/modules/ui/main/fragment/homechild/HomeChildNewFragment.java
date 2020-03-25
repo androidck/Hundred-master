@@ -131,12 +131,9 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
             /**
              * 获取顶部图片高度后，设置滚动监听
              */
-            scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    mScrollY = scrollY;
-                    listener.onScrollChange(imageHeight, scrollY);
-                }
+            scrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+                mScrollY = scrollY;
+                listener.onScrollChange(imageHeight, scrollY);
             });
         });
 
@@ -169,9 +166,10 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
                 menuRecyclerView.setLayoutManager(gridLayoutManager);
                 twoAdapter = new HomeChildTwoAdapter(mActivity, entryList);
                 menuRecyclerView.setAdapter(twoAdapter);
+                // 小说点击事件
                 twoAdapter.setOnItemClickListener(position -> {
-                    ARouter.getInstance().build(ActivityConstant.SECOND_LEVEL)
-                            .withString("title", entryList.get(position).getName())
+                    ARouter.getInstance().build(ActivityConstant.NOV_CLASS_LIST)
+                            .withString("classifyId", entryList.get(position).getId())
                             .navigation();
                 });
 

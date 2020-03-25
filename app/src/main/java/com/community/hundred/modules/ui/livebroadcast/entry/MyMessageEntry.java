@@ -2,53 +2,98 @@ package com.community.hundred.modules.ui.livebroadcast.entry;
 
 // 我的消息实体类
 public class MyMessageEntry {
-    private String userHead;
 
-    private String unreadCount;
+    /**
+     * id : 4
+     * uid : 6
+     * bid : 3
+     * content : 111
+     * createtime : 1581434631
+     * status : 0
+     * image : http://bainiao.pinrui666.top/uploads/picture/20190920/timg.jpg
+     * nickname : 白鸟社区6
+     * wdxx : 0
+     */
 
-    private String nickName;
+    private String id;
+    private String uid;
+    private String bid;
+    private String content;
+    private String createtime;
+    private String status;
+    private String image;
+    private String nickname;
+    private String wdxx;
 
-    private String message;
-
-    private String time;
-
-    public String getUserHead() {
-        return userHead;
+    public String getId() {
+        return id;
     }
 
-    public void setUserHead(String userHead) {
-        this.userHead = userHead;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getUnreadCount() {
-        return unreadCount;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUnreadCount(String unreadCount) {
-        this.unreadCount = unreadCount;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getBid() {
+        return bid;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setBid(String bid) {
+        this.bid = bid;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContent() {
+        return content;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getTime() {
-        return time;
+    public String getCreatetime() {
+        return createtime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getWdxx() {
+        return wdxx;
+    }
+
+    public void setWdxx(String wdxx) {
+        this.wdxx = wdxx;
     }
 }

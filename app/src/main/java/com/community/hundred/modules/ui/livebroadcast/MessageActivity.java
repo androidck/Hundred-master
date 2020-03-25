@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -20,6 +21,8 @@ import com.community.hundred.modules.ui.livebroadcast.presenter.MessagePresenter
 import com.community.hundred.modules.ui.livebroadcast.presenter.view.IMessageView;
 import com.community.hundred.modules.ui.user.entry.GiftEntry;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 import java.util.ArrayList;
@@ -51,8 +54,16 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
     private SystemNotifyAdapter systemNotifyAdapter;
     private List<SystemEntry> systemEntries = new ArrayList<>();
     private List<GiftEntry> giftEntries = new ArrayList<>();
+    private List<MyMessageEntry> list = new ArrayList<>();
+    private List<MyMessageEntry> hfList = new ArrayList<>();
 
     private ReceivedGiftAdapter receivedGiftAdapter;
+
+    private MessageAdapter adapter, hfAdapter;
+
+    private int checkId = 0;
+
+    int p = 1;
 
     @Override
     protected MessagePresenter createPresenter() {
@@ -69,7 +80,38 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
     protected void initView() {
         setWhiteLeftButtonIcon(getTitleBar());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MessageAdapter(this, list);
+        recyclerView.setAdapter(adapter);
+        refresh.setOnRefreshListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    if (checkId == 0) {
+                        p++;
+                        getMyMessage();
+                    } else if (checkId == 1) {
+                        p++;
+                        getReply();
+                    }
+                    refreshLayout.finishLoadMore();
+                }, 200);
+            }
 
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    if (checkId == 0) {
+                        p = 1;
+                        list.clear();
+                        getMyMessage();
+                    } else if (checkId == 1) {
+                        p = 1;
+                        hfList.clear();
+                    }
+                    refreshLayout.finishRefresh();
+                }, 200);
+            }
+        });
 
     }
 
@@ -80,17 +122,35 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
 
     @Override
     protected void initData() {
-
+        getMyMessage();
     }
 
-    public List<MyMessageEntry> getData() {
-        List<MyMessageEntry> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            MyMessageEntry entry = new MyMessageEntry();
-            entry.setUserHead("10");
-            list.add(entry);
-        }
-        return list;
+    // 获取我的消息
+    public void getMyMessage() {
+        mPresenter.getMyMessage(p);
+        mPresenter.setOnMessageListener(list1 -> {
+            if (list1.size() == 0) {
+                showEmpty();
+            } else {
+                showComplete();
+                list.addAll(list1);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    // 获取我的回复
+    public void getReply() {
+        mPresenter.getReply(p);
+        mPresenter.setOnMessageListener(list1 -> {
+            if (list1.size() == 0) {
+                showEmpty();
+            } else {
+                showComplete();
+                hfList.addAll(list1);
+                hfAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     // 获取系消息
@@ -103,6 +163,7 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
         });
     }
 
+    // 我的礼物
     public void myGift() {
         mPresenter.getMyGiftList();
         mPresenter.setOnDataListener(list -> {
@@ -112,29 +173,31 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @OnClick({R.id.tv_my_xx, R.id.tv_my_hf, R.id.tv_my_lw, R.id.tv_my_xt})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_my_xx:
-                showEmpty();
+                checkId = 0;
+                list.clear();
+                getMyMessage();
                 break;
             case R.id.tv_my_hf:
-                showEmpty();
+                checkId = 1;
+                hfList.clear();
+                hfAdapter = new MessageAdapter(this, hfList);
+                recyclerView.setAdapter(hfAdapter);
+                getReply();
                 break;
             case R.id.tv_my_lw:
+                checkId = 2;
                 receivedGiftAdapter = new ReceivedGiftAdapter(this, giftEntries);
                 recyclerView.setAdapter(receivedGiftAdapter);
                 giftEntries.clear();
                 myGift();
                 break;
             case R.id.tv_my_xt:
+                checkId = 3;
                 systemNotifyAdapter = new SystemNotifyAdapter(this, systemEntries);
                 recyclerView.setAdapter(systemNotifyAdapter);
                 getSystem();

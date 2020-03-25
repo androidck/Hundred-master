@@ -182,6 +182,11 @@ public class ActivityConstant {
      * 加载长图
      */
     public static final String AGENT = "/setup/AgentActivity";
+
+    /**
+     * 小说列表
+     */
+    public static final String NOV_CLASS_LIST = "/novel/NovelClassActivity";
 }
 
 

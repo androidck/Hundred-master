@@ -7,6 +7,7 @@ import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.network.OkHttp;
 import com.community.hundred.modules.manager.LoginUtils;
+import com.community.hundred.modules.ui.livebroadcast.entry.MyMessageEntry;
 import com.community.hundred.modules.ui.livebroadcast.entry.SystemEntry;
 import com.community.hundred.modules.ui.livebroadcast.presenter.view.IMessageView;
 import com.community.hundred.modules.ui.user.entry.GiftEntry;
@@ -29,6 +30,8 @@ public class MessagePresenter extends BasePresenter<IMessageView> {
     private OnSystemInfoListener onSystemInfoListener;
 
     private OnDataListener onDataListener;
+
+    private OnMessageListener onMessageListener;
 
     public MessagePresenter(MyActivity context) {
         super(context);
@@ -85,6 +88,62 @@ public class MessagePresenter extends BasePresenter<IMessageView> {
                 netWorkError();
             }
         });
+    }
+
+    // 获取我的消息
+    public void getMyMessage(int p) {
+        prContext.showLoading();
+        Map<String, String> map = new HashMap<>();
+        map.put("uid", LoginUtils.getInstance().getUid());
+        map.put("p", String.valueOf(p));
+        OkHttp.postAsync(HttpConstant.wdxxURL, map, new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+                JsonArray jsonArray = jsonObject.getAsJsonArray("data");
+                List<MyMessageEntry> list = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<MyMessageEntry>>() {
+                }.getType());
+                onMessageListener.onMessage(list);
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                prContext.showError();
+            }
+        });
+    }
+
+    // 我的回复
+    public void getReply(int p) {
+        prContext.showLoading();
+        Map<String, String> map = new HashMap<>();
+        map.put("uid", LoginUtils.getInstance().getUid());
+        map.put("p", String.valueOf(p));
+        OkHttp.postAsync(HttpConstant.wdhfURL, map, new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+                JsonArray jsonArray = jsonObject.getAsJsonArray("data");
+                List<MyMessageEntry> list = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<MyMessageEntry>>() {
+                }.getType());
+                onMessageListener.onMessage(list);
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                prContext.showError();
+                e.printStackTrace();
+                netWorkError();
+            }
+        });
+    }
+
+    public interface OnMessageListener {
+        void onMessage(List<MyMessageEntry> list);
+    }
+
+    public void setOnMessageListener(OnMessageListener onMessageListener) {
+        this.onMessageListener = onMessageListener;
     }
 
     public interface OnSystemInfoListener {

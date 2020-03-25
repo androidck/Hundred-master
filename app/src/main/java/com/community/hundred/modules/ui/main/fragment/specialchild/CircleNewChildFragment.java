@@ -255,6 +255,7 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
             if (LoginUtils.getInstance().isLogin()) {
                 ARouter.getInstance().build(ActivityConstant.PRIVATE_LETTER)
                         .withString("nickName", list.get(position).getNickname())
+                        .withString("bid", list.get(position).getUser_id())
                         .navigation();
             } else {
                 notLogin();

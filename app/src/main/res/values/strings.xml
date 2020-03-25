@@ -207,6 +207,7 @@
     <string name="extension_title">分享得VIP</string>
     <string name="private_letter_title">私信</string>
     <string name="cooperate_title">合作联系</string>
+    <string name="nov_class_title">小说分类列表</string>
 
     <!-- 提示 -->
     <string name="phone_hint">请输入正确的手机号</string>

@@ -67,6 +67,8 @@ public class HttpConstant {
     public static final String videoDetails = KIP + "Video.getVideo";
     // 小说列表
     public static final String novList = KIP + "Home.novList";
+    // 小说分类列表
+    public static final String novClassListURL = BASE_URL + "Gj/xiaoshuo";
 
 
     /********************************************直播相关***************************************/
@@ -136,6 +138,10 @@ public class HttpConstant {
     public static final String wdhfURL = BASE_URL + "Gj/wdhf";
     // 系统消息
     public static final String xtxxURL = BASE_URL + "Gj/xtxx";
+    // 聊天详情
+    public static final String chatDetails = BASE_URL + "Gj/xxixq";
+    // 发送消息
+    public static final String siliaoURL = BASE_URL + "Gj/siliao";
 
 
     /*****************************************个人中心************************************************/
