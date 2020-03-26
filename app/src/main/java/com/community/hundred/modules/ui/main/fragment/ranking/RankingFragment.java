@@ -215,49 +215,56 @@ public class RankingFragment extends MyLazyFragment<MainActivity, ISpecialChildV
     }
 
     public void getReward(String url) {
-        mPresenter.getReward(url);
-        mPresenter.setOnRankingListener(list1 -> {
-            for (int i = 3; i < list1.size(); i++) {
-                list.add(list1.get(i));
-            }
-            adapter.notifyDataSetChanged();
-            // 第一名
-            tv_first_nickname.setText(list1.get(0).getName());
-            tv_first_money.setText("打赏" + list1.get(0).getZonjine() + "元");
-            Glide.with(mActivity).load(list1.get(0).getImage()).placeholder(R.mipmap.ic_launcher).into(img_first_user_head);
-            // 第二名
-            tv_second_nickname.setText(list1.get(1).getName());
-            tv_second_money.setText("打赏" + list1.get(1).getZonjine() + "元");
-            Glide.with(mActivity).load(list1.get(1).getImage()).placeholder(R.mipmap.ic_launcher).into(img_second_user_head);
-            // 第三名
-            tv_third_nickname.setText(list1.get(2).getName());
-            tv_third_money.setText("打赏" + list1.get(2).getZonjine() + "元");
-            Glide.with(mActivity).load(list1.get(2).getImage()).placeholder(R.mipmap.ic_launcher).into(img_third_user_head);
-
-        });
+        if (LoginUtils.getInstance().isLogin()) {
+            mPresenter.getReward(url);
+            mPresenter.setOnRankingListener(list1 -> {
+                for (int i = 3; i < list1.size(); i++) {
+                    list.add(list1.get(i));
+                }
+                adapter.notifyDataSetChanged();
+                // 第一名
+                tv_first_nickname.setText(list1.get(0).getName());
+                tv_first_money.setText("打赏" + list1.get(0).getZonjine() + "元");
+                Glide.with(mActivity).load(list1.get(0).getImage()).placeholder(R.mipmap.ic_launcher).into(img_first_user_head);
+                // 第二名
+                tv_second_nickname.setText(list1.get(1).getName());
+                tv_second_money.setText("打赏" + list1.get(1).getZonjine() + "元");
+                Glide.with(mActivity).load(list1.get(1).getImage()).placeholder(R.mipmap.ic_launcher).into(img_second_user_head);
+                // 第三名
+                tv_third_nickname.setText(list1.get(2).getName());
+                tv_third_money.setText("打赏" + list1.get(2).getZonjine() + "元");
+                Glide.with(mActivity).load(list1.get(2).getImage()).placeholder(R.mipmap.ic_launcher).into(img_third_user_head);
+            });
+        } else {
+            notLogin();
+        }
     }
 
     public void getCharm(int type) {
-        mPresenter.getCharm(type);
-        mPresenter.setOnRankingListener(list1 -> {
-            for (int i = 3; i < list1.size(); i++) {
-                list.add(list1.get(i));
-            }
-            adapter.notifyDataSetChanged();
-            // 第一名
-            tv_first_nickname.setText(list1.get(0).getName());
-            tv_first_money.setText("收到" + list1.get(0).getZonjine() + "元");
-            Glide.with(mActivity).load(list1.get(0).getImage()).placeholder(R.mipmap.ic_launcher).into(img_first_user_head);
-            // 第二名
-            tv_second_nickname.setText(list1.get(1).getName());
-            tv_second_money.setText("收到" + list1.get(1).getZonjine() + "元");
-            Glide.with(mActivity).load(list1.get(1).getImage()).placeholder(R.mipmap.ic_launcher).into(img_second_user_head);
-            // 第三名
-            tv_third_nickname.setText(list1.get(2).getName());
-            tv_third_money.setText("收到" + list1.get(2).getZonjine() + "元");
-            Glide.with(mActivity).load(list1.get(2).getImage()).placeholder(R.mipmap.ic_launcher).into(img_third_user_head);
+        if (LoginUtils.getInstance().isLogin()) {
+            mPresenter.getCharm(type);
+            mPresenter.setOnRankingListener(list1 -> {
+                for (int i = 3; i < list1.size(); i++) {
+                    list.add(list1.get(i));
+                }
+                adapter.notifyDataSetChanged();
+                // 第一名
+                tv_first_nickname.setText(list1.get(0).getName());
+                tv_first_money.setText("收到" + list1.get(0).getZonjine() + "元");
+                Glide.with(mActivity).load(list1.get(0).getImage()).placeholder(R.mipmap.ic_launcher).into(img_first_user_head);
+                // 第二名
+                tv_second_nickname.setText(list1.get(1).getName());
+                tv_second_money.setText("收到" + list1.get(1).getZonjine() + "元");
+                Glide.with(mActivity).load(list1.get(1).getImage()).placeholder(R.mipmap.ic_launcher).into(img_second_user_head);
+                // 第三名
+                tv_third_nickname.setText(list1.get(2).getName());
+                tv_third_money.setText("收到" + list1.get(2).getZonjine() + "元");
+                Glide.with(mActivity).load(list1.get(2).getImage()).placeholder(R.mipmap.ic_launcher).into(img_third_user_head);
 
-        });
+            });
+        } else {
+            notLogin();
+        }
     }
 
 

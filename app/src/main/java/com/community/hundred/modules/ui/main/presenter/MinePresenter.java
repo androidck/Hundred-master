@@ -30,13 +30,11 @@ public class MinePresenter extends BasePresenter<IMineView> {
 
     // 获取个人中心资料
     public void getUserCenter(String uid) {
-        prContext.showLoading();
         Map<String, String> map = new HashMap();
         map.put("uid", uid);
         OkHttp.postAsync(HttpConstant.userURL, map, new OkHttp.DataCallBack() {
             @Override
             public void requestSuccess(String result) throws Exception {
-                prContext.showComplete();
                 BaseResponse response = new Gson().fromJson(result, BaseResponse.class);
                 if ("1".equals(response.getSta())) {
                     JsonObject object = new JsonParser().parse(result).getAsJsonObject();

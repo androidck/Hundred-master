@@ -1,7 +1,6 @@
 package com.community.hundred.modules.ui.pay;
 
 
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +13,10 @@ import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.modules.ui.pay.presenter.WithdrawPresenter;
 import com.community.hundred.modules.ui.pay.presenter.view.IWithdrawView;
+import com.google.gson.Gson;
 import com.hjq.widget.view.ClearEditText;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 // 提现
@@ -75,7 +74,7 @@ public class WithdrawActivity extends MyActivity<IWithdrawView, WithdrawPresente
             toast("请输入提现金额");
         } else if (TextUtils.isEmpty(edPwd.getText().toString().trim())) {
             toast("请输入安全码");
-        }  else {
+        } else {
             // 提现
             String money = edWithdrawMoney.getText().toString().trim();
             String account = edAlipayAccount.getText().toString().trim();
@@ -105,6 +104,8 @@ public class WithdrawActivity extends MyActivity<IWithdrawView, WithdrawPresente
                 isVerification();
                 break;
         }
+
+
     }
 
 

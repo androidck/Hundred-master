@@ -173,13 +173,13 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 }
                 break;
             case R.id.ly_my_wallet:// 我的钱包
-                expectTip();
+
                 break;
             case R.id.ly_withdraw_count:// 累计提现
-                expectTip();
+
                 break;
             case R.id.ly_extension:// 我的钱包
-                expectTip();
+
                 break;
             case R.id.tv_conduct:// 全民理财
                 expectTip();
@@ -240,7 +240,7 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 }
                 break;
             case R.id.tv_local_video:// 本地视频
-                expectTip();
+               // expectTip();
                 break;
             case R.id.tv_opinion:
                 if (LoginUtils.getInstance().isLogin()) {
@@ -264,6 +264,7 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
         mPresenter.setOnUserCenterListener(entry -> {
             //昵称
             tvNickName.setText(entry.getNickname());
+
             // 头像
             Glide.with(mActivity)
                     .load(HttpConstant.BASE_HOST + entry.getImage())

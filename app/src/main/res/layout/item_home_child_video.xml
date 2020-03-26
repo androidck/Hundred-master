@@ -6,7 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/space_350"
-        android:layout_height="@dimen/space_260"
+        android:layout_height="@dimen/space_300"
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/space_12">
 
@@ -23,7 +23,7 @@
                     android:id="@+id/img_cover"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@mipmap/item_live" />
             </com.zhy.autolayout.AutoRelativeLayout>
 

@@ -24,6 +24,8 @@ public class MessageAdapter extends BaseRecyclerViewAdapter<MessageAdapter.ViewH
     private Context mContext;
     private List<MyMessageEntry> list;
 
+    private OnItemClickListener onItemClickListener;
+
     public MessageAdapter(Context context, List<MyMessageEntry> list) {
         super(context);
         this.mContext = context;
@@ -47,7 +49,9 @@ public class MessageAdapter extends BaseRecyclerViewAdapter<MessageAdapter.ViewH
         // 时间
         holder.tv_time.setText(RelativeDateFormatUtils.format(new Date(Long.parseLong(entry.getCreatetime()) * 1000)));
         holder.tv_message.setText(entry.getContent());
-
+        holder.itemView.setOnClickListener(v -> {
+            onItemClickListener.onClick(position);
+        });
     }
 
     @Override
@@ -69,5 +73,13 @@ public class MessageAdapter extends BaseRecyclerViewAdapter<MessageAdapter.ViewH
             tv_message = (TextView) findViewById(R.id.tv_message);
 
         }
+    }
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

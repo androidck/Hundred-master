@@ -15,6 +15,16 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
+        <com.community.hundred.common.view.GiftItemView
+            android:id="@+id/gift_item_first"
+            android:layout_marginLeft="@dimen/space_24"
+            android:layout_marginRight="@dimen/space_24"
+            android:clipChildren="true"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.community.hundred.common.view.GiftItemView>
+
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
             android:layout_width="match_parent"

@@ -3,9 +3,11 @@ package com.community.hundred.modules.ui.chat.presenter;
 import android.util.Log;
 
 import com.community.hundred.common.base.BasePresenter;
+import com.community.hundred.common.base.BaseResponse;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.network.OkHttp;
+import com.community.hundred.modules.eventbus.SendMsgWrap;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.chat.entry.MsgEntry;
 import com.community.hundred.modules.ui.chat.presenter.view.IPrivateLetterView;
@@ -14,6 +16,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -61,7 +65,6 @@ public class PrivateLetterPresenter extends BasePresenter<IPrivateLetterView> {
 
     // 发送消息
     public void sendMgs(String content, String bid) {
-        prContext.showLoading();
         Map<String, String> map = new HashMap<>();
         map.put("uid", LoginUtils.getInstance().getUid());
         map.put("content", content);
@@ -69,13 +72,16 @@ public class PrivateLetterPresenter extends BasePresenter<IPrivateLetterView> {
         OkHttp.postAsync(HttpConstant.siliaoURL, map, new OkHttp.DataCallBack() {
             @Override
             public void requestSuccess(String result) throws Exception {
-                prContext.showComplete();
-                Log.d("dasdasd", result);
+                BaseResponse response = new Gson().fromJson(result, BaseResponse.class);
+                if (response.getCode() == 200) {
+                    EventBus.getDefault().post(SendMsgWrap.getInstance(response.getCode()));
+                }
             }
 
             @Override
             public void requestFailure(Request request, IOException e) {
                 e.printStackTrace();
+                netWorkError();
 
             }
         });

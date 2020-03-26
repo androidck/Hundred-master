@@ -9,22 +9,30 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.community.hundred.R;
+import com.community.hundred.common.base.BaseResponse;
 import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.EventBusConstant;
 import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.constant.KeyConstant;
+import com.community.hundred.common.network.OkHttp;
 import com.community.hundred.modules.adapter.CircleAdapter;
 import com.community.hundred.modules.adapter.CircleChildHeaderAdapter;
 import com.community.hundred.modules.dialog.GiftDialog;
 import com.community.hundred.modules.dialog.ReportDialog;
+import com.community.hundred.modules.eventbus.SendGiftWrap;
 import com.community.hundred.modules.eventbus.SpecialWrap;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.main.MainActivity;
+import com.community.hundred.modules.ui.main.entry.UserCenterEntry;
 import com.community.hundred.modules.ui.main.fragment.entry.CircleChildEntry;
 import com.community.hundred.modules.ui.main.fragment.entry.CircleChildHeaderEntry;
+import com.community.hundred.modules.ui.main.fragment.entry.SendGiftEntry;
 import com.community.hundred.modules.ui.main.fragment.presenter.SpecialChildPresenter;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.ISpecialChildView;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -34,10 +42,14 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
+import okhttp3.Request;
 
 // 圈子子页面
 public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecialChildView, SpecialChildPresenter> {
@@ -61,6 +73,8 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
     private String classifyId;// 分类id
 
     private int firstLoad = 0;
+
+    private String nickName, userHead;
 
     @Override
     protected SpecialChildPresenter createPresenter() {
@@ -222,6 +236,17 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
                     new GiftDialog(mActivity, yue, list1, (name, giftId, img) -> {
                         // 调用打赏的接口
                         mPresenter.senGift(giftId, list.get(position).getId());
+                        mPresenter.setOnSuccessListener(state -> {
+                            if (state == 8) {
+                                SendGiftEntry entry = new SendGiftEntry();
+                                entry.name = nickName;// 名称
+                                entry.giftName = "送你：" + name;//礼物名称
+                                entry.img = userHead;// 头像
+                                entry.giftImg = img;//礼物图片
+                                entry.num = 0;// 数量
+                                EventBus.getDefault().post(SendGiftWrap.getInstance(entry));
+                            }
+                        });
                     }).show();
                 });
             } else {
@@ -287,6 +312,34 @@ public class CircleNewChildFragment extends MyLazyFragment<MainActivity, ISpecia
                 getRecommendList();
                 break;
         }
+        getUserCenter(LoginUtils.getInstance().getUid());
+    }
+
+    public void getUserCenter(String uid) {
+        Map<String, String> map = new HashMap();
+        map.put("uid", uid);
+        OkHttp.postAsync(HttpConstant.userURL, map, new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                BaseResponse response = new Gson().fromJson(result, BaseResponse.class);
+                if ("1".equals(response.getSta())) {
+                    JsonObject object = new JsonParser().parse(result).getAsJsonObject();
+                    JsonObject jsonObject = object.getAsJsonObject().getAsJsonObject("data");
+                    UserCenterEntry entry = new Gson().fromJson(jsonObject.toString(), UserCenterEntry.class);
+                    userHead = HttpConstant.BASE_HOST + entry.getImage();
+                    nickName = entry.getNickname();
+                } else {
+                    toast(response.getMsg());
+                }
+
+
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                toast("网络请求失败");
+            }
+        });
     }
 
     public static CircleNewChildFragment getInstance(int position) {

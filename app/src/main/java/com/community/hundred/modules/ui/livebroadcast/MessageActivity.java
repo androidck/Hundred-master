@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.community.hundred.R;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
@@ -112,6 +113,13 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
                 }, 200);
             }
         });
+        adapter.setOnItemClickListener(position -> {
+            ARouter.getInstance().build(ActivityConstant.PRIVATE_LETTER)
+                    .withString("nickName", list.get(position).getNickname())
+                    .withString("bid", list.get(position).getBid())
+                    .navigation();
+        });
+
 
     }
 
@@ -180,7 +188,15 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
             case R.id.tv_my_xx:
                 checkId = 0;
                 list.clear();
+                adapter = new MessageAdapter(this, list);
+                recyclerView.setAdapter(adapter);
                 getMyMessage();
+                adapter.setOnItemClickListener(position -> {
+                    ARouter.getInstance().build(ActivityConstant.PRIVATE_LETTER)
+                            .withString("nickName", list.get(position).getNickname())
+                            .withString("bid", list.get(position).getUid())
+                            .navigation();
+                });
                 break;
             case R.id.tv_my_hf:
                 checkId = 1;
@@ -188,19 +204,28 @@ public class MessageActivity extends MyActivity<IMessageView, MessagePresenter> 
                 hfAdapter = new MessageAdapter(this, hfList);
                 recyclerView.setAdapter(hfAdapter);
                 getReply();
+                hfAdapter.setOnItemClickListener(position -> {
+                    ARouter.getInstance().build(ActivityConstant.PRIVATE_LETTER)
+                            .withString("nickName", hfList.get(position).getNickname())
+                            .withString("bid", hfList.get(position).getBid())
+                            .navigation();
+                });
                 break;
             case R.id.tv_my_lw:
-                checkId = 2;
+            /*    checkId = 2;
                 receivedGiftAdapter = new ReceivedGiftAdapter(this, giftEntries);
                 recyclerView.setAdapter(receivedGiftAdapter);
                 giftEntries.clear();
-                myGift();
+                myGift();*/
+                ARouter.getInstance().build(ActivityConstant.RECEIVED_GIFT).navigation();
                 break;
             case R.id.tv_my_xt:
-                checkId = 3;
+             /*   checkId = 3;
                 systemNotifyAdapter = new SystemNotifyAdapter(this, systemEntries);
                 recyclerView.setAdapter(systemNotifyAdapter);
-                getSystem();
+                getSystem();*/
+                ARouter.getInstance().build(ActivityConstant.SYSTEM_NOTIFY).navigation();
+
                 break;
         }
     }

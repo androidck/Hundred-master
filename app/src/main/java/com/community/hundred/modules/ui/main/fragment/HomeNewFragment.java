@@ -1,29 +1,21 @@
 package com.community.hundred.modules.ui.main.fragment;
 
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.palette.graphics.Palette;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.community.hundred.R;
 import com.community.hundred.common.adapter.MyHomeViewPageAdapter;
 import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.KeyConstant;
-import com.community.hundred.common.util.PaletteHelper;
 import com.community.hundred.modules.eventbus.GradualWrap;
+import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.main.MainActivity;
 import com.community.hundred.modules.ui.main.fragment.entry.BannerEntry;
 import com.community.hundred.modules.ui.main.fragment.homechild.HomeChildNewFragment;
@@ -31,7 +23,6 @@ import com.community.hundred.modules.ui.main.fragment.presenter.HomePresenter;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.IHomeView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.gyf.immersionbar.ImmersionBar;
 import com.zhy.autolayout.AutoLinearLayout;
 
 import org.greenrobot.eventbus.EventBus;
@@ -196,27 +187,23 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
     }
 
 
-
-
-
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onGradualWrap(GradualWrap wrap) {
         if (wrap != null) {
-          if (KeyConstant.HOME_TITLE.equals(wrap.title)){
-              if (scrollYNew <= 0) {
-                  tvBannerbg.setBackgroundColor(wrap.vibrantColor);
-                  tvToorbar.setBackgroundColor(wrap.vibrantColor);
-              }
-              int rgb = wrap.vibrantColor;
-              int r = (rgb & 16711680) >> 16;
-              int g = (rgb & 65280) >> 8;
-              int b = (rgb & 255);
+            if (KeyConstant.HOME_TITLE.equals(wrap.title)) {
+                if (scrollYNew <= 0) {
+                    tvBannerbg.setBackgroundColor(wrap.vibrantColor);
+                    tvToorbar.setBackgroundColor(wrap.vibrantColor);
+                }
+                int rgb = wrap.vibrantColor;
+                int r = (rgb & 16711680) >> 16;
+                int g = (rgb & 65280) >> 8;
+                int b = (rgb & 255);
 
-              redCode = r;
-              greenCode = g;
-              blueCode = b;
-          }
+                redCode = r;
+                greenCode = g;
+                blueCode = b;
+            }
         }
     }
 
@@ -232,6 +219,21 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
         super.onDestroy();
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
+        }
+    }
+
+    @OnClick({R.id.img_surface, R.id.img_add})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.img_surface:
+                if (LoginUtils.getInstance().isLogin()) {
+                    ARouter.getInstance().build(ActivityConstant.HISTORY_LOOK).navigation();
+                } else {
+                    notLogin();
+                }
+                break;
+            case R.id.img_add:
+                break;
         }
     }
 }

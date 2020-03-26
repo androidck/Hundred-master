@@ -45,6 +45,7 @@ public class SpecialChildPresenter extends BasePresenter<ISpecialChildView> {
 
     private OnRankingListener onRankingListener;
 
+
     public SpecialChildPresenter(MyActivity context) {
         super(context);
     }
@@ -247,8 +248,8 @@ public class SpecialChildPresenter extends BasePresenter<ISpecialChildView> {
         OkHttp.postAsync(HttpConstant.dashangURL, map, new OkHttp.DataCallBack() {
             @Override
             public void requestSuccess(String result) throws Exception {
-                Log.d("sendGiftResult", result);
                 prContext.showComplete();
+                onSuccessListener.onSuccess(8);
             }
 
             @Override

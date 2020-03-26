@@ -16,12 +16,14 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.community.hundred.R;
 import com.community.hundred.common.base.BasePresenter;
+import com.community.hundred.common.base.BaseResponse;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.EventBusConstant;
 import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.dialog.MessageDialog;
 import com.community.hundred.common.helper.ActivityStackManager;
+import com.community.hundred.common.network.OkHttp;
 import com.community.hundred.common.ninegridlayout.NineGridTestLayout;
 import com.community.hundred.common.util.RelativeDateFormatUtils;
 import com.community.hundred.common.util.StatusBarUtil;
@@ -32,10 +34,14 @@ import com.community.hundred.modules.eventbus.CommentWrap;
 import com.community.hundred.modules.eventbus.SendGiftWrap;
 import com.community.hundred.modules.eventbus.SpecialWrap;
 import com.community.hundred.modules.manager.LoginUtils;
+import com.community.hundred.modules.ui.main.entry.UserCenterEntry;
 import com.community.hundred.modules.ui.main.fragment.entry.SendGiftEntry;
 import com.community.hundred.modules.ui.main.fragment.presenter.CircleChildPresenter;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.ICircleChildView;
 import com.community.hundred.modules.ui.post.entry.CommentEntry;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.hjq.base.BaseDialog;
 import com.hjq.widget.view.ClearEditText;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -50,14 +56,18 @@ import org.salient.artplayer.VideoView;
 import org.salient.artplayer.exo.ExoPlayer;
 import org.salient.artplayer.ui.ControlPanel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.Request;
 
 // 帖子内容详情
 @Route(path = ActivityConstant.POST_DETAILS)
@@ -92,6 +102,9 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
     private String circleId;
 
     private List<CommentEntry> list = new ArrayList<>();
+
+
+    private String nickName, userHead;
 
     @Override
     protected CircleChildPresenter createPresenter() {
@@ -166,6 +179,7 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
             mPresenter.commentLove(list.get(position).getId());
         });
 
+
         refresh.setEnableLoadMore(false);
         refresh.setEnableRefresh(false);
     }
@@ -183,6 +197,7 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
     @Override
     protected void initData() {
         getDetails();
+        getUserCenter(LoginUtils.getInstance().getUid());
     }
 
     // 获取帖子详情
@@ -224,12 +239,12 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
                 tv_attention.setBackgroundResource(R.drawable.shape_setup_attent_button);
                 tv_attention.setText("已关注");
                 tv_attention.setCompoundDrawables(null, null, null, null);
-               tv_attention.setPadding(0,6,0,6);
+                tv_attention.setPadding(0, 6, 0, 6);
             } else {
                 tv_attention.setBackgroundResource(R.drawable.shape_setup_button);
                 tv_attention.setText("关注");
                 tv_attention.setCompoundDrawables(setDrawable(R.mipmap.icon_add_follow), null, null, null);
-                tv_attention.setPadding(20,6,0,6);
+                tv_attention.setPadding(20, 6, 0, 6);
             }
 
             tv_label.setText(entry.getFlname());
@@ -319,6 +334,18 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
                     notLogin();
                 }
             });
+
+            // 私信
+            img_comment.setOnClickListener(v -> {
+                if (LoginUtils.getInstance().isLogin()) {
+                    ARouter.getInstance().build(ActivityConstant.PRIVATE_LETTER)
+                            .withString("nickName", entry.getNickname())
+                            .withString("bid", entry.getUser_id())
+                            .navigation();
+                } else {
+                    notLogin();
+                }
+            });
         });
     }
 
@@ -343,6 +370,33 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
         }
     }
 
+    public void getUserCenter(String uid) {
+        Map<String, String> map = new HashMap();
+        map.put("uid", uid);
+        OkHttp.postAsync(HttpConstant.userURL, map, new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                BaseResponse response = new Gson().fromJson(result, BaseResponse.class);
+                if ("1".equals(response.getSta())) {
+                    JsonObject object = new JsonParser().parse(result).getAsJsonObject();
+                    JsonObject jsonObject = object.getAsJsonObject().getAsJsonObject("data");
+                    UserCenterEntry entry = new Gson().fromJson(jsonObject.toString(), UserCenterEntry.class);
+                    userHead = HttpConstant.BASE_HOST + entry.getImage();
+                    nickName = entry.getNickname();
+                } else {
+                    toast(response.getMsg());
+                }
+
+
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                toast("网络请求失败");
+            }
+        });
+    }
+
     public void gitGift() {
         mPresenter.getGiftList();
         mPresenter.setOnGiftListener((yue, list1) -> {
@@ -351,9 +405,9 @@ public class PostDetailsActivity extends MyActivity<ICircleChildView, CircleChil
                 mPresenter.setOnSuccessListener(state -> {
                     if (state == 8) {
                         SendGiftEntry entry = new SendGiftEntry();
-                        entry.name = "轮回的悲伤";// 名称
+                        entry.name = nickName;// 名称
                         entry.giftName = "送你：" + name;//礼物名称
-                        entry.img = img;// 头像
+                        entry.img = userHead;// 头像
                         entry.giftImg = img;//礼物图片
                         entry.num = 0;// 数量
                         EventBus.getDefault().post(SendGiftWrap.getInstance(entry));
