@@ -54,6 +54,7 @@ public class MainActivity extends MyActivity<IMainView, MainPresenter> implement
         bvHomeNavigation.setOnNavigationItemSelectedListener(this);
         KeyboardWatcher.with(this)
                 .setListener(this);
+
     }
 
     @Override

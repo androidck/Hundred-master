@@ -123,7 +123,6 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
         recyclerView.setLayoutManager(manager);
         adapter = new HomeChildVideoAdapter(getContext(), list);
         recyclerView.setAdapter(adapter);
-
         ViewTreeObserver vto = banner.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(() -> {
             //设置banner图距离顶部的距离 56dp + 20dp

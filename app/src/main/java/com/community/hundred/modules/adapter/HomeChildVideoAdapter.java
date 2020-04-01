@@ -65,6 +65,7 @@ public class HomeChildVideoAdapter extends BaseRecyclerViewAdapter<HomeChildVide
             super(parent, layoutId);
             img_video = (ImageView) findViewById(R.id.img_cover);
             tv_video_title = (TextView) findViewById(R.id.video_title);
+
         }
     }
 
