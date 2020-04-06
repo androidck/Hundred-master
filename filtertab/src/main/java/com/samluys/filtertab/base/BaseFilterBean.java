@@ -12,6 +12,11 @@ public abstract class BaseFilterBean<T extends BaseFilterBean> {
     public abstract String getItemName();
 
     /**
+     * item名称
+     */
+    public abstract int  getItemPosition();
+
+    /**
      * 子名称
      * @return
      */

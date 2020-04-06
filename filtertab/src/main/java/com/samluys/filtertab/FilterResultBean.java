@@ -35,6 +35,15 @@ public class FilterResultBean {
      */
     private List<MulTypeBean> selectList;
 
+    private int position;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public int getPopupIndex() {
         return popupIndex;

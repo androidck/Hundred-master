@@ -8,6 +8,10 @@
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/view_common_recycleview" />
+      <com.hjq.widget.layout.HintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+          <include layout="@layout/view_common_recycleview" />
+      </com.hjq.widget.layout.HintLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </com.zhy.autolayout.AutoLinearLayout>

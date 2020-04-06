@@ -19,10 +19,21 @@ public class SecondTabEntry extends BaseFilterBean {
      */
     private int selected;
 
-    public SecondTabEntry(int tid, String name, int selected) {
+    private int position;
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public SecondTabEntry(int tid, String name, int selected, int position) {
         this.tid = tid;
         this.name = name;
         this.selected = selected;
+        this.position = position;
     }
 
     public int getTid() {
@@ -52,6 +63,11 @@ public class SecondTabEntry extends BaseFilterBean {
     @Override
     public String getItemName() {
         return name;
+    }
+
+    @Override
+    public int getItemPosition() {
+        return position;
     }
 
     @Override

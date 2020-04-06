@@ -5,5 +5,6 @@
     android:layout_height="wrap_content"
     android:background="@color/colorAccent"
     app:titleColor="@android:color/white"
+    app:lineColor="@color/transparent"
     />
 

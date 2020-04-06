@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.community.hundred.R;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
@@ -120,6 +121,13 @@ public class SearchActivity extends MyActivity<ISearchView, SearchPresenter> {
                 }, 200);
             }
         });
+
+        adapter.setOnItemClickListener(position -> {
+            ARouter.getInstance().build(ActivityConstant.VIDEO_DETAILS)
+                    .withString("videoId", list.get(position).getId())
+                    .navigation();
+        });
+
     }
 
     @Override
@@ -212,6 +220,9 @@ public class SearchActivity extends MyActivity<ISearchView, SearchPresenter> {
                 recyclerView.removeHeaderView(headerView);
             }
             edSearchCount.setText(list.get(pos).getKeyword());
+            lySearchTip.setVisibility(View.VISIBLE);
+            String content = "<font>搜索\t“</font><font color='#FE581E'>" + list.get(pos).getKeyword() + "</font><font>”</font>";
+            tvTip.setText(Html.fromHtml(content));
             getVideo(list.get(pos).getKeyword());
         }));
     }
@@ -240,6 +251,9 @@ public class SearchActivity extends MyActivity<ISearchView, SearchPresenter> {
                     recyclerView.removeHeaderView(headerView);
                 }
                 edSearchCount.setText(mList.get(pos));
+                lySearchTip.setVisibility(View.VISIBLE);
+                String content = "<font>搜索\t“</font><font color='#FE581E'>" + mList.get(pos) + "</font><font>”</font>";
+                tvTip.setText(Html.fromHtml(content));
                 getVideo(mList.get(pos));
             }));
         }

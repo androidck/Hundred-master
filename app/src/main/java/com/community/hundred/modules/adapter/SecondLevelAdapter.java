@@ -21,6 +21,8 @@ public class SecondLevelAdapter extends BaseRecyclerViewAdapter<SecondLevelAdapt
     private Context mContext;
     private List<SecondEntry> list;
 
+    private OnItemClickListener onItemClickListener;
+
     public SecondLevelAdapter(Context context, List<SecondEntry> list) {
         super(context);
         this.mContext = context;
@@ -39,10 +41,13 @@ public class SecondLevelAdapter extends BaseRecyclerViewAdapter<SecondLevelAdapt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SecondEntry entry = list.get(position);
-        holder.video_title.setText(entry.getVideoTitle());
-        holder.tv_time.setText(entry.getTime());
-        holder.tv_play_count.setText(entry.getPlayCount() + "次播放");
-        Glide.with(mContext).load(R.mipmap.item_live).into(holder.img_cover);
+        holder.video_title.setText(entry.getName());
+        //holder.tv_time.setText(entry.getTime());
+        holder.tv_play_count.setText(entry.getPlay_num() + "次播放");
+        Glide.with(mContext).load(entry.getImage()).into(holder.img_cover);
+        holder.itemView.setOnClickListener(v -> {
+            onItemClickListener.onClick(position);
+        });
     }
 
     @Override
@@ -62,5 +67,13 @@ public class SecondLevelAdapter extends BaseRecyclerViewAdapter<SecondLevelAdapt
             tv_time = (TextView) findViewById(R.id.tv_time);
             tv_play_count = (TextView) findViewById(R.id.tv_play_count);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

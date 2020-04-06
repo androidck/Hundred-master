@@ -158,6 +158,7 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
                 oneAdapter.setOnItemClickListener(position -> {
                     ARouter.getInstance().build(ActivityConstant.SECOND_LEVEL)
                             .withString("title", entryList.get(position).getName())
+                            .withString("id",entryList.get(position).getId())
                             .navigation();
                 });
             } else if ("小说".equals(name)) {

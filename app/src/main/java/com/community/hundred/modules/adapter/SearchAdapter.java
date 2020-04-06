@@ -22,6 +22,8 @@ public class SearchAdapter extends BaseRecyclerViewAdapter<SearchAdapter.ViewHol
     private List<SearchEntry> list;
     private Context mContext;
 
+    private OnItemClickListener onItemClickListener;
+
     public SearchAdapter(Context context, List<SearchEntry> list) {
         super(context);
         this.mContext = context;
@@ -43,6 +45,9 @@ public class SearchAdapter extends BaseRecyclerViewAdapter<SearchAdapter.ViewHol
         SearchEntry entry = list.get(position);
         holder.tv_title.setText(entry.getName());
         Glide.with(mContext).load(HttpConstant.VIDEO_URL + entry.getImage()).placeholder(R.mipmap.ic_launcher).into(holder.tv_img);
+        holder.itemView.setOnClickListener(v -> {
+            onItemClickListener.onClick(position);
+        });
     }
 
     @Override
@@ -59,5 +64,13 @@ public class SearchAdapter extends BaseRecyclerViewAdapter<SearchAdapter.ViewHol
             tv_img = (RoundAngleImageView) findViewById(R.id.tv_img);
             tv_title = (TextView) findViewById(R.id.tv_title);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

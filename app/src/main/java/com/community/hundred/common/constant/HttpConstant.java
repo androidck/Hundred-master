@@ -70,6 +70,11 @@ public class HttpConstant {
     // 小说分类列表
     public static final String novClassListURL = BASE_URL + "Gj/xiaoshuo";
 
+    // 获取二级分类
+    public static final String secondLiveURL = BASE_URL + "Gj/ercate";
+
+    // 二级分类视频列表
+    public static final String secondLiveChildURL = BASE_URL + "gj/ejsx";
 
     /********************************************直播相关***************************************/
     //获取直播链接
