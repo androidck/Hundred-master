@@ -46,7 +46,7 @@ public class StartUpActivity extends MyActivity<IStartUpView, StartUpPresenter> 
     }
 
     //授权
-    private void setEmpower() {
+     private void setEmpower() {
         XXPermissions.with(StartUpActivity.this)
                 .constantRequest() //可设置被拒绝后继续申请，直到用户授权或者永久拒绝
                 .permission(Permission.Group.LOCATION, Permission.Group.STORAGE, Permission.Group.CAMERA_GROUP) //不指定权限则自动获取清单中的危险权限

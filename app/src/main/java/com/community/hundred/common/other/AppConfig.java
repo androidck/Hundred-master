@@ -1,7 +1,7 @@
 package com.community.hundred.common.other;
 
 
-import com.community.hundred.BuildConfig;
+import com.alibaba.android.arouter.BuildConfig;
 
 /**
  *    author : Android 轮子哥

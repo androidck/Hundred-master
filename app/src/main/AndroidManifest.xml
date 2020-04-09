@@ -65,7 +65,9 @@
 
         <service android:name="com.amap.api.location.APSService"></service>
 
-        <activity android:name=".modules.ui.startup.StartUpActivity">
+        <activity
+            android:name=".modules.ui.startup.StartUpActivity"
+            android:theme="@style/LauncherTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

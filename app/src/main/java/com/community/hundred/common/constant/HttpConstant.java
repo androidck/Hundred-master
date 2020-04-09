@@ -5,7 +5,7 @@ package com.community.hundred.common.constant;
  */
 public class HttpConstant {
 
-    public static String BASE_HOST = "http://bainiao.pinrui666.top/";
+    public static String BASE_HOST = "http://bn.pinrui666.top:99/";
 
     public static String PROJECT = "index/";
 
