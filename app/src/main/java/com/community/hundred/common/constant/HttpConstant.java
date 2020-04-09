@@ -17,7 +17,7 @@ public class HttpConstant {
 
     public static String H5IP = "http://test.liclanch.com/wap";
 
-    public static String VIDEO_URL = "http://bainiao.pinrui666.top";
+    public static String VIDEO_URL = "http://bn.pinrui666.top:99";
 
     // 分享url
     public static final String SHARE_URL = BASE_URL + "register/share?uid=";
