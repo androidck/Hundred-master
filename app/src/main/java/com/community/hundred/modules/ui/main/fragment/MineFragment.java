@@ -186,13 +186,21 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 break;
             case R.id.tv_pay:// 钱包充值
                 if (LoginUtils.getInstance().isLogin()) {
-                    ARouter.getInstance().build(ActivityConstant.RECHARGE).navigation();
+                    ARouter.getInstance().build(ActivityConstant.RECHARGE)
+                            .withInt("selectIndex", 0)
+                            .navigation();
                 } else {
                     notLogin();
                 }
                 break;
             case R.id.tv_open_member:// 开通会员
-                expectTip();
+                if (LoginUtils.getInstance().isLogin()) {
+                    ARouter.getInstance().build(ActivityConstant.RECHARGE)
+                            .withInt("selectIndex", 1)
+                            .navigation();
+                } else {
+                    notLogin();
+                }
                 break;
             case R.id.tv_withdraw:
                 ARouter.getInstance().build(ActivityConstant.WITHDRAW).navigation();
@@ -240,7 +248,7 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 }
                 break;
             case R.id.tv_local_video:// 本地视频
-               // expectTip();
+                // expectTip();
                 break;
             case R.id.tv_opinion:
                 if (LoginUtils.getInstance().isLogin()) {

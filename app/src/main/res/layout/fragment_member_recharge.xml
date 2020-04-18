@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_recharge">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_400"
+                    android:background="#fde657">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/space_48"
+                        android:layout_marginTop="@dimen/space_48"
+                        android:layout_marginRight="@dimen/space_48"
+                        android:background="@mipmap/control_bg"
+                        android:orientation="horizontal">
+
+                        <com.zhy.autolayout.AutoLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="vertical">
+
+                            <com.zhy.autolayout.AutoRelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <ImageView
+                                    android:id="@+id/img_control_logo"
+                                    android:layout_width="@dimen/space_80"
+                                    android:layout_height="@dimen/space_80"
+                                    android:layout_marginLeft="@dimen/space_50"
+                                    android:layout_marginTop="@dimen/space_50"
+                                    android:src="@mipmap/icon_control_logo" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/space_24"
+                                    android:layout_marginTop="@dimen/space_70"
+                                    android:layout_toRightOf="@id/img_control_logo"
+                                    android:src="@mipmap/icon_word_name" />
+                            </com.zhy.autolayout.AutoRelativeLayout>
+
+                            <com.zhy.autolayout.AutoRelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1.5">
+
+                                <com.zhy.autolayout.AutoLinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/space_40"
+                                    android:background="@drawable/shape_control_money_bg"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/space_60"
+                                        android:gravity="center_vertical"
+                                        android:text="当前用户："
+                                        android:textSize="@dimen/font_size_28px" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/space_1"
+                                        android:background="#fffae9" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/space_60"
+                                        android:gravity="center_vertical"
+                                        android:text="钱包余额："
+                                        android:textColor="#fc7575"
+                                        android:textSize="@dimen/font_size_28px" />
+                                </com.zhy.autolayout.AutoLinearLayout>
+                            </com.zhy.autolayout.AutoRelativeLayout>
+                        </com.zhy.autolayout.AutoLinearLayout>
+
+                        <com.zhy.autolayout.AutoRelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="@dimen/space_344"
+                                android:layout_height="@dimen/space_350"
+                                android:layout_alignParentRight="true"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/icon_new_zuan" />
+                        </com.zhy.autolayout.AutoRelativeLayout>
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-12dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/icon_hu" />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/space_24"
+                        android:layout_marginTop="@dimen/space_40"
+                        android:layout_marginRight="@dimen/space_24"
+                        android:layout_marginBottom="@dimen/space_20">
+
+                        <com.zhy.autolayout.AutoLinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/space_80"
+                                android:background="@drawable/shape_title_select_bg"
+                                android:gravity="center"
+                                android:text="请选择开通期限"
+                                android:textColor="#909090" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView_one"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_20" />
+
+                            <com.yanzhenjie.recyclerview.SwipeRecyclerView
+                                android:id="@+id/recyclerView_two"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                />
+
+                            <com.zhy.autolayout.AutoLinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_20"
+                                android:layout_marginBottom="@dimen/space_20"
+                                android:background="@drawable/shape_explain"
+                                android:layout_marginLeft="@dimen/space_20"
+                                android:layout_marginRight="@dimen/space_20"
+
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/space_24"
+                                    android:layout_marginTop="@dimen/space_20"
+                                    android:gravity="center_vertical"
+                                    android:text="开通说明"
+                                    android:textColor="#323232" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/space_30"
+                                    android:layout_marginTop="@dimen/space_20"
+                                    android:layout_marginRight="@dimen/space_30"
+                                    android:gravity="center_vertical"
+                                    android:text="用户一旦开通会员服务，该账号月内将减去相应的费用"
+                                    android:textColor="@color/colorDeep"
+                                    android:textSize="@dimen/space_26" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/space_30"
+                                    android:layout_marginTop="@dimen/space_10"
+                                    android:layout_marginRight="@dimen/space_30"
+                                    android:layout_marginBottom="@dimen/space_20"
+                                    android:textColor="@color/colorDeep"
+                                    android:textSize="@dimen/space_26" />
+
+                                />
+                            </com.zhy.autolayout.AutoLinearLayout>
+                        </com.zhy.autolayout.AutoLinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/tv_recharge"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_90"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="立即充值"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_30px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

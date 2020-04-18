@@ -5,12 +5,14 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.community.hundred.R;
 import com.community.hundred.common.adapter.MyViewPageAdapter;
 import com.community.hundred.common.base.BasePresenter;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
+import com.community.hundred.modules.adapter.PayTypeAdapter;
 import com.community.hundred.modules.ui.pay.fragment.BalanceRechargeFragment;
 import com.community.hundred.modules.ui.pay.fragment.MemberRechargeFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -34,6 +36,11 @@ public class RechargeActivity extends MyActivity {
 
     private MyViewPageAdapter adapter;
 
+
+
+    @Autowired
+    int selectIndex;
+
     @Override
     protected BasePresenter createPresenter() {
         return null;
@@ -56,6 +63,8 @@ public class RechargeActivity extends MyActivity {
         adapter = new MyViewPageAdapter(getSupportFragmentManager(), this, fragmentList, titleList);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(selectIndex);
+        viewPager.setCurrentItem(selectIndex);
     }
 
     @Override

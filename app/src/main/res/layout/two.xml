@@ -11,7 +11,8 @@
         android:layout_margin="8dp"
         android:background="@drawable/shape_money_unselect_bg"
         android:gravity="center"
-        android:hint="9-2000元"
+        android:hint="其他充值金额"
+        android:textColorHint="@color/colorAccent"
         android:inputType="number"
         android:padding="12dp"
         android:textSize="12sp" />

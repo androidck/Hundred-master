@@ -52,7 +52,7 @@ public class BalanceRechargeFragment extends MyLazyFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_recharge;
+        return R.layout.fragment_balance_recharge;
     }
 
     @Override
