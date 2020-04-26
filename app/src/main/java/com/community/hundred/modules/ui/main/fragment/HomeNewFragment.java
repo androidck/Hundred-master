@@ -207,12 +207,6 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
         }
     }
 
-    @OnClick(R.id.tv_search)
-    public void onViewClicked() {
-        ARouter.getInstance().build(ActivityConstant.SEARCH)
-                .withString("name", titleList.get(checkPosition))
-                .navigation();
-    }
 
     @Override
     public void onDestroy() {
@@ -222,9 +216,23 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
         }
     }
 
-    @OnClick({R.id.img_surface, R.id.img_add})
+
+    @OnClick({R.id.tv_search, R.id.tv_search_one, R.id.tv_search_two, R.id.img_surface, R.id.img_add})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.tv_search:
+                ARouter.getInstance().build(ActivityConstant.SEARCH)
+                        .withString("name", titleList.get(checkPosition))
+                        .navigation();
+                break;
+            case R.id.tv_search_one:
+                ARouter.getInstance().build(ActivityConstant.SEARCH)
+                        .withString("name", titleList.get(checkPosition))
+                        .navigation();
+                break;
+            case R.id.tv_search_two:
+                ARouter.getInstance().build(ActivityConstant.NOV_SECOND).navigation();
+                break;
             case R.id.img_surface:
                 if (LoginUtils.getInstance().isLogin()) {
                     ARouter.getInstance().build(ActivityConstant.HISTORY_LOOK).navigation();

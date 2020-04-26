@@ -132,7 +132,7 @@
                     android:paddingLeft="@dimen/space_24"
                     android:paddingRight="@dimen/space_24"
                     android:layout_marginLeft="@dimen/space_12"
-                    android:hint="搜点什么"
+                    android:hint="故事\t 儿童"
                     android:drawablePadding="@dimen/space_16"
                     android:textSize="@dimen/font_size_24px"
                     android:gravity="center_vertical"

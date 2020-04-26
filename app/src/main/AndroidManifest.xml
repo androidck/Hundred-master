@@ -287,6 +287,12 @@
             android:label="@string/nov_class_title"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".modules.ui.secondlevel.NovelSecondActivity"
+            android:label="@string/nov_class_title"
+            android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>

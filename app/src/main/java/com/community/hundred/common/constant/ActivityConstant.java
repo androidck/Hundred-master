@@ -187,6 +187,12 @@ public class ActivityConstant {
      * 小说列表
      */
     public static final String NOV_CLASS_LIST = "/novel/NovelClassActivity";
+
+    /**
+     * 小说二级页面
+     */
+    public static final String NOV_SECOND = "/novel/NovelSecondActivity";
+
 }
 
 
