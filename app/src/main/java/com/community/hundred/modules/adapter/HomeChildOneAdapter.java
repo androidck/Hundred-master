@@ -42,7 +42,7 @@ public class HomeChildOneAdapter extends BaseRecyclerViewAdapter<HomeChildOneAda
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HomeChildMenuEntry entry = list.get(position);
         holder.tv_item_menu.setText(entry.getName());
-        Glide.with(mContext).load(entry.getImage()).placeholder(R.mipmap.item_live).into(holder.img_icon);
+        Glide.with(mContext).load(entry.getImage()).placeholder(R.mipmap.ic_launcher).dontAnimate().into(holder.img_icon);
         holder.itemView.setOnClickListener(v -> {
             onItemClickListener.onClick(position);
         });

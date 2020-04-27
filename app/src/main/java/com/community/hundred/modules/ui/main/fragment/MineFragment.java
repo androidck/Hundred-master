@@ -179,10 +179,23 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
 
                 break;
             case R.id.ly_extension:// 我的钱包
-
+                if (LoginUtils.getInstance().isLogin()){
+                    ARouter.getInstance().build(ActivityConstant.WITHDRAW).navigation();
+                }else {
+                    notLogin();
+                }
                 break;
             case R.id.tv_conduct:// 全民理财
-                expectTip();
+                if (LoginUtils.getInstance().isLogin()) {
+                    Intent intent = new Intent(getContext(), ShareBrowserActivity.class);
+                    intent.putExtra(ShareBrowserActivity.PARAM_URL, HttpConstant.SHARE_URL + LoginUtils.getInstance().getUid());
+                    intent.putExtra(ShareBrowserActivity.PARAM_TITLE, "全民理财");
+                    intent.putExtra(ShareBrowserActivity.PARAM_MODE, 1);
+                    intent.putExtra(SonicJavaScriptInterface.PARAM_CLICK_TIME, System.currentTimeMillis());
+                    startActivity(intent);
+                } else {
+                    notLogin();
+                }
                 break;
             case R.id.tv_pay:// 钱包充值
                 if (LoginUtils.getInstance().isLogin()) {
@@ -203,7 +216,11 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 }
                 break;
             case R.id.tv_withdraw:
-                ARouter.getInstance().build(ActivityConstant.WITHDRAW).navigation();
+                if (LoginUtils.getInstance().isLogin()){
+                    ARouter.getInstance().build(ActivityConstant.WITHDRAW).navigation();
+                }else {
+                    notLogin();
+                }
                 break;
             case R.id.tv_amusement:// 在线娱乐
                 mPresenter.getOnlinePlay();

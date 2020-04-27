@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.community.hundred.R;
 import com.community.hundred.common.base.BasePresenter;
+import com.community.hundred.common.base.BaseResponse;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.network.OkHttp;
@@ -224,6 +225,8 @@ public class VideoDetailsPresenter extends BasePresenter<IVideoDetailsView> {
             public void requestSuccess(String result) throws Exception {
                 prContext.showComplete();
                 Log.d("addCollect", result);
+                BaseResponse response = new Gson().fromJson(result, BaseResponse.class);
+                toast(response.getMsg());
             }
 
             @Override

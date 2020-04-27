@@ -57,7 +57,7 @@ public class BannerImageLoader extends ImageLoader {
                     setColorList(resource, entry.getImage());
                     return false;
                 }
-            }).apply(RequestOptions.bitmapTransform(new RoundedCorners(20))).into(imageView);
+            }).apply(RequestOptions.bitmapTransform(new RoundedCorners(20))).dontAnimate().into(imageView);
         }
     }
 

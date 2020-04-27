@@ -20,6 +20,8 @@ public class HistoryAdapter extends BaseRecyclerViewAdapter<HistoryAdapter.ViewH
     private Context mContext;
     private List<HistoryEntry> list;
 
+    private OnItemClickListener onItemClickListener;
+
     public HistoryAdapter(Context context, List<HistoryEntry> list) {
         super(context);
         this.mContext = context;
@@ -38,6 +40,9 @@ public class HistoryAdapter extends BaseRecyclerViewAdapter<HistoryAdapter.ViewH
         HistoryEntry entry = list.get(position);
         Glide.with(mContext).load(entry.getImage()).into(holder.item_img);
         holder.tv_title.setText(entry.getSpname());
+        holder.itemView.setOnClickListener(v -> {
+            onItemClickListener.onClick(position);
+        });
     }
 
     @Override
@@ -54,5 +59,13 @@ public class HistoryAdapter extends BaseRecyclerViewAdapter<HistoryAdapter.ViewH
             item_img = (RoundAngleImageView) findViewById(R.id.item_img);
             tv_title = (TextView) findViewById(R.id.tv_title);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

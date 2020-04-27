@@ -375,4 +375,14 @@ public abstract class MyLazyFragment<A extends MyActivity, V, T extends BasePres
 
 
 
+    //跳转到浏览器
+    public void startBrowserActivity(Context context, String title, int mode, String url) {
+        Intent intent = new Intent(context, BrowserActivity.class);
+        intent.putExtra(BrowserActivity.PARAM_URL, url);
+        intent.putExtra(BrowserActivity.PARAM_TITLE, title);
+        intent.putExtra(BrowserActivity.PARAM_MODE, mode);
+        intent.putExtra(SonicJavaScriptInterface.PARAM_CLICK_TIME, System.currentTimeMillis());
+        context.startActivity(intent);
+    }
+
 }

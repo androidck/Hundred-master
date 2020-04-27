@@ -51,6 +51,7 @@ import com.thl.reader.ReadActivity;
 import com.thl.reader.db.BookList;
 import com.thl.reader.util.Fileutil;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.view.BannerViewPager;
 
 import org.greenrobot.eventbus.EventBus;
@@ -158,7 +159,7 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
                 oneAdapter.setOnItemClickListener(position -> {
                     ARouter.getInstance().build(ActivityConstant.SECOND_LEVEL)
                             .withString("title", entryList.get(position).getName())
-                            .withString("id",entryList.get(position).getId())
+                            .withString("id", entryList.get(position).getId())
                             .navigation();
                 });
             } else if ("小说".equals(name)) {
@@ -300,6 +301,12 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
                 @Override
                 public void onPageScrollStateChanged(int state) {
                 }
+            });
+
+            // banner 图点击事件
+            banner.setOnBannerListener(position -> {
+                String link = list.get(position).getLink();
+                startBrowserActivity(mActivity, "加载中....", 1, link);
             });
         });
     }

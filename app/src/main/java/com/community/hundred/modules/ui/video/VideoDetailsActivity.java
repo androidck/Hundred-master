@@ -212,6 +212,11 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
     }
 
     @Override
+    public boolean isStatusBarEnabled() {
+        return !super.isStatusBarEnabled();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         MediaPlayerManager.instance().releasePlayerAndView(this);

@@ -45,7 +45,7 @@ public class HomeChildVideoAdapter extends BaseRecyclerViewAdapter<HomeChildVide
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HomeVideoEntry entry = list.get(position);
         holder.tv_video_title.setText(entry.getName());
-        Glide.with(mContext).load(entry.getImage()).into(holder.img_video);
+        Glide.with(mContext).load(entry.getImage()).placeholder(R.mipmap.ic_launcher).dontAnimate().into(holder.img_video);
         holder.itemView.setOnClickListener(v -> {
             onItemClickListener.onClick(position);
         });

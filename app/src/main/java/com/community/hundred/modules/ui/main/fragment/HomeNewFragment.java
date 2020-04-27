@@ -66,7 +66,6 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
     private List<MyLazyFragment> fragmentList;
     private List<String> titleList;
 
-    private List<BannerEntry> bannerList;
 
     private int scrollYNew, imageHeightNew;
 
@@ -241,6 +240,12 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
                 }
                 break;
             case R.id.img_add:
+                if (LoginUtils.getInstance().isLogin()) {
+                    ARouter.getInstance().build(ActivityConstant.MY_COLLECT)
+                            .navigation();
+                } else {
+                    notLogin();
+                }
                 break;
         }
     }

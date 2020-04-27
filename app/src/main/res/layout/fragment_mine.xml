@@ -425,7 +425,7 @@
                             android:drawableTop="@mipmap/icon_nation"
                             android:drawablePadding="@dimen/space_16"
                             android:gravity="center"
-                            android:text="全民理财"
+                            android:text="全民代理"
                             android:textColor="@color/textColor"
                             android:textSize="@dimen/font_size_26px" />
 

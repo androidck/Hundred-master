@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.community.hundred.R;
 import com.community.hundred.common.base.BasePresenter;
 import com.community.hundred.common.base.MyActivity;
@@ -115,6 +116,12 @@ public class HistoryLookActivity extends MyActivity<IHistoryLoryLookView, Histor
         recyclerView.setItemViewSwipeEnabled(false); // 滑动删除，默认关闭。
         recyclerView.setOnItemMoveListener(getItemMoveListener());// 监听拖拽和侧滑删除，更新UI和数据源。
         recyclerView.setOnItemStateChangedListener(mOnItemStateChangedListener); // 监听Item的手指状态，拖拽、侧滑、松开。
+
+        adapter.setOnItemClickListener(position -> {
+            ARouter.getInstance().build(ActivityConstant.VIDEO_DETAILS)
+                    .withString("videoId", list.get(position).getId())
+                    .navigation();
+        });
 
     }
 
