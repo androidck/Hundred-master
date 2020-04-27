@@ -245,6 +245,11 @@ public class SendPostActivity extends MyActivity<ISendPostView, SendPostPresente
         LocationUtils.getInstance(this).startLocation();
     }
 
+    @Override
+    public boolean isStatusBarEnabled() {
+        return super.isStatusBarEnabled();
+    }
+
     // 获取圈子
     public void getQzClassify() {
         mPresenter.getQzFl();

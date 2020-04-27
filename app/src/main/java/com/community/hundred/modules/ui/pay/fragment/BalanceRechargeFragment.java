@@ -1,5 +1,6 @@
 package com.community.hundred.modules.ui.pay.fragment;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 // 余额充值
 public class BalanceRechargeFragment extends MyLazyFragment {
@@ -43,6 +45,11 @@ public class BalanceRechargeFragment extends MyLazyFragment {
     private List<PayTypeEntry> payTypeEntries = new ArrayList<>();
 
     private View footView;
+
+    // 支付方式
+    private int checkPayTypePosition = 0;
+
+    private String money;
 
 
     @Override
@@ -79,6 +86,7 @@ public class BalanceRechargeFragment extends MyLazyFragment {
         payTypeAdapter.setOnItemClickListener(position -> {
             for (int i = 0; i < payTypeEntries.size(); i++) {
                 if (i == position) {
+                    checkPayTypePosition = position;
                     payTypeEntries.get(i).setSelect(true);
                 } else {
                     payTypeEntries.get(i).setSelect(false);
@@ -103,7 +111,7 @@ public class BalanceRechargeFragment extends MyLazyFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getAdapterClickInfo(ItemModel model) {
-        String money = model.data.toString();
+        money = model.data.toString();
     }
 
     @Override
@@ -126,8 +134,17 @@ public class BalanceRechargeFragment extends MyLazyFragment {
 
     public List<PayTypeEntry> getPayType() {
         List<PayTypeEntry> list = new ArrayList<>();
-        list.add(new PayTypeEntry("支付宝", R.mipmap.icon_alipay, true));
-        list.add(new PayTypeEntry("微信支付", R.mipmap.icon_we_chat, false));
+        list.add(new PayTypeEntry("支付宝", R.mipmap.icon_alipay, "1", true));
+        list.add(new PayTypeEntry("微信支付", R.mipmap.icon_we_chat, "2", false));
         return list;
+    }
+
+    @OnClick(R.id.tv_recharge)
+    public void onViewClicked() {
+        if (TextUtils.isEmpty(money)) {
+            toast("请选择或输入充值金额");
+        } else {
+            toast("金额：" + money + "\t支付方式：" + getPayType().get(checkPayTypePosition).getName());
+        }
     }
 }
