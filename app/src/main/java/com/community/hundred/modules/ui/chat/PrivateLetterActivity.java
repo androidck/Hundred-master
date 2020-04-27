@@ -108,6 +108,7 @@ public class PrivateLetterActivity extends MyActivity<IPrivateLetterView, Privat
         adapter = new PrivateLetterAdapter(this, list);
         recyclerView.setAdapter(adapter);
         getUserCenter(LoginUtils.getInstance().getUid());
+        showLoading();
 
     }
 

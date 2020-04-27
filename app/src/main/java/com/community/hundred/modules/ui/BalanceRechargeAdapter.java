@@ -173,7 +173,7 @@ public class BalanceRechargeAdapter extends RecyclerView.Adapter<BalanceRecharge
                         }
                     }
 
-                    String funds = chargeFunds + "元";
+                    String funds = chargeFunds;
                     ItemModel model = new ItemModel(ItemModel.THREE, funds, false);
                     EventBus.getDefault().post(model);
                 }

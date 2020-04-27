@@ -19,8 +19,6 @@ import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.dialog.MessageDialog;
 import com.community.hundred.common.helper.ActivityStackManager;
 import com.community.hundred.common.other.StatusManager;
-import com.community.hundred.common.web.BrowserActivity;
-import com.community.hundred.common.web.SonicJavaScriptInterface;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;

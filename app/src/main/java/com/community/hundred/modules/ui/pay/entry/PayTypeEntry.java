@@ -7,11 +7,29 @@ public class PayTypeEntry {
 
     private int icon;
 
+    private String id;
+
+
     private boolean isSelect;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public PayTypeEntry(String name, int icon, boolean isSelect) {
         this.name = name;
         this.icon = icon;
+        this.isSelect = isSelect;
+    }
+
+    public PayTypeEntry(String name, int icon, String id, boolean isSelect) {
+        this.name = name;
+        this.icon = icon;
+        this.id = id;
         this.isSelect = isSelect;
     }
 
