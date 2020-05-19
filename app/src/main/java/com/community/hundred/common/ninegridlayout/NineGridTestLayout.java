@@ -2,20 +2,14 @@ package com.community.hundred.common.ninegridlayout;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.community.hundred.common.browseimg.JBrowseImgActivity;
-import com.community.hundred.common.browseimg.util.JMatrixUtil;
-import com.hjq.toast.ToastUtils;
+import com.community.hundred.modules.ui.bigimg.ImageActivity;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -92,14 +86,8 @@ public class NineGridTestLayout extends NineGridLayout {
         for (int j = 0; j < urlList.size(); j++) {
             mPaths.add(urlList.get(j));
         }
-        startBrowse(i, urlList, imageView);
+        ImageActivity.start(mContext, mPaths, i);
     }
 
-    private void startBrowse(int pos, List<String> mList, ImageView imageView) {
-        List<Rect> rects = new ArrayList<>();
-        for (int i = 0; i < mList.size(); i++) {
-            rects.add(JMatrixUtil.getDrawableBoundsInView(imageView));
-        }
-        JBrowseImgActivity.start(mContext, new ArrayList<>(mPaths), pos, rects);
-    }
+
 }

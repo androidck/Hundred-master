@@ -15,6 +15,10 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hjq.base.action.BundleAction;
+import com.hjq.base.action.ClickAction;
+import com.hjq.base.action.HandlerAction;
+
 import java.util.Random;
 
 /**
@@ -23,7 +27,7 @@ import java.util.Random;
  *    time   : 2018/10/18
  *    desc   : Activity 基类
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements HandlerAction, ClickAction, BundleAction {
 
     private static final Handler HANDLER = new Handler(Looper.getMainLooper());
     public final Object mHandlerToken = hashCode();
@@ -275,4 +279,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    @Nullable
+    @Override
+    public Bundle getBundle() {
+        return getIntent().getExtras();
+    }
 }
