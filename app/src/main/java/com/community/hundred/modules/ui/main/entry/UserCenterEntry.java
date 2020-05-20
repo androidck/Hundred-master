@@ -60,6 +60,8 @@ public class UserCenterEntry {
     private String tixian;
     private String vip;
 
+
+
     public String getVip() {
         return vip;
     }

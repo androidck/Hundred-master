@@ -8,7 +8,6 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-
 import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.community.hundred.R;

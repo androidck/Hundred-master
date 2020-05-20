@@ -55,7 +55,7 @@ public class ApiRetrofit extends BaseApiRetrofit {
 
     private RequestBody getRequestBody(Object obj) {
         String route = new Gson().toJson(obj);
-        RequestBody body=RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),route);
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), route);
         return body;
     }
 
@@ -65,18 +65,18 @@ public class ApiRetrofit extends BaseApiRetrofit {
     }
 
     // 注册
-    public Observable<BaseResponse<String>> register(String phone,String password,String code) {
-        return mApi.register(phone,password,code);
+    public Observable<BaseResponse<String>> register(String phone, String password, String code, String dev) {
+        return mApi.register(phone, password, code, dev);
     }
 
     // 登录
     public Observable<BaseResponse<LoginEntry>> login(String phone, String password) {
-        return mApi.login(phone,password);
+        return mApi.login(phone, password);
     }
 
     // 忘记密码
-    public Observable<BaseResponse<String>> forgetPwd(String phone,String password,String code) {
-        return mApi.forgetPwd(phone,password,code);
+    public Observable<BaseResponse<String>> forgetPwd(String phone, String password, String code) {
+        return mApi.forgetPwd(phone, password, code);
     }
 
     // 公告
@@ -88,11 +88,6 @@ public class ApiRetrofit extends BaseApiRetrofit {
     public Observable<BaseResponse<List<StartUpEntry>>> startUp() {
         return mApi.startUp();
     }
-
-
-
-
-
 
 
 }

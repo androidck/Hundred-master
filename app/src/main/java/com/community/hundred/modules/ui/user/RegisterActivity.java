@@ -1,6 +1,8 @@
 package com.community.hundred.modules.ui.user;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -19,6 +21,7 @@ import com.community.hundred.R;
 import com.community.hundred.common.base.BasePresenter;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
+import com.community.hundred.common.util.MD5Util;
 import com.community.hundred.common.util.RegexUtils;
 import com.community.hundred.modules.ui.user.presenter.RegisterPresenter;
 import com.community.hundred.modules.ui.user.presenter.view.IRegisterView;
@@ -88,7 +91,7 @@ public class RegisterActivity extends MyActivity<IRegisterView, RegisterPresente
     }
 
 
-    @OnClick({R.id.tv_get_code, R.id.btn_login, R.id.tv_register, R.id.for_got_pwd,R.id.is_show_pwd})
+    @OnClick({R.id.tv_get_code, R.id.btn_login, R.id.tv_register, R.id.for_got_pwd, R.id.is_show_pwd})
     public void onViewClicked(View view) {
         if (isFastClick()) {
             return;
@@ -124,21 +127,23 @@ public class RegisterActivity extends MyActivity<IRegisterView, RegisterPresente
     @Override
     public void isVerification() {
         super.isVerification();
-        if (!RegexUtils.checkMobile(edPhone.getText().toString().trim().replace(" ", ""))){
+        if (!RegexUtils.checkMobile(edPhone.getText().toString().trim().replace(" ", ""))) {
             toast("请输入正确的手机号");
-        }else if (TextUtils.isEmpty(etCode.getText().toString().trim())){
+        } else if (TextUtils.isEmpty(etCode.getText().toString().trim())) {
             toast("请输入短信验证码");
-        }else if (TextUtils.isEmpty(edPwd.getText().toString().trim())){
+        } else if (TextUtils.isEmpty(edPwd.getText().toString().trim())) {
             toast("请输入密码");
-        }else {
+        } else {
             register();
         }
     }
 
-    public void register(){
+    public void register() {
+        String ANDROID_ID = Settings.System.getString(getContentResolver(), Settings.System.ANDROID_ID);
+        String mDevice = MD5Util.getMD5(ANDROID_ID + Build.SERIAL);
         mPresenter.register(edPhone.getText().toString().trim().replace(" ", ""),
                 edPwd.getText().toString().trim(),
-                etCode.getText().toString().trim());
+                etCode.getText().toString().trim(), mDevice);
     }
 
     private void setPswVisible() {

@@ -48,9 +48,9 @@ public class RegisterPresenter extends BasePresenter<IRegisterView> {
     }
 
     // 注册
-    public void register(String phone,String password,String code){
+    public void register(String phone,String password,String code,String dev){
         prContext.showLoading();
-        ApiRetrofit.getInstance().register(phone,password,code)
+        ApiRetrofit.getInstance().register(phone,password,code, dev)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<String>(prContext) {

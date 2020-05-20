@@ -40,7 +40,9 @@ public interface MyApi {
     @GET(HttpConstant.REGISTER)
     Observable<BaseResponse<String>> register(@Query("phone") String phone,
                                               @Query("password") String password,
-                                              @Query("code") String code);
+                                              @Query("code") String code,
+                                              @Query("dev") String dev
+                                              );
 
     // 登录
     @GET(HttpConstant.LOGIN)

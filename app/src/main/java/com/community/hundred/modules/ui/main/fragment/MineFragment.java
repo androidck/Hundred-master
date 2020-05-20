@@ -12,7 +12,7 @@ import com.community.hundred.R;
 import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.HttpConstant;
-import com.community.hundred.common.web.BrowserActivity;
+import com.community.hundred.common.util.TimeUtils;
 import com.community.hundred.common.web.ShareBrowserActivity;
 import com.community.hundred.common.web.SonicJavaScriptInterface;
 import com.community.hundred.modules.manager.LoginUtils;
@@ -99,6 +99,8 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
     AutoLinearLayout lyWithdrawCount;
     @BindView(R.id.ly_extension)
     AutoLinearLayout lyExtension;
+    @BindView(R.id.tv_look_numbers)
+    TextView tvLookNumbers;
 
     @Override
     protected MinePresenter createPresenter() {
@@ -179,9 +181,9 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
 
                 break;
             case R.id.ly_extension:// 我的钱包
-                if (LoginUtils.getInstance().isLogin()){
+                if (LoginUtils.getInstance().isLogin()) {
                     ARouter.getInstance().build(ActivityConstant.WITHDRAW).navigation();
-                }else {
+                } else {
                     notLogin();
                 }
                 break;
@@ -216,9 +218,9 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 }
                 break;
             case R.id.tv_withdraw:
-                if (LoginUtils.getInstance().isLogin()){
+                if (LoginUtils.getInstance().isLogin()) {
                     ARouter.getInstance().build(ActivityConstant.WITHDRAW).navigation();
-                }else {
+                } else {
                     notLogin();
                 }
                 break;
@@ -289,7 +291,6 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
         mPresenter.setOnUserCenterListener(entry -> {
             //昵称
             tvNickName.setText(entry.getNickname());
-
             // 头像
             Glide.with(mActivity)
                     .load(HttpConstant.BASE_HOST + entry.getImage())
@@ -297,8 +298,10 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                     .into(userHead);
             if ("1".equals(entry.getVip())) {
                 imgIsVip.setVisibility(View.VISIBLE);
+                tvLookNumbers.setText("到期时间：" + TimeUtils.timeStamp2Date(entry.getPeriod(), "yyyy-MM-dd"));
             } else {
                 imgIsVip.setVisibility(View.GONE);
+                tvLookNumbers.setText("观看次数：" + entry.getSpread_count() + "/" + entry.getFree_count());
             }
             // 性别 年龄
             String sex;
@@ -307,7 +310,7 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_boy), null);
             } else {
                 sex = "女";
-                tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
+               tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
             }
             tvSexAge.setText(sex + "\t" + entry.getAge() + "岁");
             // 个性签名

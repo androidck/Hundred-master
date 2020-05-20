@@ -2,6 +2,8 @@ package com.community.hundred.common.constant;
 
 import android.os.Environment;
 
+import com.community.hundred.BuildConfig;
+
 /**
  * 第三方KEY
  */
@@ -27,7 +29,7 @@ public class KeyConstant {
 
     public static String NEWS_KEY = "45b9e6a580d942b96e034bb207093193";
 
-    public static String provider = "com.community.hundred.FileProvider";
+    public static String provider = BuildConfig.APPLICATION_ID + ".FileProvider";
 
     // 根据路径
     public static final String DCMI_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();

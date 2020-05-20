@@ -2,6 +2,7 @@ package com.community.hundred.modules.ui.main.presenter;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 
 import com.community.hundred.common.base.BasePresenter;
 import com.community.hundred.common.base.BaseResponse;

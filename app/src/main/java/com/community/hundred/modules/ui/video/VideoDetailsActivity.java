@@ -18,11 +18,13 @@ import com.community.hundred.common.ext.ViewPagerUtil;
 import com.community.hundred.common.util.BannerImageLoader;
 import com.community.hundred.common.util.TimeUtils;
 import com.community.hundred.modules.adapter.FemaleStarVideoAdapter;
+import com.community.hundred.modules.dialog.ShareDialog;
 import com.community.hundred.modules.entry.ColorInfo;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.femalestar.entry.FemaleInfoEntry;
 import com.community.hundred.modules.ui.video.presenter.VideoDetailsPresenter;
 import com.community.hundred.modules.ui.video.presenter.view.IVideoDetailsView;
+import com.hjq.toast.ToastUtils;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.view.BannerViewPager;
@@ -81,6 +83,8 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
     private BannerViewPager vBannerViewPager;
     private List<ColorInfo> colorList = new ArrayList<>();
 
+    private ControlPanel controlPanel;
+
 
     private List<FemaleInfoEntry> infoEntries = new ArrayList<>();
 
@@ -97,7 +101,8 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
     @Override
     protected void initView() {
         setWhiteLeftButtonIcon(getTitleBar());
-        videoView.setControlPanel(new ControlPanel(this));
+        controlPanel = new ControlPanel(this);
+        videoView.setControlPanel(controlPanel);
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(manager);
         adapter = new FemaleStarVideoAdapter(this, infoEntries);
@@ -120,8 +125,16 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
     protected void initData() {
         mPresenter.getVideoDetails(videoId);
         mPresenter.setOnVideoDetailsListener(entry -> {
-            videoView.setUp(entry.getLink());
-            videoView.start();
+            if (entry.getCode() == 200) {
+                videoView.setUp(entry.getLink());
+                videoView.start();
+            } else {
+                new ShareDialog(this, position -> {
+                    if (position == 1) {
+                        finish();
+                    }
+                }).show();
+            }
             tvTitle.setText(entry.getName());
             tvDesc.setText(entry.getDefinition());
             tvLikeCount.setText(entry.getLove());
@@ -151,6 +164,7 @@ public class VideoDetailsActivity extends MyActivity<IVideoDetailsView, VideoDet
         });
         mPresenter.addLook(videoId);
         getBanner();
+
 
     }
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.community.hundred.common.view.CustomNestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/refresh"
+    <com.community.hundred.common.view.CustomNestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -27,56 +27,62 @@
                 app:indicator_height="8dp"
                 app:indicator_margin="4dp"
                 app:indicator_width="8dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/space_20"
                 android:orientation="vertical">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/menu_recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-                <include layout="@layout/divisions_line"/>
+                    android:layout_height="match_parent" />
+
+                <include layout="@layout/divisions_line" />
+
                 <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space_80"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="@dimen/space_24"
                     android:layout_marginRight="@dimen/space_24"
-                    android:visibility="gone"
-                    >
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="最新视频"
                         android:drawableLeft="@mipmap/icon_not_login"
                         android:drawablePadding="@dimen/space_16"
-                        android:textColor="@color/textColor"
-                        android:layout_gravity="center_vertical"
-                        android:textStyle="bold"
                         android:gravity="center_vertical"
-                        />
+                        android:text="最新视频"
+                        android:textColor="@color/textColor"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="全部视频"
                         android:drawableRight="@mipmap/icon_more"
                         android:drawablePadding="@dimen/space_16"
-                        android:textColor="@color/colorDeep"
-                        android:layout_gravity="center_vertical"
-                        android:textStyle="bold"
                         android:gravity="center_vertical|right"
-                        />
+                        android:text="全部视频"
+                        android:textColor="@color/colorDeep"
+                        android:textStyle="bold" />
                 </com.zhy.autolayout.AutoLinearLayout>
-                <include layout="@layout/division_line"/>
+
+                <include layout="@layout/division_line" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false" />
             </LinearLayout>
         </LinearLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </com.community.hundred.common.view.CustomNestedScrollView>
 
-</com.community.hundred.common.view.CustomNestedScrollView>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

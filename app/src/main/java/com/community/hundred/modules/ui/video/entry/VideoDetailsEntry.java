@@ -70,6 +70,16 @@ public class VideoDetailsEntry {
     private int islike;
     private int isstep;
 
+    private int code;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     public String getId() {
         return id;
     }

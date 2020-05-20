@@ -1,13 +1,10 @@
 package com.community.hundred.modules.ui.main.fragment.homechild;
 
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.ViewTreeObserver;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -19,13 +16,10 @@ import com.community.hundred.R;
 import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.KeyConstant;
-import com.community.hundred.common.download.DownloadUtil;
 import com.community.hundred.common.ext.OnPageScrollListener;
 import com.community.hundred.common.ext.ViewPagerUtil;
-import com.community.hundred.common.network.OkHttp;
 import com.community.hundred.common.util.BannerImageLoader;
 import com.community.hundred.common.util.DensityUtil;
-import com.community.hundred.common.util.FileUtils;
 import com.community.hundred.common.util.SharedPreferencesUtils;
 import com.community.hundred.common.view.CustomNestedScrollView;
 import com.community.hundred.modules.adapter.HomeChildOneAdapter;
@@ -38,7 +32,6 @@ import com.community.hundred.modules.eventbus.GradualWrap;
 import com.community.hundred.modules.manager.BookUtils;
 import com.community.hundred.modules.manager.entry.BookEntry;
 import com.community.hundred.modules.ui.main.MainActivity;
-import com.community.hundred.modules.ui.main.fragment.entry.BannerEntry;
 import com.community.hundred.modules.ui.main.fragment.entry.HomeChildMenuEntry;
 import com.community.hundred.modules.ui.main.fragment.entry.HomeVideoEntry;
 import com.community.hundred.modules.ui.main.fragment.entry.NovEntry;
@@ -47,24 +40,19 @@ import com.community.hundred.modules.ui.main.fragment.presenter.view.IHomeView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.thl.reader.ReadActivity;
 import com.thl.reader.db.BookList;
-import com.thl.reader.util.Fileutil;
 import com.youth.banner.Banner;
-import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.view.BannerViewPager;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Request;
 
 // 子页面
 public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView, HomePresenter> {
@@ -105,6 +93,8 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
     private String name; // 标题名称
 
     private int count;
+
+    private int p = 1;
 
 
     @Override
@@ -199,6 +189,27 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
 
         }
 
+        refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    p++;
+                    getVideoList();
+                    refreshLayout.finishLoadMore();
+                }, 200);
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    p = 1;
+                    list.clear();
+                    getVideoList();
+                    refreshLayout.finishRefresh();
+                }, 200);
+            }
+        });
+
     }
 
     @Override
@@ -216,7 +227,7 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
     }
 
     public void getVideoList() {
-        mPresenter.getVideoList(id, 1);
+        mPresenter.getVideoList(id, p);
         mPresenter.setOnHomeVideoListener(list1 -> {
             list.addAll(list1);
             adapter.notifyDataSetChanged();
