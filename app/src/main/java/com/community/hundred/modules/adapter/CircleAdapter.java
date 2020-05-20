@@ -1,7 +1,6 @@
 package com.community.hundred.modules.adapter;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +8,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.community.hundred.R;
 import com.community.hundred.common.base.BaseRecyclerViewAdapter;
-import com.community.hundred.common.browseimg.JBrowseImgActivity;
-import com.community.hundred.common.browseimg.util.JMatrixUtil;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.HttpConstant;
 import com.community.hundred.common.ninegridlayout.NineGridTestLayout;
 import com.community.hundred.common.util.RelativeDateFormatUtils;
 import com.community.hundred.common.view.RoundAngleImageView;
-import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.main.fragment.entry.CircleChildEntry;
-import com.community.hundred.modules.ui.post.entry.CircleEntry;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
-
-import org.salient.artplayer.Comparator;
-import org.salient.artplayer.MediaPlayerManager;
-import org.salient.artplayer.OnWindowDetachedListener;
-import org.salient.artplayer.VideoView;
-import org.salient.artplayer.ui.ControlPanel;
 
 import java.util.ArrayList;
 import java.util.Date;

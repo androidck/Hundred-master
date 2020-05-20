@@ -245,4 +245,5 @@
     <string name="ra_week">周榜</string>
     <string name="ra_month">月榜</string>
     <string name="ra_all">总榜</string>
+    <string name="common_network">网络链接失败，请稍后重试</string>
 </resources>

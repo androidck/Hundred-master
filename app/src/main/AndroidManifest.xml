@@ -293,6 +293,14 @@
             android:screenOrientation="portrait" />
 
 
+        <!-- 查看大图 -->
+        <activity
+            android:name=".modules.ui.bigimg.ImageActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>

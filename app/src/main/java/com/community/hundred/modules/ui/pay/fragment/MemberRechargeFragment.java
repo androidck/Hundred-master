@@ -1,5 +1,6 @@
 package com.community.hundred.modules.ui.pay.fragment;
 
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 // 会员充值
 public class MemberRechargeFragment extends MyLazyFragment {
@@ -31,6 +33,11 @@ public class MemberRechargeFragment extends MyLazyFragment {
     SwipeRecyclerView recyclerViewTwo;
     @BindView(R.id.tv_recharge)
     TextView tvRecharge;
+
+
+    private String money;
+
+    private int moneySelectPosition = 0;
 
     @Override
     protected BasePresenter createPresenter() {
@@ -44,6 +51,9 @@ public class MemberRechargeFragment extends MyLazyFragment {
     private PayTypeAdapter payTypeAdapter;
 
     private List<PayTypeEntry> payTypeEntries = new ArrayList<>();
+
+    // 支付方式
+    private int checkPayTypePosition = 0;
 
 
     @Override
@@ -59,6 +69,7 @@ public class MemberRechargeFragment extends MyLazyFragment {
         adapter.setOnItemOnClickListener(position -> {
             for (int i = 0; i < list.size(); i++) {
                 if (i == position) {
+                    moneySelectPosition = position;
                     list.get(i).setSelect(true);
                 } else {
                     list.get(i).setSelect(false);
@@ -76,6 +87,17 @@ public class MemberRechargeFragment extends MyLazyFragment {
         recyclerViewTwo.setLayoutManager(new LinearLayoutManager(getAttachActivity()));
         payTypeAdapter = new PayTypeAdapter(getAttachActivity(), payTypeEntries);
         recyclerViewTwo.setAdapter(payTypeAdapter);
+        payTypeAdapter.setOnItemClickListener(position -> {
+            for (int i = 0; i < payTypeEntries.size(); i++) {
+                if (i == position) {
+                    checkPayTypePosition = position;
+                    payTypeEntries.get(i).setSelect(true);
+                } else {
+                    payTypeEntries.get(i).setSelect(false);
+                }
+            }
+            payTypeAdapter.notifyDataSetChanged();
+        });
     }
 
     @Override
@@ -98,7 +120,13 @@ public class MemberRechargeFragment extends MyLazyFragment {
 
     public List<PayTypeEntry> getPayType() {
         List<PayTypeEntry> list = new ArrayList<>();
-        list.add(new PayTypeEntry("使用余额开通", R.mipmap.icon_balance, true));
+        list.add(new PayTypeEntry("支付宝", R.mipmap.icon_alipay, "1", true));
+        list.add(new PayTypeEntry("微信支付", R.mipmap.icon_we_chat, "2", false));
         return list;
+    }
+
+    @OnClick(R.id.tv_recharge)
+    public void onViewClicked() {
+        toast("金额：" + list.get(moneySelectPosition).getMoney() + "\t支付方式：" + getPayType().get(checkPayTypePosition).getName());
     }
 }

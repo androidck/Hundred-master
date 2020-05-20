@@ -9,6 +9,10 @@ android {
         // 混淆配置
         consumerProguardFiles 'proguard-base.pro'
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
