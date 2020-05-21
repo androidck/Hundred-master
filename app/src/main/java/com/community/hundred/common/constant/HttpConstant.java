@@ -5,7 +5,7 @@ package com.community.hundred.common.constant;
  */
 public class HttpConstant {
 
-    public static String BASE_HOST = "http://www.34w7.com/";
+    public static String BASE_HOST = "http://23.224.235.234/";
 
     public static String PROJECT = "index/";
 
@@ -17,7 +17,7 @@ public class HttpConstant {
 
     public static String H5IP = "http://test.liclanch.com/wap";
 
-    public static String VIDEO_URL = "http://www.34w7.com";
+    public static String VIDEO_URL = "http://23.224.235.234/";
 
     // 分享url
     public static final String SHARE_URL = BASE_URL + "register/share?uid=";

@@ -16,19 +16,19 @@ import com.community.hundred.modules.ui.main.fragment.entry.BannerEntry;
  */
 public class ColorInfo {
     private BannerEntry imgUrl;
-    private int vibrantColor;
+/*    private int vibrantColor;
     private int vibrantDarkColor;
     private int vibrantLightColor;
     private int mutedColor;
     private int mutedDarkColor;
-    private int mutedLightColor;
+    private int mutedLightColor;*/
 
-/*    private int vibrantColor = 0xFF999999;
-    private int vibrantDarkColor = 0xFF999999;
-    private int vibrantLightColor = 0xFF999999;
-    private int mutedColor = 0xFF999999;
-    private int mutedDarkColor = 0xFF999999;
-    private int mutedLightColor = 0xFF999999;*/
+    private int vibrantColor = 0xFFFFD428;
+    private int vibrantDarkColor = 0xFFFFD428;
+    private int vibrantLightColor = 0xFFFFD428;
+    private int mutedColor = 0xFFFFD428;
+    private int mutedDarkColor = 0xFFFFD428;
+    private int mutedLightColor = 0xFFFFD428;
 
     public BannerEntry getImgUrl() {
         return imgUrl;

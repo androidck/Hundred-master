@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.ViewTreeObserver;
 
+import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.OrientationHelper;
@@ -30,6 +31,8 @@ import com.community.hundred.modules.ui.main.fragment.homechild.HomeChildNewFrag
 import com.community.hundred.modules.ui.main.fragment.presenter.HomePresenter;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.IHomeView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.youth.banner.Banner;
 import com.youth.banner.view.BannerViewPager;
 
@@ -110,6 +113,27 @@ public class ForumChildNewFragment extends MyLazyFragment<MainActivity, IHomeVie
                     listener.onScrollChange(imageHeight, scrollY);
                 }
             });
+        });
+
+        refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    page++;
+                    getForumChild();
+                    refreshLayout.finishLoadMore();
+                }, 200);
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    page = 0;
+                    lists.clear();
+                    getForumChild();
+                    refreshLayout.finishRefresh();
+                }, 200);
+            }
         });
 
     }

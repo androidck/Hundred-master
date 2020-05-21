@@ -453,6 +453,7 @@
                             android:drawablePadding="@dimen/space_16"
                             android:gravity="center"
                             android:text="钱包充值"
+                            android:visibility="gone"
                             android:textColor="@color/textColor"
                             android:textSize="@dimen/font_size_26px" />
 
@@ -465,6 +466,7 @@
                             android:drawablePadding="@dimen/space_16"
                             android:gravity="center"
                             android:text="开通会员"
+                            android:visibility="gone"
                             android:textColor="@color/textColor"
                             android:textSize="@dimen/font_size_26px" />
 
@@ -479,16 +481,6 @@
                             android:text="提现"
                             android:textColor="@color/textColor"
                             android:textSize="@dimen/font_size_26px" />
-                    </com.zhy.autolayout.AutoLinearLayout>
-
-                    <com.zhy.autolayout.AutoLinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="@dimen/space_20"
-                        android:layout_marginBottom="@dimen/space_20"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
                         <TextView
                             android:id="@+id/tv_amusement"
                             android:layout_width="0dp"
@@ -500,6 +492,17 @@
                             android:text="在线娱乐"
                             android:textColor="@color/textColor"
                             android:textSize="@dimen/font_size_26px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/space_20"
+                        android:layout_marginBottom="@dimen/space_20"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+
 
                         <TextView
                             android:id="@+id/tv_activation_code"
@@ -548,6 +551,7 @@
                 app:bar_leftIcon="@mipmap/item_gift"
                 app:bar_leftSize="@dimen/font_size_30px"
                 app:bar_leftText="收到礼物"
+                android:visibility="gone"
                 app:bar_rightIcon="@mipmap/icon_right" />
 
             <com.hjq.widget.layout.SettingBar

@@ -43,7 +43,8 @@ public class FemaleStarVideoAdapter extends BaseRecyclerViewAdapter<FemaleStarVi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         FemaleInfoEntry entry = list.get(position);
-        Glide.with(mContext).load(HttpConstant.BASE_HOST + entry.getImage()).into(holder.tv_img);
+        //Glide.with(mContext).load(HttpConstant.BASE_HOST + entry.getImage()).into(holder.tv_img);
+        Glide.with(mContext).load(entry.getImage()).into(holder.tv_img);
         holder.tv_title.setText(entry.getName());
         holder.itemView.setOnClickListener(v -> {
             onItemClickListener.onClick(position);

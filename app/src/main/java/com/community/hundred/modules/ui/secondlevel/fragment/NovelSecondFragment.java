@@ -2,6 +2,7 @@ package com.community.hundred.modules.ui.secondlevel.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -14,6 +15,8 @@ import com.community.hundred.modules.ui.main.fragment.presenter.HomePresenter;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.IHomeView;
 import com.community.hundred.modules.ui.secondlevel.NovelSecondActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 
 import java.util.ArrayList;
@@ -32,6 +35,8 @@ public class NovelSecondFragment extends MyLazyFragment<NovelSecondActivity, IHo
     private String id;// id
     private List<HomeVideoEntry> list = new ArrayList<>();
     private HomeChildVideoAdapter adapter;
+
+    private int p = 1;
 
     @Override
     protected HomePresenter createPresenter() {
@@ -57,6 +62,27 @@ public class NovelSecondFragment extends MyLazyFragment<NovelSecondActivity, IHo
         });
 
         id = getArguments().getString("id");
+
+        refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    p++;
+                    getVideoList();
+                    refreshLayout.finishLoadMore();
+                }, 200);
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(() -> {
+                    p = 1;
+                    list.clear();
+                    getVideoList();
+                    refreshLayout.finishRefresh();
+                }, 200);
+            }
+        });
     }
 
     @Override
@@ -73,7 +99,7 @@ public class NovelSecondFragment extends MyLazyFragment<NovelSecondActivity, IHo
     }
 
     public void getVideoList() {
-        mPresenter.getVideoList(id, 1);
+        mPresenter.getVideoList(id, p);
         mPresenter.setOnHomeVideoListener(list1 -> {
             list.addAll(list1);
             adapter.notifyDataSetChanged();

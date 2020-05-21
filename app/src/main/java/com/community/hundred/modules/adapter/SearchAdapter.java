@@ -44,7 +44,8 @@ public class SearchAdapter extends BaseRecyclerViewAdapter<SearchAdapter.ViewHol
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SearchEntry entry = list.get(position);
         holder.tv_title.setText(entry.getName());
-        Glide.with(mContext).load(HttpConstant.VIDEO_URL + entry.getImage()).placeholder(R.mipmap.ic_launcher).into(holder.tv_img);
+        //Glide.with(mContext).load(HttpConstant.VIDEO_URL + entry.getImage()).placeholder(R.mipmap.ic_launcher).into(holder.tv_img);
+        Glide.with(mContext).load( entry.getImage()).placeholder(R.mipmap.ic_launcher).into(holder.tv_img);
         holder.itemView.setOnClickListener(v -> {
             onItemClickListener.onClick(position);
         });

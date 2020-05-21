@@ -46,7 +46,7 @@ public class ForumChildVideoAdapter extends BaseRecyclerViewAdapter<ForumChildVi
         holder.tv_video_title.setText(entry.getName());
         Glide.with(mContext)
                 .load(entry.getImage())
-                .placeholder(R.mipmap.icon_small_logo)
+                .placeholder(R.drawable.banner_default)
                 .into(holder.img_video);
         holder.itemView.setOnClickListener(v -> {
             ARouter.getInstance().build(ActivityConstant.VIDEO_DETAILS)
