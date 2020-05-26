@@ -1,17 +1,19 @@
 package com.community.hundred.modules.ui.classify.entry;
 
-// 子类
-public class ClassifyChildEntry {
+import java.util.ArrayList;
+
+// 一级实体类
+public class ClassifyHeaderEntry {
 
     /**
-     * id : 237
-     * name : 最新测试
-     * image :
-     * parent_id : 17
+     * id : 22
+     * name : 明星专区
+     * image : http://yy.jsmjsw.cn/app/q8.tp
+     * parent_id : 0
      * sort : 0
      * status : 1
-     * record_time : 1590351789
-     * sorts : 0
+     * record_time : null
+     * sorts : 1
      */
 
     private String id;
@@ -20,8 +22,17 @@ public class ClassifyChildEntry {
     private String parent_id;
     private String sort;
     private String status;
-    private String record_time;
+    private Object record_time;
     private String sorts;
+    private ArrayList<ClassifyChildEntry> son;
+
+    public ArrayList<ClassifyChildEntry> getSon() {
+        return son;
+    }
+
+    public void setSon(ArrayList<ClassifyChildEntry> son) {
+        this.son = son;
+    }
 
     public String getId() {
         return id;
@@ -71,11 +82,11 @@ public class ClassifyChildEntry {
         this.status = status;
     }
 
-    public String getRecord_time() {
+    public Object getRecord_time() {
         return record_time;
     }
 
-    public void setRecord_time(String record_time) {
+    public void setRecord_time(Object record_time) {
         this.record_time = record_time;
     }
 

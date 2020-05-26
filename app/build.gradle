@@ -221,4 +221,7 @@ dependencies {
     /*hawk*/
     implementation 'com.orhanobut:hawk:2.0.1'
 
+    // 分组适配器
+    implementation 'com.github.donkingliang:GroupedRecyclerViewAdapter:2.2.0'
+
 }

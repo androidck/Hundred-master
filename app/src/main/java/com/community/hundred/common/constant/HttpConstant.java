@@ -222,4 +222,7 @@ public class HttpConstant {
     // 更新
     public static final String checkUpdateURL = BASE_URL + "lj/genxin";
 
+    // 获取全部菜单
+    public static final String getHomeClassifyURL = KIP + "Ad.getfl";
+
 }

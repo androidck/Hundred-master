@@ -20,7 +20,6 @@ import com.community.hundred.modules.ui.secondlevel.fragment.SecondLevelFragment
 import com.community.hundred.modules.ui.secondlevel.presenter.SecondLevelPresenter;
 import com.community.hundred.modules.ui.secondlevel.presenter.view.ISecondLevelView;
 import com.google.android.material.tabs.TabLayout;
-import com.hjq.widget.view.ClearEditText;
 import com.samluys.filtertab.FilterInfoBean;
 import com.samluys.filtertab.FilterResultBean;
 import com.samluys.filtertab.FilterTabConfig;
@@ -45,6 +44,8 @@ public class SecondLevelActivity extends MyActivity<ISecondLevelView, SecondLeve
     FilterTabView ftbFilter;
     @BindView(R.id.tv_content)
     TextView tvContent;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private PopupWindow popupwindow;
 
 
@@ -78,11 +79,10 @@ public class SecondLevelActivity extends MyActivity<ISecondLevelView, SecondLeve
 
     @Override
     protected void initView() {
-        setLeftTitle(title);
         titleList = new ArrayList<>();
         fragmentList = new ArrayList<>();
         tabEntries = new ArrayList<>();
-
+        tvTitle.setText(title);
     }
 
     @Override
@@ -128,5 +128,12 @@ public class SecondLevelActivity extends MyActivity<ISecondLevelView, SecondLeve
             case R.id.ly_screen:
                 break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

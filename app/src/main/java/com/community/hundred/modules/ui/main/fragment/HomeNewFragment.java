@@ -15,9 +15,9 @@ import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.KeyConstant;
 import com.community.hundred.modules.eventbus.GradualWrap;
+import com.community.hundred.modules.eventbus.TabWrap;
 import com.community.hundred.modules.manager.LoginUtils;
 import com.community.hundred.modules.ui.main.MainActivity;
-import com.community.hundred.modules.ui.main.fragment.entry.BannerEntry;
 import com.community.hundred.modules.ui.main.fragment.homechild.HomeChildNewFragment;
 import com.community.hundred.modules.ui.main.fragment.presenter.HomePresenter;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.IHomeView;
@@ -61,6 +61,8 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
     AutoLinearLayout lyTwo;
     @BindView(R.id.ly_top)
     AutoLinearLayout lyTop;
+    @BindView(R.id.img_classify)
+    ImageView imgClassify;
 
     private MyHomeViewPageAdapter adapter;
     private List<MyLazyFragment> fragmentList;
@@ -168,6 +170,7 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
             tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.white));
             imgSurface.setImageResource(R.mipmap.icon_surface_white);
             imgAdd.setImageResource(R.mipmap.icon_add_white);
+            imgClassify.setImageResource(R.mipmap.icon_classify_white);
         } else if (scrollY <= imageHeight) {
             float scale = (float) scrollY / imageHeight;
             float alpha = (255 * (1 - scale));
@@ -182,6 +185,7 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
             tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));
             imgSurface.setImageResource(R.mipmap.icon_surface_gray);
             imgAdd.setImageResource(R.mipmap.icon_add_gray);
+            imgClassify.setImageResource(R.mipmap.icon_classify_gray);
         }
     }
 
@@ -206,6 +210,13 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onTabWrap(TabWrap wrap) {
+        int position = wrap.position;
+        viewPager.setCurrentItem(position);
+        tabs.getTabAt(position).select();
+    }
+
 
     @Override
     public void onDestroy() {
@@ -216,7 +227,7 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
     }
 
 
-    @OnClick({R.id.tv_search, R.id.tv_search_one, R.id.tv_search_two, R.id.img_surface, R.id.img_add})
+    @OnClick({R.id.tv_search, R.id.tv_search_one, R.id.tv_search_two, R.id.img_surface, R.id.img_add, R.id.img_classify})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_search:
@@ -246,6 +257,10 @@ public class HomeNewFragment extends MyLazyFragment<MainActivity, IHomeView, Hom
                 } else {
                     notLogin();
                 }
+                break;
+            case R.id.img_classify:
+                ARouter.getInstance().build(ActivityConstant.CLASSIFY)
+                        .navigation();
                 break;
         }
     }

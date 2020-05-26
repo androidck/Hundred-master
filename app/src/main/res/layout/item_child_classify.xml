@@ -21,7 +21,6 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="小说小说"
                 android:layout_centerInParent="true"
                 android:textColor="@color/textColor"
                 android:textSize="@dimen/font_size_28px" />
