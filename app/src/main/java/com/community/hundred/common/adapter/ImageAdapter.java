@@ -58,6 +58,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MyViewHolder
         } else {
             // 本地图片
             Glide.with(MyApplication.getInstances().getApplicationContext()).load(HttpConstant.BASE_HOST +mData.get(position).getImgdz()).into(holder.imageView);
+
             // 网络图片
             holder.imageView.setOnClickListener(v -> {
                 // 点击操作，后续可添加点击后的响应

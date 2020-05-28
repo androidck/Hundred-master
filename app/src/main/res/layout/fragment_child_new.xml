@@ -41,42 +41,10 @@
 
                 <include layout="@layout/divisions_line" />
 
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/space_80"
-                    android:layout_marginLeft="@dimen/space_24"
-                    android:layout_marginRight="@dimen/space_24"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:drawableLeft="@mipmap/icon_not_login"
-                        android:drawablePadding="@dimen/space_16"
-                        android:gravity="center_vertical"
-                        android:text="最新视频"
-                        android:textColor="@color/textColor"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:drawableRight="@mipmap/icon_more"
-                        android:drawablePadding="@dimen/space_16"
-                        android:gravity="center_vertical|right"
-                        android:text="全部视频"
-                        android:textColor="@color/colorDeep"
-                        android:textStyle="bold" />
-                </com.zhy.autolayout.AutoLinearLayout>
 
                 <include layout="@layout/division_line" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.yanzhenjie.recyclerview.SwipeRecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

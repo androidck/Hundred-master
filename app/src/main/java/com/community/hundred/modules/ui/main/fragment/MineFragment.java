@@ -12,6 +12,7 @@ import com.community.hundred.R;
 import com.community.hundred.common.base.MyLazyFragment;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.common.constant.HttpConstant;
+import com.community.hundred.common.util.MyDateUtil;
 import com.community.hundred.common.util.TimeUtils;
 import com.community.hundred.common.web.ShareBrowserActivity;
 import com.community.hundred.common.web.SonicJavaScriptInterface;
@@ -21,6 +22,9 @@ import com.community.hundred.modules.ui.main.presenter.MinePresenter;
 import com.community.hundred.modules.ui.main.presenter.view.IMineView;
 import com.hjq.widget.layout.SettingBar;
 import com.zhy.autolayout.AutoLinearLayout;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -299,9 +303,18 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
             if ("1".equals(entry.getVip())) {
                 imgIsVip.setVisibility(View.VISIBLE);
                 tvLookNumbers.setText("到期时间：" + TimeUtils.timeStamp2Date(entry.getPeriod(), "yyyy-MM-dd"));
+                String str1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                String str2 = TimeUtils.timeStamp2Date(entry.getPeriod(), "yyyy-MM-dd HH:mm:ss");
+                // 获取日期
+                Date date1 = MyDateUtil.parseDate(str1, "yyyy-MM-dd HH:mm:ss");
+                Date date2 = MyDateUtil.parseDate(str2, "yyyy-MM-dd HH:mm:ss");
+                long betweenDays = (date2.getTime() - date1.getTime()) / (1000L * 3600L * 24L);
+                tvExtension.setText(betweenDays + "天");
+                tvMyWallet.setText("无限制");
             } else {
                 imgIsVip.setVisibility(View.GONE);
                 tvLookNumbers.setText("观看次数：" + entry.getSpread_count() + "/" + entry.getFree_count());
+                tvMyWallet.setText("观看次数：" + entry.getSpread_count() + "/" + entry.getFree_count());
             }
             // 性别 年龄
             String sex;
@@ -310,7 +323,7 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
                 tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_boy), null);
             } else {
                 sex = "女";
-               tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
+                tvNickName.setCompoundDrawables(null, null, setDrawable(R.mipmap.icon_girl), null);
             }
             tvSexAge.setText(sex + "\t" + entry.getAge() + "岁");
             // 个性签名
@@ -322,11 +335,11 @@ public class MineFragment extends MyLazyFragment<MainActivity, IMineView, MinePr
             // 发布
             tvSendCount.setText(entry.getTznum() == null ? "" : entry.getTznum());
             // 我的钱包
-            tvMyWallet.setText(entry.getMoney() == null ? "" : entry.getMoney());
+            //  tvMyWallet.setText(entry.getMoney() == null ? "" : entry.getMoney());
             // 累计提现
-            tvWithdrawCount.setText(entry.getTixian() == null ? "" : entry.getTixian());
+            tvWithdrawCount.setText(entry.getTznum() == null ? "" : entry.getTznum());
             // 累计推广
-            tvExtension.setText(entry.getTznum() == null ? "" : entry.getTixian());
+         /*   tvExtension.setText(entry.getTznum() == null ? "" : entry.getTznum());*/
 
 
         });

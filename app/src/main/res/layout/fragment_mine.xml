@@ -322,7 +322,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/space_10"
-                        android:text="我的钱包"
+                        android:text="每日观影次数 "
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/font_size_30px" />
 
@@ -357,7 +357,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/space_10"
-                        android:text="累计提现"
+                        android:text="推广人数"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/font_size_30px" />
 
@@ -391,7 +391,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/space_10"
-                        android:text="累计推广"
+                        android:text="会员天数"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/font_size_30px" />
 

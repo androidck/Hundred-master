@@ -2,7 +2,10 @@ package com.community.hundred.modules.ui.main.fragment.homechild;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
@@ -44,6 +47,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.thl.reader.ReadActivity;
 import com.thl.reader.db.BookList;
+import com.yanzhenjie.recyclerview.SwipeRecyclerView;
 import com.youth.banner.Banner;
 import com.youth.banner.view.BannerViewPager;
 
@@ -60,7 +64,7 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
     @BindView(R.id.banner)
     Banner banner;
     @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
+    SwipeRecyclerView recyclerView;
     @BindView(R.id.scrollView)
     CustomNestedScrollView scrollView;
     @BindView(R.id.menu_recyclerView)
@@ -96,6 +100,10 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
 
     private int p = 1;
 
+    private View headView, footView;
+
+    private TextView tvHuan, tv_all_video;
+
 
     @Override
     protected HomePresenter createPresenter() {
@@ -114,6 +122,29 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
         recyclerView.setLayoutManager(manager);
         adapter = new HomeChildVideoAdapter(getContext(), list);
         recyclerView.setAdapter(adapter);
+        refresh.setEnableLoadMore(false);
+        refresh.setEnableRefresh(false);
+
+        headView = LayoutInflater.from(getContext()).inflate(R.layout.view_header_home_video, recyclerView, false);
+        footView = LayoutInflater.from(getContext()).inflate(R.layout.view_footer_home_video, recyclerView, false);
+
+        recyclerView.addHeaderView(headView);
+        recyclerView.addFooterView(footView);
+        // 点击换一批
+        tvHuan = footView.findViewById(R.id.tv_huan);
+        tv_all_video = headView.findViewById(R.id.tv_all_video);
+        tvHuan.setOnClickListener(v -> {
+            mPresenter.huanyip();
+        });
+
+        // 下一页
+        tv_all_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(ActivityConstant.NOV_SECOND).navigation();
+            }
+        });
+
         ViewTreeObserver vto = banner.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(() -> {
             //设置banner图距离顶部的距离 56dp + 20dp
@@ -228,9 +259,16 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
 
     public void getVideoList() {
         mPresenter.getVideoList(id, p);
-        mPresenter.setOnHomeVideoListener(list1 -> {
-            list.addAll(list1);
-            adapter.notifyDataSetChanged();
+        mPresenter.setOnHomeVideoListener((type, list1) -> {
+            if (type == 1) {
+                list.addAll(list1);
+                adapter.notifyDataSetChanged();
+            } else {
+                list.clear();
+                list.addAll(list1);
+                adapter.notifyDataSetChanged();
+            }
+
         });
     }
 

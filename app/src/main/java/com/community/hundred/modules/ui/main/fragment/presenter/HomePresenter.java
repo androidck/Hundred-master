@@ -100,6 +100,30 @@ public class HomePresenter extends BasePresenter<IHomeView> {
         });
     }
 
+    // 换一批
+    public void huanyip() {
+        prContext.showLoading();
+        Map<String, String> map = new HashMap<>();
+        OkHttp.getAsync(HttpConstant.hbatchURL+"?p=1",  new OkHttp.DataCallBack() {
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                JsonObject object = new JsonParser().parse(result).getAsJsonObject();
+                JsonArray jsonArray = object.getAsJsonArray("list");
+                List<HomeVideoEntry> list = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<HomeVideoEntry>>() {
+                }.getType());
+                prContext.showComplete();
+                onHomeVideoListener.onVideoList(2,list);
+            }
+
+            @Override
+            public void requestFailure(Request request, IOException e) {
+                prContext.showComplete();
+                e.printStackTrace();
+                netWorkError();
+            }
+        });
+    }
+
 
     // 获取专栏列表
     public void getForumChild(String id, int x, int y) {
@@ -146,7 +170,7 @@ public class HomePresenter extends BasePresenter<IHomeView> {
                 List<HomeVideoEntry> list = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<HomeVideoEntry>>() {
                 }.getType());
                 prContext.showComplete();
-                onHomeVideoListener.onVideoList(list);
+                onHomeVideoListener.onVideoList(1,list);
             }
 
             @Override
@@ -209,7 +233,7 @@ public class HomePresenter extends BasePresenter<IHomeView> {
     }
 
     public interface OnHomeVideoListener {
-        void onVideoList(List<HomeVideoEntry> list);
+        void onVideoList(int type,List<HomeVideoEntry> list);
     }
 
     public void setOnHomeVideoListener(OnHomeVideoListener onHomeVideoListener) {

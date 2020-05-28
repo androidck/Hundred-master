@@ -57,6 +57,8 @@ public class NovelSecondActivity extends MyActivity<IHomeView, HomePresenter> {
         return !super.statusBarDarkFont();
     }
 
+
+
     @Override
     protected void initData() {
         getClassify();
@@ -64,6 +66,7 @@ public class NovelSecondActivity extends MyActivity<IHomeView, HomePresenter> {
 
     // 获取分类
     public void getClassify() {
+        setTitle("全部视频");
         titleList = new ArrayList<>();
         fragmentList = new ArrayList<>();
         mPresenter.getHomeClassify();

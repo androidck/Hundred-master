@@ -100,9 +100,16 @@ public class NovelSecondFragment extends MyLazyFragment<NovelSecondActivity, IHo
 
     public void getVideoList() {
         mPresenter.getVideoList(id, p);
-        mPresenter.setOnHomeVideoListener(list1 -> {
-            list.addAll(list1);
-            adapter.notifyDataSetChanged();
+        mPresenter.setOnHomeVideoListener((type, list1) -> {
+            if (type==1){
+                list.addAll(list1);
+                adapter.notifyDataSetChanged();
+            }else {
+                list.clear();
+                list.addAll(list1);
+                adapter.notifyDataSetChanged();
+            }
+
         });
     }
 }

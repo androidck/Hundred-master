@@ -147,6 +147,8 @@ public class HttpConstant {
     public static final String chatDetails = BASE_URL + "Gj/xxixq";
     // 发送消息
     public static final String siliaoURL = BASE_URL + "Gj/siliao";
+    // 换一批
+    public static final String hbatchURL = BASE_URL + "gj/hbatch";
 
 
     /*****************************************个人中心************************************************/
