@@ -138,12 +138,7 @@ public class HomeChildNewFragment extends MyLazyFragment<MainActivity, IHomeView
         });
 
         // 下一页
-        tv_all_video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build(ActivityConstant.NOV_SECOND).navigation();
-            }
-        });
+        tv_all_video.setOnClickListener(v -> ARouter.getInstance().build(ActivityConstant.SECOND_NEW_LEVEL).navigation());
 
         ViewTreeObserver vto = banner.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(() -> {

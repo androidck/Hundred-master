@@ -116,6 +116,11 @@ public class ActivityConstant {
     public static final String SECOND_LEVEL = "/secondlevel/SecondLevelActivity";
 
     /**
+     * 二级分类
+     */
+    public static final String SECOND_NEW_LEVEL = "/secondlevel/SecondNewLevelActivity";
+
+    /**
      * 所有分类
      */
     public static final String CLASSIFY = "/classify/ClassifyActivity";

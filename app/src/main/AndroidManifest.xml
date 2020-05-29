@@ -202,6 +202,12 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
+            android:name=".modules.ui.secondlevel.SecondNewLevelActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+
+        <activity
             android:name=".modules.ui.classify.ClassifyActivity"
             android:label="@string/classify_title"
             android:screenOrientation="portrait" />
