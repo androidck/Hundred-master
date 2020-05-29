@@ -17,6 +17,7 @@ import com.community.hundred.common.adapter.MyViewPageAdapter;
 import com.community.hundred.common.base.MyActivity;
 import com.community.hundred.common.constant.ActivityConstant;
 import com.community.hundred.modules.ui.main.fragment.homechild.HomeChildNewFragment;
+import com.community.hundred.modules.ui.main.fragment.homechild.HomeChildNewSecondFragment;
 import com.community.hundred.modules.ui.main.fragment.presenter.HomePresenter;
 import com.community.hundred.modules.ui.main.fragment.presenter.view.IHomeView;
 import com.community.hundred.modules.ui.secondlevel.entry.SecondTabEntry;
@@ -96,7 +97,7 @@ public class SecondNewLevelActivity extends MyActivity<IHomeView, HomePresenter>
         mPresenter.setOnHomeClassifyListener(list -> {
             for (int i = 0; i < list.size(); i++) {
                 titleList.add(list.get(i).getName());
-                fragmentList.add(HomeChildNewFragment.getInstance(list.get(i).getId(), new Gson().toJson(list.get(i).getEr()), list.get(i).getName()));
+                fragmentList.add(HomeChildNewSecondFragment.getInstance(list.get(i).getId(), new Gson().toJson(list.get(i).getEr()), list.get(i).getName()));
                 tabEntries.add(new SecondTabEntry(i, list.get(i).getName(), 0, i));
             }
             adapter = new MyViewPageAdapter(getSupportFragmentManager(), SecondNewLevelActivity.this, fragmentList, titleList);
